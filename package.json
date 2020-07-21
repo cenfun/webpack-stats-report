@@ -1,0 +1,23 @@
+{
+  "name": "webpack-stats-report",
+  "version": "1.0.0",
+  "description": "webpack-stats-report",
+  "main": "index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cenfun/webpack-stats-report.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cenfun/webpack-stats-report/issues"
+  },
+  "homepage": "https://github.com/cenfun/webpack-stats-report#readme",
+  "dependencies": {
+    "turbogrid": "^1.2.5"
+  }
+}
