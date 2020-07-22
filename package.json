@@ -22,6 +22,7 @@
   "homepage": "https://github.com/cenfun/webpack-stats-report#readme",
   "dependencies": {},
   "devDependencies": {
+    "raw-loader": "^4.0.1",
     "turbogrid": "^1.2.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"

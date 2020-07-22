@@ -1,23 +1,16 @@
 
 import { Grid, $ } from "turbogrid";
+import css from "./style.css";
+import template from "./template.html";
+
+const style = document.createElement("style");
+style.setAttribute("type", "text/css");
+style.innerHTML = css;
+document.head.appendChild(style);
+
+document.body.innerHTML = template;
 
 const statsData = window.statsData;
-
-const template = `
-<div class="main">
-    <div class="header">
-        Stats Report
-        <span class="generated-date"></span>
-    </div>
-    <div class="filter">
-        Name Filter:
-        <input class="gui-input name_keywords" onfocus="this.select();" placeholder="keywords" value="" />
-        <span class="total-info"></span>
-    </div>
-    <div class="grid"></div>
-</div>
-<div class="footer">generated 2020-07-22</div>
-`;
 
 let grid;
 const $grid = document.querySelector(".grid");
@@ -158,20 +151,20 @@ const showDetail = function(icon, rowData) {
     }).join("");
 
     const html = `
-            <div class="gui-detail">
-                <div class="gui-detail-main">
-                    <div class="gui-detail-content">
-                        <div class="gui-detail-title">Chunk:</div>
-                        <div class="gui-detail-item">${rowData.chunks}</div>
-                        <div class="gui-detail-title">Model Name:</div>
-                        <div class="gui-detail-item gui-detail-arrow">${rowData.name}</div>
-                        <div class="gui-detail-title">Issuer Path:</div>
-                        <div class="gui-detail-list">${issuerPath}</div>
-                    </div>
+        <div class="gui-detail">
+            <div class="gui-detail-main">
+                <div class="gui-detail-content">
+                    <div class="gui-detail-title">Chunk:</div>
+                    <div class="gui-detail-item">${rowData.chunks}</div>
+                    <div class="gui-detail-title">Model Name:</div>
+                    <div class="gui-detail-item gui-detail-arrow">${rowData.name}</div>
+                    <div class="gui-detail-title">Issuer Path:</div>
+                    <div class="gui-detail-list">${issuerPath}</div>
                 </div>
-                <div class="gui-detail-close">X</div>
-            </div>  
-            `;
+            </div>
+            <div class="gui-detail-close">X</div>
+        </div>  
+    `;
 
     detail = $(html).appendTo(document.body).show();
 
