@@ -13,7 +13,7 @@ document.body.innerHTML = template;
 const statsData = window.statsData;
 
 let grid;
-const $grid = document.querySelector(".grid");
+const gridContainer = document.querySelector(".grid");
 
 const toNum = function(num, toInt) {
     if (typeof (num) !== "number") {
@@ -67,33 +67,6 @@ const store = {
         k = store.key(k);
         window.localStorage.setItem(k, v);
     }
-};
-
-//modules
-const data = {
-    columns: [{
-        id: "name",
-        name: "Name",
-        width: 750,
-        maxWidth: 2048
-    }, {
-        id: "size",
-        name: "Size",
-        align: "right",
-        dataType: "size",
-        width: 80
-    }, {
-        id: "chunks",
-        name: "Chunks",
-        width: 165
-    }, {
-        id: "assets",
-        name: "Assets"
-    }, {
-        id: "depth",
-        name: "Depth"
-    }],
-    rows: statsData.modules
 };
 
 let keywords = store.get("name") || "";
@@ -177,7 +150,40 @@ const showDetail = function(icon, rowData) {
 
 const createGrid = function() {
 
-    grid = new Grid($grid);
+    const modules = statsData.modules;
+
+    grid = new Grid(gridContainer);
+
+    const columns = [{
+        id: "name",
+        name: "Name",
+        maxWidth: 2048
+    }, {
+        id: "size",
+        name: "Size",
+        align: "right",
+        dataType: "size",
+        width: 80
+    }, {
+        id: "chunks",
+        name: "Chunks",
+        width: 80
+    }, {
+        id: "assets",
+        name: "Assets",
+        width: 80
+    }, {
+        id: "depth",
+        name: "Depth",
+        width: 50
+    }];
+
+    const gridData = {
+        columns: columns,
+        rows: modules
+    };
+
+    grid.setData(gridData);
 
     grid.bind("onClick", function(e, d) {
         this.unselectAll();
@@ -189,10 +195,10 @@ const createGrid = function() {
     });
 
     let allTotalSize = 0;
-    statsData.modules.forEach(function(m) {
+    modules.forEach(function(m) {
         allTotalSize += m.size;
     });
-    const allLen = statsData.modules.length;
+    const allLen = modules.length;
 
     let previousTotalSize;
     grid.bind("onRenderUpdate", function() {
@@ -227,6 +233,21 @@ const createGrid = function() {
             const rowData = this.getRowItem(d.row);
             showDetail(icon, rowData);
         }
+    });
+
+    grid.bind("onResize", function(e, d) {
+
+        let width = 0;
+        columns.forEach(item => {
+            if (item.id === "name") {
+                return;
+            }
+            width += item.width;
+        });
+        const totalWidth = $(gridContainer).width();
+        const w = totalWidth - width - grid.getScrollBarWidth();
+
+        grid.setColumnWidth("name", w);
     });
 
     grid.setOption({
@@ -275,11 +296,12 @@ const createGrid = function() {
             return s;
         }
     });
-    grid.setData(data);
+
     grid.render();
 };
 
 window.onload = function() {
-    document.querySelector(".generated-date").innerHTML = `(${statsData.date})`;
+    const header = document.querySelector(".header");
+    header.innerHTML = `${statsData.title}<span class="generated-date">( generated ${statsData.date} )</span>`;
     createGrid();
 };

@@ -23,6 +23,11 @@ body {
     border-bottom: 1px solid #ccc;
 }
 
+.generated-date {
+    font-size: 14px;
+    margin-left: 10px;
+}
+
 .filter {
     padding: 5px 5px;
     border-bottom: 1px solid #ccc;

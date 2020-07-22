@@ -9,6 +9,7 @@ module.exports = {
     module: {
         rules: [{
             test: /\.(css|html)$/,
+            exclude: /node_modules/,
             use: {
                 loader: "raw-loader",
                 options: {

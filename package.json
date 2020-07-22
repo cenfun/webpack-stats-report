@@ -2,7 +2,7 @@
   "name": "webpack-stats-report",
   "version": "1.0.0",
   "description": "webpack-stats-report",
-  "main": "index.js",
+  "main": "lib/index.js",
   "files": [
     "lib",
     "dist"
