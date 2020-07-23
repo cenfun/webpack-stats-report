@@ -91,7 +91,7 @@ const bindEvents = function() {
 
 const createGrid = function() {
 
-    const colorSize = statsData.colorSize;
+    const colorConditions = statsData.colorConditions;
     const modules = statsData.modules;
 
     grid = new Grid(gridContainer);
@@ -239,10 +239,10 @@ const createGrid = function() {
         },
         sizeFormat: function(v, rowData) {
             const s = BF(v);
-            if (v > colorSize.red) {
+            if (v > colorConditions.redSizeGT) {
                 return `<span class="color-red">${s}</span>`;
             }
-            if (v > colorSize.orange) {
+            if (v > colorConditions.orangeSizeGT) {
                 return `<span class="color-orange">${s}</span>`;
             }
             return s;
