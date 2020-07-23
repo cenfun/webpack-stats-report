@@ -1,14 +1,15 @@
 
 import { Grid, $ } from "turbogrid";
 import css from "./style.css";
-import template from "./template.html";
+import tempMain from "./main.html";
+import Detail from "./detail";
 
 const style = document.createElement("style");
 style.setAttribute("type", "text/css");
 style.innerHTML = css;
 document.head.appendChild(style);
 
-document.body.innerHTML = template;
+document.body.innerHTML = tempMain;
 
 const statsData = window.statsData;
 
@@ -88,68 +89,9 @@ const bindEvents = function() {
     });
 };
 
-
-let detail;
-const clickDetailHandler = function(e) {
-    if (!detail) {
-        return;
-    }
-    const main = detail.find(".gui-detail-main").get(0);
-    if (main === e.target || main.contains(e.target)) {
-        return;
-    }
-    hideDetail();
-};
-
-const hideDetail = function() {
-    document.removeEventListener("click", clickDetailHandler);
-    if (detail) {
-        detail.remove();
-        detail = null;
-    }
-};
-
-const showDetail = function(icon, rowData) {
-
-    if (detail) {
-        hideDetail();
-        return;
-    }
-
-    hideDetail();
-
-
-    const issuerPath = rowData.issuerPath.map(item => {
-        return `<div class="gui-detail-item gui-detail-arrow">${item}</div>`;
-    }).join("");
-
-    const html = `
-        <div class="gui-detail">
-            <div class="gui-detail-main">
-                <div class="gui-detail-content">
-                    <div class="gui-detail-title">Chunk:</div>
-                    <div class="gui-detail-item">${rowData.chunks}</div>
-                    <div class="gui-detail-title">Model Name:</div>
-                    <div class="gui-detail-item gui-detail-arrow">${rowData.name}</div>
-                    <div class="gui-detail-title">Issuer Path:</div>
-                    <div class="gui-detail-list">${issuerPath}</div>
-                </div>
-            </div>
-            <div class="gui-detail-close">X</div>
-        </div>  
-    `;
-
-    detail = $(html).appendTo(document.body).show();
-
-    //close event handler
-    setTimeout(function() {
-        document.addEventListener("click", clickDetailHandler);
-    }, 100);
-
-};
-
 const createGrid = function() {
 
+    const colorSize = statsData.colorSize;
     const modules = statsData.modules;
 
     grid = new Grid(gridContainer);
@@ -165,16 +107,19 @@ const createGrid = function() {
         dataType: "size",
         width: 80
     }, {
-        id: "chunks",
-        name: "Chunks",
-        width: 80
+        id: "chunk",
+        name: "Chunk",
+        width: 80,
+        maxWidth: 1024
     }, {
-        id: "assets",
-        name: "Assets",
-        width: 80
+        id: "asset",
+        name: "Asset",
+        width: 80,
+        maxWidth: 1024
     }, {
         id: "depth",
         name: "Depth",
+        align: "center",
         width: 50
     }];
 
@@ -227,11 +172,16 @@ const createGrid = function() {
         }
     });
 
+    let detail;
     grid.bind("onClick", function(e, d) {
         const icon = d.e.target;
         if (icon.classList.contains("tg-detail-icon")) {
             const rowData = this.getRowItem(d.row);
-            showDetail(icon, rowData);
+
+            if (detail) {
+                detail.destroy();
+            }
+            detail = new Detail($, rowData);
         }
     });
 
@@ -276,21 +226,23 @@ const createGrid = function() {
             if (v) {
                 const nm = rd.name_matched;
                 if (nm) {
-                    const str = `<span class="color-match">${nm}</span>`;
+                    const str = `<b class="color-match">${nm}</b>`;
                     v = v.split(nm).join(str);
                 }
             }
-            v += `<div class="tg-cell-hover-icon tg-detail-icon" title="Click for Issuer Detail">
-                        <div class="tg-issuer-icon" />
-                    </div>`;
+            v += `
+                <div class="tg-cell-hover-icon tg-detail-icon" title="Click for Detail">
+                    <div class="tg-issuer-icon" />
+                </div>
+            `;
             return v;
         },
         sizeFormat: function(v, rowData) {
             const s = BF(v);
-            if (v > 500 * 1024) {
+            if (v > colorSize.red) {
                 return `<span class="color-red">${s}</span>`;
             }
-            if (v > 200 * 1024) {
+            if (v > colorSize.orange) {
                 return `<span class="color-orange">${s}</span>`;
             }
             return s;
@@ -301,7 +253,11 @@ const createGrid = function() {
 };
 
 window.onload = function() {
-    const header = document.querySelector(".header");
-    header.innerHTML = `${statsData.title}<span class="generated-date">( generated ${statsData.date} )</span>`;
+    document.querySelector(".header-title").innerHTML = statsData.title;
+
+    const date = new Date(statsData.timestamp).toLocaleString();
+    const info = `Generated ${date}`;
+
+    document.querySelector(".header-info").innerHTML = info;
     createGrid();
 };
