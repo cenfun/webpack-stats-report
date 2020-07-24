@@ -3,9 +3,9 @@
 
 ![image](assets/screenshot.png)
 
-## Install 
+## Install
 ```sh
-npm i webpack-stats-report
+npm i webpack-stats-report --save-dev
 ```
 ## Usage
 
