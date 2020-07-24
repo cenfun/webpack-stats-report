@@ -1,6 +1,8 @@
 # webpack-stats-report
 > Generation report for webpack stats.
 
+![image](assets/screenshot.png)
+
 ## Install 
 ```sh
 npm i webpack-stats-report
@@ -15,6 +17,8 @@ module.exports = {
     // ... configuration settings here ...
     plugins: [new StatsReportPlugin({ 
         //options
+        title: "Stats Report - webpack-stats-report",
+        output: ".temp/stats-report.html"
     })]
 };
 ```
@@ -26,6 +30,8 @@ const StatsReportGenerator = require("webpack-stats-report").StatsReportGenerato
 webpack(webpackConfig, (err, stats) => {
     StatsReportGenerator({
         //options
+        title: "Stats Report - webpack-stats-report",
+        output: ".temp/stats-report.html"
         //require one more option stats
         stats: stats.toJson(toJsonOptions)
     });
@@ -36,8 +42,8 @@ webpack(webpackConfig, (err, stats) => {
 ```js
 //default options
 {
-    output: "stats-report.html",
     title: "Stats Report",
+    output: "stats-report.html",
     colorConditions: {
         redSizeGT: 500 * 1024,
         orangeSizeGT: 200 * 1024,

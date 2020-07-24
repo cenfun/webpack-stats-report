@@ -1,3 +1,4 @@
+const StatsReportPlugin = require("./lib/plugin.js");
 module.exports = {
     mode: "production",
     output: {
@@ -6,6 +7,10 @@ module.exports = {
         library: "webpack-stats-report",
         libraryTarget: "umd"
     },
+    plugins: [new StatsReportPlugin({
+        title: "Stats Report - webpack-stats-report",
+        output: ".temp/stats-report.html"
+    })],
     module: {
         rules: [{
             test: /\.js$/,
