@@ -8,8 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "npx webpack",
-    "prepublish": "npm run build"
+    "build": "npx webpack"
   },
   "repository": {
     "type": "git",
