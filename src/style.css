@@ -6,9 +6,50 @@ body {
     padding: 0;
     margin: 0;
     font-size: 14px;
+    color: #002b36;
 }
 
-.main {
+.gui-h-space-5 {
+    display: inline-block;
+    width: 5px;
+    height: 100%;
+}
+
+.gui-h-space-10 {
+    display: inline-block;
+    width: 10px;
+    height: 100%;
+}
+
+.gui-v-space-5 {
+    display: block;
+    height: 5px;
+}
+
+.gui-v-space-10 {
+    display: block;
+    height: 10px;
+}
+
+.gui-flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.gui-flex-column {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.gui-flex-auto {
+    flex: 1 1 0%;
+    overflow: hidden;
+}
+
+.gui-main {
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -16,39 +57,49 @@ body {
     height: 100%;
 }
 
-.header {
-    padding: 5px 5px;
-    background: #f5f5f5;
-    border-bottom: 1px solid #ccc;
-    display: flex;
-    flex-direction: row;
-    height: 25px;
-    line-height: 25px;
+.gui-header {
+    background: #eee;
+    position: relative;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 12px 10px;
 }
 
-.header-title {
-    font-size: 18px;
-    flex: 1;
-}
-
-.header-info {
-    font-size: 14px;
+.gui-title {
+    font-size: 16px;
+    font-weight: bold;
     color: #666;
 }
 
-.filter {
-    padding: 5px 5px;
-    border-bottom: 1px solid #ccc;
+.gui-filter {
+    padding: 8px 8px;
+    border-bottom: 1px solid #ddd;
 }
 
 .gui-input {
     padding: 3px 3px;
 }
 
+.gui-filter-info {
+    padding-left: 6px;
+}
+
 .grid {
     flex: 1;
     box-sizing: border-box;
     overflow: hidden;
+}
+
+.gui-footer {
+    background: #f5f5f5;
+    position: relative;
+    padding: 5px 5px;
+    border-top: 1px solid #eee;
+}
+
+.gui-info {
+    font-size: 14px;
+    color: #888;
 }
 
 .color-gray {
@@ -69,10 +120,6 @@ body {
 
 .color-match {
     color: midnightblue;
-}
-
-.total-info {
-    padding-left: 6px;
 }
 
 .tg-issuer-icon {

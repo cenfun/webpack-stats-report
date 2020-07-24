@@ -14,7 +14,6 @@ document.body.innerHTML = tempMain;
 const statsData = window.statsData;
 
 let grid;
-const gridContainer = document.querySelector(".grid");
 
 const toNum = function(num, toInt) {
     if (typeof (num) !== "number") {
@@ -53,13 +52,12 @@ const BF = function(v, digits = 1, base = 1024) {
 };
 
 let keywords = "";
-document.querySelector(".name_keywords").value = keywords;
+const $keywords = $(".gui-keywords").val(keywords);
 const bindEvents = function() {
     const events = ["keyup", "change"];
-    const elem = document.querySelector(".name_keywords");
     events.forEach(type => {
-        $(elem).bind(type, () => {
-            const nv = elem.value.trim().toLowerCase();
+        $keywords.bind(type, () => {
+            const nv = $keywords.val().trim().toLowerCase();
             const ov = keywords;
             if (nv === ov) {
                 return;
@@ -73,9 +71,9 @@ const bindEvents = function() {
 const createGrid = function() {
 
     const colorConditions = statsData.colorConditions;
-    const modules = statsData.modules;
+    const rows = statsData.rows;
 
-    grid = new Grid(gridContainer);
+    grid = new Grid(".grid");
 
     const columns = [{
         id: "name",
@@ -106,7 +104,7 @@ const createGrid = function() {
 
     const gridData = {
         columns: columns,
-        rows: modules
+        rows: rows
     };
 
     grid.setData(gridData);
@@ -120,6 +118,7 @@ const createGrid = function() {
         bindEvents();
     });
 
+    const modules = rows.filter(item => item.id === "modules")[0].subs;
     let allTotalSize = 0;
     modules.forEach(function(m) {
         allTotalSize += m.size;
@@ -144,7 +143,7 @@ const createGrid = function() {
             size += `, ${per}%`;
         }
         const info = `Found <b>${len.toLocaleString()}</b> modules (Size: ${size})`;
-        document.querySelector(".total-info").innerHTML = info;
+        $(".gui-filter-info").html(info);
     });
 
     grid.bind("onHeaderClick", function(e, d) {
@@ -175,7 +174,7 @@ const createGrid = function() {
             }
             width += item.width;
         });
-        const totalWidth = $(gridContainer).width();
+        const totalWidth = $(".grid").width();
         const w = totalWidth - width - grid.getScrollBarWidth();
 
         grid.setColumnWidth("name", w);
@@ -188,6 +187,7 @@ const createGrid = function() {
         sortField: "size",
         sortAsc: false,
         sortOnInit: true,
+        collapseAll: null,
         rowFilter: function(rowData) {
             rowData.name_matched = null;
             if (!keywords) {
@@ -211,11 +211,13 @@ const createGrid = function() {
                     v = v.split(nm).join(str);
                 }
             }
-            v += `
-                <div class="tg-cell-hover-icon tg-detail-icon" title="Click for Detail">
-                    <div class="tg-issuer-icon" />
-                </div>
-            `;
+            if (rd.issuerPath) {
+                v += `
+                    <div class="tg-cell-hover-icon tg-detail-icon" title="Click for Detail">
+                        <div class="tg-issuer-icon" />
+                    </div>
+                `;
+            }
             return v;
         },
         sizeFormat: function(v, rowData) {
@@ -234,11 +236,11 @@ const createGrid = function() {
 };
 
 window.onload = function() {
-    document.querySelector(".header-title").innerHTML = statsData.title;
+    $(".gui-title").html(statsData.title);
 
     const date = new Date(statsData.timestamp).toLocaleString();
     const info = `Generated ${date}`;
+    $(".gui-info").html(info);
 
-    document.querySelector(".header-info").innerHTML = info;
     createGrid();
 };
