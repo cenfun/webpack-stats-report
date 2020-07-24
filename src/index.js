@@ -52,25 +52,7 @@ const BF = function(v, digits = 1, base = 1024) {
     return v;
 };
 
-const store = {
-    key(k) {
-        return `stats_report_${k}`;
-    },
-    get(k, dv = "") {
-        k = store.key(k);
-        const v = window.localStorage.getItem(k);
-        if (v === null) {
-            return dv;
-        }
-        return v;
-    },
-    set(k, v) {
-        k = store.key(k);
-        window.localStorage.setItem(k, v);
-    }
-};
-
-let keywords = store.get("name") || "";
+let keywords = "";
 document.querySelector(".name_keywords").value = keywords;
 const bindEvents = function() {
     const events = ["keyup", "change"];
@@ -78,12 +60,11 @@ const bindEvents = function() {
     events.forEach(type => {
         $(elem).bind(type, () => {
             const nv = elem.value.trim().toLowerCase();
-            const ov = store.get("name");
+            const ov = keywords;
             if (nv === ov) {
                 return;
             }
             keywords = nv;
-            store.set("name", nv);
             grid.update();
         });
     });
