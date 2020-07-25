@@ -60,4 +60,5 @@ webpack(webpackConfig, (err, stats) => {
 
 ## Changelog
 
-* v1.0.0
+* v1.0.1
+    * fixed layout

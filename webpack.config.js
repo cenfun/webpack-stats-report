@@ -9,7 +9,8 @@ module.exports = {
     },
     plugins: [new StatsReportPlugin({
         title: "Stats Report - webpack-stats-report",
-        output: ".temp/stats-report.html"
+        output: ".temp/stats-report.html",
+        outputStatsJson: true
     })],
     module: {
         rules: [{
