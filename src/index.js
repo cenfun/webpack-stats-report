@@ -51,21 +51,26 @@ const BF = function(v, digits = 1, base = 1024) {
     return v;
 };
 
-let keywords = "";
-const $keywords = $(".gui-keywords").val(keywords);
+let keywords = [];
+let checkedList = ["assets", "chunks", "modules"];
 const bindEvents = function() {
-    const events = ["keyup", "change"];
-    events.forEach(type => {
-        $keywords.bind(type, () => {
-            const nv = $keywords.val().trim().toLowerCase();
-            const ov = keywords;
-            if (nv === ov) {
-                return;
-            }
-            keywords = nv;
-            grid.update();
-        });
+    const $keywords = $(".gui-keywords");
+    $keywords.bind("keyup change", () => {
+        const nv = $keywords.val().trim().toLowerCase();
+        keywords = nv.split(" ").filter(item => item);
+        grid.update();
     });
+    const $checkbox = $(".gui-checkbox");
+    $checkbox.bind("change", (e) => {
+        checkedList = [];
+        $checkbox.each(item => {
+            if (item.checked) {
+                checkedList.push(item.value);
+            }
+        });
+        grid.update();
+    });
+
 };
 
 
@@ -116,6 +121,13 @@ const createGrid = function() {
         width: 50
     }];
 
+    const modules = rows.filter(item => item.id === "modules")[0].subs;
+    let totalModulesSize = 0;
+    modules.forEach(function(m) {
+        totalModulesSize += m.size;
+    });
+    const totalModulesLen = modules.length;
+
     const gridData = {
         columns: columns,
         rows: rows
@@ -132,39 +144,36 @@ const createGrid = function() {
         bindEvents();
     });
 
-    const modules = rows.filter(item => item.id === "modules")[0].subs;
-    let allTotalSize = 0;
-    modules.forEach(function(m) {
-        allTotalSize += m.size;
-    });
-    const allLen = modules.length;
-
-    let previousTotalSize;
     grid.bind("onRenderUpdate", function() {
-        let totalSize = 0;
-        const rows = grid.getGridRowsData();
-        rows.forEach(item => {
-            totalSize += item.size;
-        });
-        if (totalSize === previousTotalSize) {
+
+        if (!$(".gui-modules").get(0).checked) {
+            $(".gui-filter-info").html("");
             return;
         }
-        previousTotalSize = totalSize;
-        const len = rows.length;
-        let size = `<b>${BF(totalSize)}</b>`;
-        if (len !== allLen) {
-            const per = (totalSize / allTotalSize * 100).toFixed(2);
-            size += `, ${per}%`;
+
+        let len = 0;
+        let size = 0;
+        const rows = grid.getGridRowsData();
+        rows.forEach(item => {
+            if (!item.tg_parent) {
+                return;
+            }
+            if (item.tg_parent.id !== "modules") {
+                return;
+            }
+            size += item.size;
+            len += 1;
+        });
+        
+        let sizeStr = `<b>${BF(size)}</b>`;
+        if (len !== totalModulesLen) {
+            const per = (size / totalModulesSize * 100).toFixed(2);
+            sizeStr += `, ${per}%`;
         }
-        const info = `Found <b>${len.toLocaleString()}</b> modules (Size: ${size})`;
+        const info = `Found <b>${len.toLocaleString()}</b> modules (Size: ${sizeStr})`;
         $(".gui-filter-info").html(info);
     });
 
-    grid.bind("onHeaderClick", function(e, d) {
-        if (d.e.target.nodeName === "INPUT" || d.e.target.nodeName === "LABEL") {
-            d.e.stopImmediatePropagation();
-        }
-    });
 
     let detail;
     grid.bind("onClick", function(e, d) {
@@ -180,7 +189,6 @@ const createGrid = function() {
     });
 
     grid.bind("onResize", function(e, d) {
-
         let width = 0;
         columns.forEach(item => {
             if (item.id === "name") {
@@ -204,15 +212,23 @@ const createGrid = function() {
         collapseAll: null,
         rowNumberType: "list",
         rowFilter: function(rowData) {
+
+            let id = rowData.id;
+            if (rowData.tg_parent) {
+                id = rowData.tg_parent.id;
+            }
+            if (checkedList.indexOf(id) === -1) {
+                return false;
+            }
+
             rowData.name_matched = null;
-            if (!keywords) {
+            if (!keywords.length) {
                 return true;
             }
-            const arr = keywords.split(" ");
             const name = (`${rowData.name}`).toLowerCase();
-            for (const item of arr) {
-                if (item && name.indexOf(item) !== -1) {
-                    rowData.name_matched = item;
+            for (const k of keywords) {
+                if (name.indexOf(k) !== -1) {
+                    rowData.name_matched = k;
                     return true;
                 }
             }
@@ -226,7 +242,7 @@ const createGrid = function() {
             }
             
             const sl = rd.tg_subs_length || rd.tg_s_length;
-            if (sl) {
+            if (sl && sl > 1) {
                 v += ` (${sl.toLocaleString()})`;
             }
 
