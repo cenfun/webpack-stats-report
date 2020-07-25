@@ -68,12 +68,26 @@ const bindEvents = function() {
     });
 };
 
+
+const initTabs = function() {
+    $(".gui-tab").delegate(".gui-tab-item", "click", function(e) {
+        const $item = $(e.target);
+        let data = $item.attr("data");
+        data = data || "table";
+        $(".gui-tab-item").removeClass("selected");
+        $(".gui-body-item").removeClass("selected");
+        $(`.gui-tab-item[data='${data}']`).addClass("selected");
+        $(`.gui-body-item[data='${data}']`).addClass("selected");
+    });
+};
+
+
 const createGrid = function() {
 
     const colorConditions = statsData.colorConditions;
     const rows = statsData.rows;
 
-    grid = new Grid(".grid");
+    grid = new Grid(".gui-grid");
 
     const columns = [{
         id: "name",
@@ -174,7 +188,7 @@ const createGrid = function() {
             }
             width += item.width;
         });
-        const totalWidth = $(".grid").width();
+        const totalWidth = $(".gui-grid").width();
         const w = totalWidth - width - grid.getScrollBarWidth();
 
         grid.setColumnWidth("name", w);
@@ -242,5 +256,6 @@ window.onload = function() {
     const info = `Generated ${date}`;
     $(".gui-info").html(info);
 
+    initTabs();
     createGrid();
 };

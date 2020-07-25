@@ -1,14 +1,31 @@
 <div class="gui-main">
     <div class="gui-header gui-flex-row">
-        <div class="gui-title"></div>
+        <div class="gui-title gui-flex-auto"></div>
+        <div class="gui-tab gui-flex-row">
+            <div class="gui-tab-item selected" data="table">Table</div>
+            <div class="gui-tab-item" data="chart">Chart</div>
+        </div>
     </div>
-    <div class="gui-filter">
-        Name Filter
-        <input class="gui-input gui-keywords" onfocus="this.select();" placeholder="keywords" value="" />
-        <span class="gui-filter-info"></span>
+    <div class="gui-body gui-flex-auto">
+
+        <div class="gui-body-item gui-flex-column selected" data="table">
+            <div class="gui-filter">
+                Filter
+                <input class="gui-input gui-keywords" onfocus="this.select();" placeholder="keywords" value="" />
+                <span class="gui-filter-info"></span>
+            </div>
+            <div class="gui-grid gui-flex-auto"></div>
+        </div>
+
+        <div class="gui-body-item" data="chart">
+            <div class="gui-chart">
+                Not ready yet!
+            </div>
+        </div>
+
     </div>
-    <div class="grid"></div>
     <div class="gui-footer gui-flex-row">
+        <div class="gui-stats gui-flex-auto"></div>
         <div class="gui-info"></div>
     </div>
 </div>

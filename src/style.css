@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 html,
 body {
     font-family: Helvetica, Arial, sans-serif;
@@ -58,21 +64,128 @@ body {
 }
 
 .gui-header {
-    background: #eee;
+    background: #dee1e6;
+    height: 40px;
     position: relative;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 12px 10px;
+    z-index: 10;
 }
 
 .gui-title {
     font-size: 16px;
     font-weight: bold;
-    color: #666;
+    margin-left: 10px;
+}
+
+.gui-tab {
+    position: relative;
+    height: 100%;
+    margin: 0 10px;
+    align-items: flex-end;
+}
+
+.gui-tab-item {
+    position: relative;
+    padding: 0 20px;
+    height: 36px;
+    line-height: 36px;
+    cursor: pointer;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    user-select: none;
+    color: #002b36;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gui-tab-item:hover {
+    background-color: #ebecef;
+    z-index: 2;
+}
+
+.gui-tab-item::after {
+    background-color: transparent;
+    display: block;
+    position: absolute;
+    left: 100%;
+    bottom: 8px;
+    width: 1px;
+    height: 20px;
+    content: "";
+}
+
+.gui-tab-item:hover::before,
+.gui-tab-item:hover::after {
+    background-repeat: no-repeat;
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    content: "";
+}
+
+.gui-tab-item:hover::before {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3e%3cpath fill='%23ebecef' d='M0,10 Q10,10 10,0 L10,10z'/%3e%3c/svg%3e");
+}
+
+.gui-tab-item:hover::after {
+    left: 100%;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3e%3cpath fill='%23ebecef' d='M0,0 Q0,10 10,10 L0,10z'/%3e%3c/svg%3e");
+}
+
+.gui-tab-item.selected {
+    background-color: #fff;
+    height: 38px;
+    line-height: 38px;
+    margin-bottom: -1px;
+    position: relative;
+    z-index: 3;
+}
+
+.gui-tab-item.selected::before,
+.gui-tab-item.selected::after {
+    background-repeat: no-repeat;
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    content: "";
+}
+
+.gui-tab-item.selected::before {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3e%3cpath fill='%23fff' d='M0,10 Q10,10 10,0 L10,10z'/%3e%3c/svg%3e");
+}
+
+.gui-tab-item.selected::after {
+    left: 100%;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3e%3cpath fill='%23fff' d='M0,0 Q0,10 10,10 L0,10z'/%3e%3c/svg%3e");
+}
+
+.gui-body {
+    position: relative;
+}
+
+.gui-body-item {
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.gui-body-item.selected {
+    display: block;
 }
 
 .gui-filter {
-    padding: 8px 8px;
+    padding: 8px 10px;
     border-bottom: 1px solid #ddd;
 }
 
@@ -84,21 +197,22 @@ body {
     padding-left: 6px;
 }
 
-.grid {
-    flex: 1;
-    box-sizing: border-box;
+.gui-grid {
     overflow: hidden;
+}
+
+.gui-chart {
+    padding: 10px 10px;
 }
 
 .gui-footer {
     background: #f5f5f5;
     position: relative;
-    padding: 5px 5px;
+    padding: 5px 8px;
     border-top: 1px solid #eee;
 }
 
 .gui-info {
-    font-size: 14px;
     color: #888;
 }
 
@@ -128,7 +242,7 @@ body {
     pointer-events: none;
     background-repeat: no-repeat;
     background-position: center center;
-    background-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15"%3e%3ccircle cx="7.5" cy="7.5" r="6.5" fill="none" stroke="%235e5e5e" vector-effect="non-scaling-stroke" stroke-miterlimit="10"%3e%3c/circle%3e%3cpath stroke="none" d="M6.75 3.75H8V5H6.75zM9.125 11V9.875h-1V6h-2.25v1.125h1v2.75h-1V11h3.25z"%3e%3c/path%3e%3c/svg%3e');
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 15'%3e%3ccircle cx='7.5' cy='7.5' r='6.5' fill='none' stroke='%235e5e5e' vector-effect='non-scaling-stroke' stroke-miterlimit='10'/%3e%3cpath stroke='none' d='M6.75 3.75H8V5H6.75zM9.125 11V9.875h-1V6h-2.25v1.125h1v2.75h-1V11h3.25z'/%3e%3c/svg%3e");
 }
 
 .tg-detail-icon {
@@ -221,9 +335,11 @@ body {
 }
 
 .gui-detail-arrow {
-    padding-left: 20px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
     background-repeat: no-repeat;
-    background-position: 0 0;
-    background-size: 16px;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23333333' d='M3,2 V11 Q3,13,5,13 H12.5 L10.5,15 H12 L14.5,12.5 L12,10 H10.5 L12.5,12 H5 Q4,12,4,11 V2 z' /%3e%3c/svg%3e");
+    background-position: center center;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23333' d='M3,2V11Q3,13,5,13H12.5L10.5,15H12L14.5,12.5L12,10H10.5L12.5,12H5Q4,12,4,11V2z'/%3e%3c/svg%3e");
 }

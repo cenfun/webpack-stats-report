@@ -6,6 +6,8 @@ export default class Detail {
     constructor($, rowData) {
         this.$container = $(tempDetail).appendTo(document.body);
 
+        const arrow = '<div class="gui-detail-arrow"></div>';
+
         const $name = this.$container.find(".gui-name");
         $name.find(".gui-detail-item").html(rowData.name);
 
@@ -17,14 +19,14 @@ export default class Detail {
         }
 
         const pathStr = rowData.issuerPath.map(item => {
-            return `<div class="gui-detail-item gui-detail-arrow">${item}</div>`;
+            return `<div class="gui-detail-item">${arrow} ${item}</div>`;
         }).join("");
     
         const $path = this.$container.find(".gui-path");
         $path.find(".gui-detail-list").html(pathStr);
         
         const $chunk = this.$container.find(".gui-chunk");
-        $chunk.find(".gui-detail-item").html(rowData.chunk);
+        $chunk.find(".gui-detail-item").html(`${arrow} ${rowData.chunk}`);
 
         //close event handler
         setTimeout(() => {
