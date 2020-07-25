@@ -202,6 +202,7 @@ const createGrid = function() {
         sortAsc: false,
         sortOnInit: true,
         collapseAll: null,
+        rowNumberType: "list",
         rowFilter: function(rowData) {
             rowData.name_matched = null;
             if (!keywords) {
@@ -218,13 +219,17 @@ const createGrid = function() {
             return false;
         },
         treeFormat: function(v, rd, cd, ri, ci, node) {
-            if (v) {
-                const nm = rd.name_matched;
-                if (nm) {
-                    const str = `<b class="color-match">${nm}</b>`;
-                    v = v.split(nm).join(str);
-                }
+            const nm = rd.name_matched;
+            if (nm) {
+                const str = `<b class="color-match">${nm}</b>`;
+                v = v.split(nm).join(str);
             }
+            
+            const sl = rd.tg_subs_length || rd.tg_s_length;
+            if (sl) {
+                v += ` (${sl.toLocaleString()})`;
+            }
+
             if (rd.issuerPath) {
                 v += `
                     <div class="tg-cell-hover-icon tg-detail-icon" title="Click for Detail">
