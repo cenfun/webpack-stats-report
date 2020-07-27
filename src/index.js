@@ -89,7 +89,6 @@ const initTabs = function() {
 
 const createGrid = function() {
 
-    const colorConditions = statsData.colorConditions;
     const rows = statsData.rows;
 
     grid = new Grid(".gui-grid");
@@ -104,6 +103,11 @@ const createGrid = function() {
         align: "right",
         dataType: "size",
         width: 80
+    }, {
+        id: "type",
+        name: "Type",
+        align: "center",
+        width: 70
     }, {
         id: "chunk",
         name: "Chunk",
@@ -245,7 +249,11 @@ const createGrid = function() {
             if (sl && sl > 1) {
                 v += ` (${sl.toLocaleString()})`;
             }
-
+            
+            if (rd.name_color) {
+                v = `<span style="color:${rd.name_color};">${v}</span>`;
+            }
+            
             if (rd.issuerPath) {
                 v += `
                     <div class="tg-cell-hover-icon tg-detail-icon" title="Click for Detail">
@@ -257,11 +265,8 @@ const createGrid = function() {
         },
         sizeFormat: function(v, rowData) {
             const s = BF(v);
-            if (v > colorConditions.redSizeGT) {
-                return `<span class="color-red">${s}</span>`;
-            }
-            if (v > colorConditions.orangeSizeGT) {
-                return `<span class="color-orange">${s}</span>`;
+            if (rowData.size_color) {
+                return `<span style="color:${rowData.size_color};">${s}</span>`;
             }
             return s;
         }

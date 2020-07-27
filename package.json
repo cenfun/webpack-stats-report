@@ -19,7 +19,10 @@
     "url": "https://github.com/cenfun/webpack-stats-report/issues"
   },
   "homepage": "https://github.com/cenfun/webpack-stats-report#readme",
-  "dependencies": {},
+  "dependencies": {
+    "console-grid": "^1.0.16",
+    "micromatch": "^4.0.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
