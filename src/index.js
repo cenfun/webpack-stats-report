@@ -107,7 +107,7 @@ const createGrid = function() {
         id: "type",
         name: "Type",
         align: "center",
-        width: 70
+        width: 65
     }, {
         id: "chunk",
         name: "Chunk",
