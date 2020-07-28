@@ -11,8 +11,8 @@ export default class Detail {
         const $name = this.$container.find(".gui-name");
 
         let name = rowData.name;
-        if (rowData.file) {
-            name += `<div class="gui-detail-tip">(${rowData.file})</div>`;
+        if (rowData.url) {
+            name += `<div class="gui-detail-tip">(${rowData.url})</div>`;
         }
         $name.find(".gui-detail-item").html(name);
 
