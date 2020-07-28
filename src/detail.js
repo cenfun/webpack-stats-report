@@ -9,7 +9,12 @@ export default class Detail {
         const arrow = '<div class="gui-detail-arrow"></div>';
 
         const $name = this.$container.find(".gui-name");
-        $name.find(".gui-detail-item").html(rowData.name);
+
+        let name = rowData.name;
+        if (rowData.file) {
+            name += `<div class="gui-detail-tip">(${rowData.file})</div>`;
+        }
+        $name.find(".gui-detail-item").html(name);
 
         const $asset = this.$container.find(".gui-asset");
         if (rowData.asset) {

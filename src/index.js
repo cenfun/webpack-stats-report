@@ -238,6 +238,14 @@ const createGrid = function() {
             }
             return false;
         },
+        stringFormat: function(v, rd, cd) {
+            const id = cd.id;
+            const color = rd[`${id}_color`];
+            if (color) {
+                v = `<span style="color:${color};">${v}</span>`;
+            }
+            return v;
+        },
         treeFormat: function(v, rd, cd, ri, ci, node) {
             const nm = rd.name_matched;
             if (nm) {
