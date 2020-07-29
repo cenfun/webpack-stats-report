@@ -2,7 +2,8 @@
 import { Grid, $ } from "turbogrid";
 import css from "./style.css";
 import tempMain from "./main.html";
-import Detail from "./detail";
+import Detail from "./detail.js";
+import Util from "./util.js";
 
 const style = document.createElement("style");
 style.setAttribute("type", "text/css");
@@ -11,45 +12,9 @@ document.head.appendChild(style);
 
 document.body.innerHTML = tempMain;
 
-const statsData = window.statsData;
+const statsData = Util.initStatsData(window.statsData);
 
 let grid;
-
-const toNum = function(num, toInt) {
-    if (typeof (num) !== "number") {
-        num = parseFloat(num);
-    }
-    if (isNaN(num)) {
-        num = 0;
-    }
-    if (toInt) {
-        num = Math.round(num);
-    }
-    return num;
-};
-
-const BF = function(v, digits = 1, base = 1024) {
-    v = toNum(v, true);
-    if (v === 0) {
-        return "0B";
-    }
-    let prefix = "";
-    if (v < 0) {
-        v = Math.abs(v);
-        prefix = "-";
-    }
-    const units = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-    for (let i = 0, l = units.length; i < l; i++) {
-        const min = Math.pow(base, i);
-        const max = Math.pow(base, i + 1);
-        if (v > min && v < max) {
-            const unit = units[i];
-            v = `${prefix + (v / min).toFixed(digits)} ${unit}`;
-            break;
-        }
-    }
-    return v;
-};
 
 let keywords = [];
 let checkedList = ["assets", "chunks", "modules"];
@@ -85,7 +50,6 @@ const initTabs = function() {
         $(`.gui-body-item[data='${data}']`).addClass("selected");
     });
 };
-
 
 const createGrid = function() {
 
@@ -169,7 +133,7 @@ const createGrid = function() {
             len += 1;
         });
         
-        let sizeStr = `<b>${BF(size)}</b>`;
+        let sizeStr = `<b>${Util.BF(size)}</b>`;
         if (len !== totalModulesLen) {
             const per = (size / totalModulesSize * 100).toFixed(2);
             sizeStr += `, ${per}%`;
@@ -231,8 +195,12 @@ const createGrid = function() {
             }
             const name = (`${rowData.name}`).toLowerCase();
             for (const k of keywords) {
-                if (name.indexOf(k) !== -1) {
-                    rowData.name_matched = k;
+                const index = name.indexOf(k);
+                if (index !== -1) {
+                    rowData.name_matched = {
+                        index: index,
+                        length: k.length
+                    };
                     return true;
                 }
             }
@@ -249,8 +217,10 @@ const createGrid = function() {
         treeFormat: function(v, rd, cd, ri, ci, node) {
             const nm = rd.name_matched;
             if (nm) {
-                const str = `<b class="color-match">${nm}</b>`;
-                v = v.split(nm).join(str);
+                const left = v.substring(0, nm.index);
+                const mid = v.substr(nm.index, nm.length);
+                const right = v.substr(nm.index + nm.length);
+                v = `${left}<b class="color-match">${mid}</b>${right}`;
             }
             
             const sl = rd.tg_subs_length || rd.tg_s_length;
@@ -272,7 +242,7 @@ const createGrid = function() {
             return v;
         },
         sizeFormat: function(v, rowData) {
-            const s = BF(v);
+            const s = Util.BF(v);
             if (rowData.size_color) {
                 return `<span style="color:${rowData.size_color};">${s}</span>`;
             }

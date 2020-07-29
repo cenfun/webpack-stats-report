@@ -10,9 +10,13 @@ export default class Detail {
 
         const $name = this.$container.find(".gui-name");
 
-        let name = rowData.name;
-        if (rowData.url) {
-            name += `<div class="gui-detail-tip">(${rowData.url})</div>`;
+        let name = "";
+        if (rowData.loaders) {
+            name += rowData.loaders.map(item => `${item}-loader -&gt; `).join("");
+        }
+        name += rowData.name;
+        if (rowData.fullName) {
+            name += `<div class="gui-detail-tip">(${rowData.fullName})</div>`;
         }
         $name.find(".gui-detail-item").html(name);
 
