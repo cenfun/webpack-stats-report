@@ -53,7 +53,9 @@ const initTabs = function() {
 
 const createGrid = function() {
 
-    const rows = statsData.rows;
+    const rows = [statsData.assets, statsData.chunks, statsData.modules];
+    const totalModulesSize = statsData.modules.size;
+    const totalModulesLength = statsData.modules.subs.length;
 
     grid = new Grid(".gui-grid");
 
@@ -88,13 +90,6 @@ const createGrid = function() {
         align: "center",
         width: 50
     }];
-
-    const modules = rows.filter(item => item.id === "modules")[0].subs;
-    let totalModulesSize = 0;
-    modules.forEach(function(m) {
-        totalModulesSize += m.size;
-    });
-    const totalModulesLen = modules.length;
 
     const gridData = {
         columns: columns,
@@ -134,7 +129,7 @@ const createGrid = function() {
         });
         
         let sizeStr = `<b>${Util.BF(size)}</b>`;
-        if (len !== totalModulesLen) {
+        if (len !== totalModulesLength) {
             const per = (size / totalModulesSize * 100).toFixed(2);
             sizeStr += `, ${per}%`;
         }

@@ -39,9 +39,9 @@ const Util = {
         const map = statsData.map;
         delete statsData.map;
 
-        statsData.rows.forEach(row => {
+        [statsData.assets, statsData.chunks, statsData.modules].forEach(item => {
 
-            row.subs.forEach(item => {
+            item.subs.forEach(item => {
                 item.name = map[item.name];
                 //fullName
                 if (item.chunk) {
