@@ -16,28 +16,72 @@ const statsData = Util.initStatsData(window.statsData);
 
 let grid;
 
-let keywords = [];
-let checkedList = ["assets", "chunks", "modules"];
+const groups = {
+    assets: true,
+    chunks: true,
+    modules: true
+};
+const keywords = {
+    chunk: [],
+    type: [],
+    name: []
+};
 const bindEvents = function() {
-    const $keywords = $(".gui-keywords");
-    $keywords.bind("keyup change", () => {
-        const nv = $keywords.val().trim().toLowerCase();
-        keywords = nv.split(" ").filter(item => item);
+    $(".gui-group").bind("change", function(e) {
+        const item = e.currentTarget;
+        groups[item.value] = item.checked;
         grid.update();
     });
-    const $checkbox = $(".gui-checkbox");
-    $checkbox.bind("change", (e) => {
-        checkedList = [];
-        $checkbox.each(item => {
-            if (item.checked) {
-                checkedList.push(item.value);
-            }
-        });
+    $(".gui-keywords").bind("focus", function(e) {
+        e.currentTarget.select();
+    }).bind("keyup change", function(e) {
+        const item = e.currentTarget;
+        const nv = item.value.trim().toLowerCase();
+        const nn = item.name;
+        keywords[nn] = nv.split(" ").filter(item => item);
         grid.update();
     });
-
 };
 
+const isMatch = function(value, list, rowData, matchedKey) {
+    for (let i = 0, l = list.length; i < l; i++) {
+        const k = list[i];
+        const index = value.indexOf(k);
+        if (index !== -1) {
+            rowData[matchedKey] = {
+                index: index,
+                length: k.length
+            };
+            return true;
+        }
+    }
+    return false;
+};
+
+const filterHandler = function(rowData) {
+    let gid = rowData.id;
+    if (rowData.tg_parent) {
+        gid = rowData.tg_parent.id;
+    }
+    if (!groups[gid]) {
+        return false;
+    }
+    console.log(keywords);
+    for (const field in keywords) {
+        const matchedKey = `${field}_matched`;
+        rowData[matchedKey] = null;
+        const list = keywords[field];
+        if (!list.length) {
+            continue;
+        }
+        const value = `${rowData[field]}`.toLowerCase();
+        if (isMatch(value, list, rowData, matchedKey)) {
+            continue;
+        }
+        return false;
+    }
+    return true;
+};
 
 const initTabs = function() {
     $(".gui-tab").delegate(".gui-tab-item", "click", function(e) {
@@ -175,31 +219,7 @@ const createGrid = function() {
         collapseAll: null,
         rowNumberType: "list",
         rowFilter: function(rowData) {
-
-            let id = rowData.id;
-            if (rowData.tg_parent) {
-                id = rowData.tg_parent.id;
-            }
-            if (checkedList.indexOf(id) === -1) {
-                return false;
-            }
-
-            rowData.name_matched = null;
-            if (!keywords.length) {
-                return true;
-            }
-            const name = (`${rowData.name}`).toLowerCase();
-            for (const k of keywords) {
-                const index = name.indexOf(k);
-                if (index !== -1) {
-                    rowData.name_matched = {
-                        index: index,
-                        length: k.length
-                    };
-                    return true;
-                }
-            }
-            return false;
+            return filterHandler(rowData);
         },
         stringFormat: function(v, rd, cd) {
             const id = cd.id;

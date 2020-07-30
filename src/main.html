@@ -10,25 +10,28 @@
 
         <div class="gui-body-item selected" data="table">
             <div class="gui-table gui-flex-column">
-                <div class="gui-filter">
-                    <label>
-                        Filter
-                        <input class="gui-input gui-keywords" onfocus="this.select();" placeholder="keywords"
-                            value="" />
-                    </label>
-                    <label>
-                        <input type="checkbox" class="gui-checkbox gui-assets" value="assets" checked />
-                        Assets
-                    </label>
-                    <label>
-                        <input type="checkbox" class="gui-checkbox gui-chunks" value="chunks" checked />
-                        Chunks
-                    </label>
-                    <label>
-                        <input type="checkbox" class="gui-checkbox gui-modules" value="modules" checked />
-                        Modules
-                    </label>
-                    <span class="gui-filter-info"></span>
+                <div class="gui-filter gui-flex-row">
+                    <div class="gui-flex-auto">
+                        Filter:
+                        <input class="gui-keywords" name="chunk" placeholder="Chunk" title="Chunk" />
+                        <input class="gui-keywords" name="type" placeholder="Type" title="Type" />
+                        <input class="gui-keywords" name="name" placeholder="Name" title="Chunk" />
+                        <span class="gui-filter-info"></span>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="checkbox" class="gui-group gui-assets" value="assets" checked />
+                            Assets
+                        </label>
+                        <label>
+                            <input type="checkbox" class="gui-group gui-chunks" value="chunks" checked />
+                            Chunks
+                        </label>
+                        <label>
+                            <input type="checkbox" class="gui-group gui-modules" value="modules" checked />
+                            Modules
+                        </label>
+                    </div>
                 </div>
                 <div class="gui-grid gui-flex-auto"></div>
             </div>

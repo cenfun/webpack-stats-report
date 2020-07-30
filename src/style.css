@@ -194,12 +194,17 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-.gui-input {
+.gui-keywords {
     padding: 3px 3px;
 }
 
-.gui-filter-info {
-    padding-left: 6px;
+.gui-keywords[name=chunk],
+.gui-keywords[name=type] {
+    width: 80px;
+}
+
+.gui-keywords[name=name] {
+    margin-right: 5px;
 }
 
 .gui-grid {
