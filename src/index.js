@@ -2,7 +2,8 @@
 import { Grid, $ } from "turbogrid";
 import css from "./style.css";
 import tempMain from "./main.html";
-import Detail from "./detail.js";
+import PopupDetail from "./popup-detail.js";
+import PopupInfo from "./popup-info.js";
 import Util from "./util.js";
 
 const style = document.createElement("style");
@@ -66,7 +67,6 @@ const filterHandler = function(rowData) {
     if (!groups[gid]) {
         return false;
     }
-    console.log(keywords);
     for (const field in keywords) {
         const matchedKey = `${field}_matched`;
         rowData[matchedKey] = null;
@@ -93,6 +93,24 @@ const initTabs = function() {
         $(`.gui-tab-item[data='${data}']`).addClass("selected");
         $(`.gui-body-item[data='${data}']`).addClass("selected");
     });
+};
+
+let popupDetail;
+const showDetail = function(rowData) {
+    if (popupDetail) {
+        popupDetail.destroy();
+    }
+    popupDetail = new PopupDetail();
+    popupDetail.render(rowData);
+};
+
+let popupInfo;
+const showInfo = function(title, list, color) {
+    if (popupInfo) {
+        popupInfo.destroy();
+    }
+    popupInfo = new PopupInfo();
+    popupInfo.render(title, list, color);
 };
 
 const createGrid = function() {
@@ -143,6 +161,13 @@ const createGrid = function() {
     grid.setData(gridData);
 
     grid.bind("onClick", function(e, d) {
+
+        const icon = d.e.target;
+        if (icon.classList.contains("tg-detail-icon")) {
+            const rowData = this.getRowItem(d.row);
+            showDetail(rowData);
+        }
+
         this.unselectAll();
         this.setSelectedRow(d.row, d.e);
     });
@@ -179,20 +204,6 @@ const createGrid = function() {
         }
         const info = `Found <b>${len.toLocaleString()}</b> modules (Size: ${sizeStr})`;
         $(".gui-filter-info").html(info);
-    });
-
-
-    let detail;
-    grid.bind("onClick", function(e, d) {
-        const icon = d.e.target;
-        if (icon.classList.contains("tg-detail-icon")) {
-            const rowData = this.getRowItem(d.row);
-
-            if (detail) {
-                detail.destroy();
-            }
-            detail = new Detail($, rowData);
-        }
     });
 
     grid.bind("onResize", function(e, d) {
@@ -271,9 +282,36 @@ const createGrid = function() {
 window.onload = function() {
     $(".gui-title").html(statsData.title);
 
-    const date = new Date(statsData.timestamp).toLocaleString();
-    const info = `Generated ${date}`;
-    $(".gui-info").html(info);
+    //footer info
+    const info = statsData.info;
+    const list = [];
+
+    const warnings = info.warnings.length;
+    let warningsClassName = "gui-info-disabled";
+    if (warnings > 0) {
+        warningsClassName = "gui-info-warnings";
+    }
+    list.push(`<b class="${warningsClassName}">Warnings ${warnings}</b>`);
+    
+    const errors = info.errors.length;
+    let errorsClassName = "gui-info-disabled";
+    if (errors > 0) {
+        errorsClassName = "gui-info-errors";
+    }
+    list.push(`<b class="${errorsClassName}">Errors ${errors}</b>`);
+
+    $(".gui-info-left").html(list.join(""));
+
+    $(".gui-info-errors,.gui-info-warnings").bind("click", function(e) {
+        if ($(this).hasClass("gui-info-errors")) {
+            showInfo("Errors", info.errors, "red");
+        } else {
+            showInfo("Warnings", info.warnings, "orange");
+        }
+    });
+
+    const time = new Date(info.timestamp).toLocaleString();
+    $(".gui-info-right").html(`Generated <span>${time}</span> <a href="https://webpack.js.org/" target="_blank">webpack</a> v${info.version}`);
 
     initTabs();
     createGrid();

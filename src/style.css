@@ -15,6 +15,9 @@ body {
     color: #002b36;
 }
 
+/*
+layout
+*/
 .gui-h-space-5 {
     display: inline-block;
     width: 5px;
@@ -55,6 +58,9 @@ body {
     overflow: hidden;
 }
 
+/*
+main
+*/
 .gui-main {
     display: flex;
     flex-direction: column;
@@ -63,6 +69,9 @@ body {
     height: 100%;
 }
 
+/*
+header
+*/
 .gui-header {
     background: #dee1e6;
     height: 40px;
@@ -76,6 +85,9 @@ body {
     margin-left: 10px;
 }
 
+/*
+tab
+*/
 .gui-tab {
     position: relative;
     height: 100%;
@@ -169,6 +181,9 @@ body {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3e%3cpath fill='%23fff' d='M0,0 Q0,10 10,10 L0,10z'/%3e%3c/svg%3e");
 }
 
+/*
+body
+*/
 .gui-body {
     position: relative;
 }
@@ -189,6 +204,9 @@ body {
     height: 100%;
 }
 
+/*
+filter
+*/
 .gui-filter {
     padding: 8px 10px;
     border-bottom: 1px solid #ddd;
@@ -200,13 +218,21 @@ body {
 
 .gui-keywords[name=chunk],
 .gui-keywords[name=type] {
-    width: 80px;
+    width: 100px;
 }
 
 .gui-keywords[name=name] {
     margin-right: 5px;
 }
 
+.gui-filter-info {
+    margin-top: 5px;
+    display: inline-block;
+}
+
+/*
+grid and chart
+*/
 .gui-grid {
     overflow: hidden;
 }
@@ -215,17 +241,50 @@ body {
     padding: 10px 10px;
 }
 
+/*
+footer
+*/
 .gui-footer {
     background: #f5f5f5;
     position: relative;
-    padding: 5px 8px;
+    padding: 8px 8px;
     border-top: 1px solid #eee;
 }
 
-.gui-info {
+.gui-footer,
+.gui-footer a:link,
+.gui-footer a:visited {
     color: #888;
 }
 
+.gui-footer a:hover {
+    color: #333;
+}
+
+.gui-footer span {
+    font-size: 13px;
+}
+
+.gui-info-disabled {
+    margin-right: 10px;
+    font-weight: normal;
+}
+
+.gui-info-warnings {
+    color: orange;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.gui-info-errors {
+    color: red;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/*
+color
+*/
 .color-gray {
     color: gray;
 }
@@ -246,6 +305,9 @@ body {
     color: midnightblue;
 }
 
+/*
+detail
+*/
 .tg-issuer-icon {
     width: 100%;
     height: 100%;
@@ -279,11 +341,10 @@ body {
     background: linear-gradient(to right, rgba(204, 204, 204, 0) 0, rgba(204, 204, 204, 1) 8px);
 }
 
-.tg-detail-icon-pin {
-    display: block;
-}
-
-.gui-detail {
+/*
+popup
+*/
+.gui-popup {
     position: absolute;
     top: 0;
     left: 0;
@@ -293,7 +354,7 @@ body {
     z-index: 1000;
 }
 
-.gui-detail-close {
+.gui-popup-close {
     position: absolute;
     top: 20%;
     right: 20%;
@@ -309,7 +370,7 @@ body {
     line-height: 40px;
 }
 
-.gui-detail-main {
+.gui-popup-main {
     background: #fff;
     border-radius: 10px;
     position: absolute;
@@ -320,37 +381,51 @@ body {
     overflow: hidden;
     padding: 20px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
-.gui-detail-content {
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    position: relative;
-}
-
-.gui-detail-title {
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
+.gui-popup-header {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
     font-size: 18px;
     font-weight: bold;
 }
 
-.gui-detail-item {
-    padding: 5px 0;
+.gui-popup-content {
+    width: 100%;
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+}
+
+.gui-popup-label {
+    padding: 8px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.gui-popup-item {
+    padding: 5px 5px;
     border-bottom: 1px solid #f5f5f5;
 }
 
-.gui-detail-item:hover {
+.gui-popup-line {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.gui-popup-item:hover {
     background-color: #f5f5f5;
 }
 
-.gui-detail-tip {
+.gui-popup-tip {
     margin-top: 5px;
     color: #666;
 }
 
-.gui-detail-arrow {
+.gui-popup-arrow {
     display: inline-block;
     width: 16px;
     height: 16px;
