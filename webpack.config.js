@@ -11,7 +11,11 @@ module.exports = {
         title: "Stats Report - webpack-stats-report",
         output: ".temp/stats-report.html",
         outputStatsJson: true,
-        typeMode: "app"
+        moduleTypes: {
+            module: {
+                color: ""
+            }
+        }
     })],
     module: {
         rules: [{

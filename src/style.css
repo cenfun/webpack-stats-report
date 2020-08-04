@@ -265,6 +265,15 @@ footer
     font-size: 13px;
 }
 
+.gui-link {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.gui-link:hover {
+    text-decoration: underline;
+}
+
 .gui-info-disabled {
     margin-right: 10px;
     font-weight: normal;
@@ -272,14 +281,10 @@ footer
 
 .gui-info-warnings {
     color: orange;
-    cursor: pointer;
-    margin-right: 10px;
 }
 
 .gui-info-errors {
     color: red;
-    cursor: pointer;
-    margin-right: 10px;
 }
 
 /*

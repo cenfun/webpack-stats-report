@@ -2,8 +2,7 @@
 import { Grid, $ } from "turbogrid";
 import css from "./style.css";
 import tempMain from "./main.html";
-import PopupDetail from "./popup-detail.js";
-import PopupInfo from "./popup-info.js";
+import Popup from "./popup.js";
 import Util from "./util.js";
 
 const style = document.createElement("style");
@@ -100,8 +99,17 @@ const showDetail = function(rowData) {
     if (popupDetail) {
         popupDetail.destroy();
     }
-    popupDetail = new PopupDetail();
-    popupDetail.render(rowData);
+    popupDetail = new Popup();
+    popupDetail.renderDetail(rowData);
+};
+
+let popupModuleTypes;
+const showModuleTypes = function(moduleTypes) {
+    if (popupModuleTypes) {
+        popupModuleTypes.destroy();
+    }
+    popupModuleTypes = new Popup();
+    popupModuleTypes.renderModuleTypes(moduleTypes);
 };
 
 let popupInfo;
@@ -109,8 +117,8 @@ const showInfo = function(title, list, color) {
     if (popupInfo) {
         popupInfo.destroy();
     }
-    popupInfo = new PopupInfo();
-    popupInfo.render(title, list, color);
+    popupInfo = new Popup();
+    popupInfo.renderInfo(title, list, color);
 };
 
 const createGrid = function() {
@@ -286,21 +294,27 @@ window.onload = function() {
     const info = statsData.info;
     const list = [];
 
+    list.push("<b class=\"gui-link gui-module-types\">Module Types</b>");
+
     const warnings = info.warnings.length;
     let warningsClassName = "gui-info-disabled";
     if (warnings > 0) {
-        warningsClassName = "gui-info-warnings";
+        warningsClassName = "gui-link gui-info-warnings";
     }
     list.push(`<b class="${warningsClassName}">Warnings ${warnings}</b>`);
     
     const errors = info.errors.length;
     let errorsClassName = "gui-info-disabled";
     if (errors > 0) {
-        errorsClassName = "gui-info-errors";
+        errorsClassName = "gui-link gui-info-errors";
     }
     list.push(`<b class="${errorsClassName}">Errors ${errors}</b>`);
 
     $(".gui-info-left").html(list.join(""));
+
+    $(".gui-module-types").bind("click", function(e) {
+        showModuleTypes(info.moduleTypes);
+    });
 
     $(".gui-info-errors,.gui-info-warnings").bind("click", function(e) {
         if ($(this).hasClass("gui-info-errors")) {
