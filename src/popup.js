@@ -29,10 +29,6 @@ const tempDetail = `
     </div>
 `;
 
-const tempList = `
-    <div class="gui-popup-list"></div>
-`;
-
 export default class Popup {
 
     constructor() {
@@ -98,20 +94,28 @@ export default class Popup {
 
     renderModuleTypes(moduleTypes) {
         this.$container.find(".gui-popup-header").html("Module Types");
-        this.$container.find(".gui-popup-content").html(tempList);
-        const $list = this.$container.find(".gui-popup-list");
+        const arr = [];
+        const th = "<tr><th style=\"width:80px;\">Type</th><th style=\"width:80px;\">Color</th><th>Patterns (<a href=\"https://github.com/micromatch/micromatch\" target=\"_blank\">micromatch</a>)</th></tr>";
+        arr.push(th);
         Object.keys(moduleTypes).forEach(type => {
             const item = moduleTypes[type];
-            const html = `<span style="margin-right:20px;color:${item.color || ""};">${type}</span> ${item.patterns || ""}`;
-            this.$(`<div class="gui-popup-item">${html}</div>`).appendTo($list);
+            const color = item.color || "";
+            let patterns = item.patterns || "";
+            if (patterns instanceof Array) {
+                patterns = patterns.map(item => {
+                    return `<div>${item}</div>`;
+                }).join("");
+            }
+            const html = `<tr><td style="color:${color};">${type}</td><td style="color:${color};">${color}</td><td>${patterns}</td></tr>`;
+            arr.push(html);
         });
+        const html = `<table class="gui-popup-table">${arr.join("")}</table>`;
+        this.$container.find(".gui-popup-content").html(html);
     }
 
     renderInfo(title, list, color) {
         this.$container.find(".gui-popup-header").html(title);
-        this.$container.find(".gui-popup-content").html(tempList);
-        const $list = this.$container.find(".gui-popup-list");
-        $list.addClass(`color-${color}`);
+        const arr = [];
         list.forEach(item => {
             const lines = item.split(/\n/g);
             const html = lines.map(function(line, i) {
@@ -121,11 +125,16 @@ export default class Popup {
                     arr.length = word.length + 1;
                     return arr.join("&nbsp;");
                 });
-                return `<div class="gui-popup-line">${line}</div>`;
+                let c = "";
+                if (i === 0) {
+                    c = ` color-${color}`;
+                }
+                return `<div class="gui-popup-line${c}">${line}</div>`;
             }).join("");
-            this.$(`<div class="gui-popup-item">${html}</div>`).appendTo($list);
+            arr.push(`<div class="gui-popup-item">${html}</div>`);
         });
-
+        const html = `<div class="gui-popup-list">${arr.join("")}</div>`;
+        this.$container.find(".gui-popup-content").html(html);
     }
 
     destroy() {

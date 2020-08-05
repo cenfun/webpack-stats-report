@@ -439,3 +439,17 @@ popup
     background-position: center center;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23333' d='M3,2V11Q3,13,5,13H12.5L10.5,15H12L14.5,12.5L12,10H10.5L12.5,12H5Q4,12,4,11V2z'/%3e%3c/svg%3e");
 }
+
+.gui-popup-table {
+    margin-top: 5px;
+    position: relative;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.gui-popup-table th,
+.gui-popup-table td {
+    text-align: left;
+    border: 1px solid #eee;
+    padding: 5px 5px;
+}
