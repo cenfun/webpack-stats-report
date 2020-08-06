@@ -231,27 +231,19 @@ filter
     display: inline-block;
 }
 
-.gui-chart-type {
+.gui-group-by {
     padding: 5px 5px;
 }
 
 /*
-grid and chart
+grid
 */
-.gui-grid {
+.gui-flat-grid {
     overflow: hidden;
 }
 
-.gui-chart {
-    padding: 10px 10px;
-}
-
-.gui-treemap {
-    position: relative;
-    width: 100%;
-    height: 100%;
+.gui-tree-grid {
     overflow: hidden;
-    border: 1px solid #ccc;
 }
 
 /*

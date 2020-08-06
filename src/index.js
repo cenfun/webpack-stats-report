@@ -3,7 +3,6 @@ import { Grid, $ } from "turbogrid";
 import css from "./style.css";
 import tempMain from "./main.html";
 import Popup from "./popup.js";
-import Treemap from "./treemap.js";
 import Util from "./util.js";
 
 const style = document.createElement("style");
@@ -45,7 +44,7 @@ const showInfo = function(title, list, color) {
 
 //=================================================================================================================================
 
-let grid;
+let flatGrid;
 
 const groups = {
     assets: true,
@@ -62,7 +61,7 @@ const bindEvents = function() {
     $(".gui-group").bind("change", function(e) {
         const item = e.currentTarget;
         groups[item.value] = item.checked;
-        grid.update();
+        flatGrid.update();
     });
     $(".gui-keywords").bind("focus", function(e) {
         e.currentTarget.select();
@@ -71,7 +70,7 @@ const bindEvents = function() {
         const nv = item.value.trim().toLowerCase();
         const nn = item.name;
         keywords[nn] = nv.split(" ").filter(item => item);
-        grid.update();
+        flatGrid.update();
     });
 };
 
@@ -114,13 +113,13 @@ const filterHandler = function(rowData) {
     return true;
 };
 
-const createGrid = function() {
+const createFlatGrid = function() {
 
     const rows = [statsData.assets, statsData.chunks, statsData.modules];
     const totalModulesSize = statsData.modules.size;
     const totalModulesLength = statsData.modules.subs.length;
 
-    grid = new Grid(".gui-grid");
+    flatGrid = new Grid(".gui-flat-grid");
 
     const columns = [{
         id: "name",
@@ -159,9 +158,9 @@ const createGrid = function() {
         rows: rows
     };
 
-    grid.setData(gridData);
+    flatGrid.setData(gridData);
 
-    grid.bind("onClick", function(e, d) {
+    flatGrid.bind("onClick", function(e, d) {
 
         const icon = d.e.target;
         if (icon.classList.contains("tg-detail-icon")) {
@@ -173,11 +172,11 @@ const createGrid = function() {
         this.setSelectedRow(d.row, d.e);
     });
 
-    grid.bind("onRenderComplete", function() {
+    flatGrid.bind("onRenderComplete", function() {
         bindEvents();
     });
 
-    grid.bind("onRenderUpdate", function() {
+    flatGrid.bind("onRenderUpdate", function() {
 
         if (!$(".gui-modules").get(0).checked) {
             $(".gui-filter-info").html("");
@@ -186,7 +185,7 @@ const createGrid = function() {
 
         let len = 0;
         let size = 0;
-        const rows = grid.getGridRowsData();
+        const rows = flatGrid.getGridRowsData();
         rows.forEach(item => {
             if (!item.tg_parent) {
                 return;
@@ -207,7 +206,7 @@ const createGrid = function() {
         $(".gui-filter-info").html(info);
     });
 
-    grid.bind("onResize", function(e, d) {
+    flatGrid.bind("onResize", function(e, d) {
         let width = 0;
         columns.forEach(item => {
             if (item.id === "name") {
@@ -215,13 +214,13 @@ const createGrid = function() {
             }
             width += item.width;
         });
-        const totalWidth = $(".gui-grid").width();
-        const w = totalWidth - width - grid.getScrollBarWidth();
+        const totalWidth = $(".gui-flat-grid").width();
+        const w = totalWidth - width - flatGrid.getScrollBarWidth();
 
-        grid.setColumnWidth("name", w);
+        flatGrid.setColumnWidth("name", w);
     });
 
-    grid.setOption({
+    flatGrid.setOption({
         bindWindowResize: true,
         textSelectable: true,
         rowHeight: 27,
@@ -277,112 +276,35 @@ const createGrid = function() {
         }
     });
 
-    grid.render();
+    flatGrid.render();
 };
 
 //=================================================================================================================================
 
-const chartTypes = [{
-    id: "modules-type",
-    name: "Modules Group By Type",
-    getDataList: function() {
-        const dataList = statsData.modules.subs.map(item => {
-            return {
-                name: item.name,
-                value: item.size
-            };
-        });
-
-        return dataList;
-    }
+const groupBy = [{
+    id: "type",
+    name: "Modules Group By Type"
 }, {
-    id: "modules-path",
-    name: "Modules Group By Path",
-    getDataList: function() {
-        return [];
-    }
-}, {
-    id: "assets",
-    name: "Assets",
-    getDataList: function() {
-        return [];
-    }
-}, {
-    id: "assets-no-map",
-    name: "Assets No Map",
-    getDataList: function() {
-        return [];
-    }
-}, {
-    id: "chunks",
-    name: "Chunks",
-    getDataList: function() {
-        return [];
-    }
+    id: "chunk",
+    name: "Modules Group By Chunk"
 }];
 
-const renderChart = function($container, w, h, list) {
-    $container.empty();
 
-    const canvas = $(`<canvas width="${w}" height="${h}"></canvas>`).appendTo($container).get(0);
-    const ctx = canvas.getContext("2d");
-
-    //ctx.textBaseline = "top";
-    ctx.strokeStyle = "#cccccc";
-    
-    list.forEach(item => {
-        
-        if (item.color) {
-            ctx.fillStyle = item.color;
-            ctx.fillRect(item.x, item.y, item.w, item.h);
-            return;
-        }
-        ctx.strokeRect(item.x, item.y, item.w, item.h);
-        //ctx.strokeText(item.data.name, item.x, item.y, item.w);
-
-    });
-
-};
-
-const updateChart = function() {
-    const typeId = $(".gui-chart-type").val();
-    const chartType = chartTypes.find(item => item.id === typeId);
-    const dataList = chartType.getDataList();
-    const $treemap = $(".gui-treemap");
-    const w = $treemap.width();
-    const h = $treemap.height();
-    const treemap = new Treemap(w, h, dataList);
-    const list = treemap.getList();
-    renderChart($treemap, w, h, list);
-};
-
-let timeout_resize;
-const resizeChart = function() {
-    clearTimeout(timeout_resize);
-    timeout_resize = setTimeout(function() {
-        updateChart();
-    }, 100);
-};
-
-let chart;
-const createChart = function() {
-    if (chart) {
+let treeGrid;
+const createTreeGrid = function() {
+    if (treeGrid) {
         return;
     }
-    chart = true;
+    treeGrid = true;
 
-    const options = chartTypes.map(item => {
+    const options = groupBy.map(item => {
         return `<option value="${item.id}">${item.name}</option>`;
     }).join("");
 
-    $(".gui-chart-type").html(options).bind("change", function() {
-        updateChart();
+    $(".gui-group-by").html(options).bind("change", function() {
+       
     });
-    updateChart();
-
-    window.addEventListener("resize", function() {
-        resizeChart();
-    });
+   
 };
 
 //=================================================================================================================================
@@ -391,17 +313,17 @@ const initTabs = function() {
     $(".gui-tab").delegate(".gui-tab-item", "click", function(e) {
         const $item = $(e.target);
         let data = $item.attr("data");
-        data = data || "table";
+        data = data || "flat";
         $(".gui-tab-item").removeClass("selected");
         $(".gui-body-item").removeClass("selected");
         $(`.gui-tab-item[data='${data}']`).addClass("selected");
         $(`.gui-body-item[data='${data}']`).addClass("selected");
-        if (data === "chart") {
-            createChart();
+        if (data === "tree") {
+            createTreeGrid();
         }
     });
-    //default table
-    createGrid();
+    //default
+    createFlatGrid();
 };
 
 const initInfo = function() {
