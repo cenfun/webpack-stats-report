@@ -132,6 +132,12 @@ const createFlatGrid = function() {
         dataType: "size",
         width: 80
     }, {
+        id: "percent",
+        name: "",
+        sortable: false,
+        formatter: "percent",
+        width: 100
+    }, {
         id: "type",
         name: "Type",
         align: "center",
@@ -218,6 +224,16 @@ const createFlatGrid = function() {
         const w = totalWidth - width - flatGrid.getScrollBarWidth();
 
         flatGrid.setColumnWidth("name", w);
+    });
+
+    flatGrid.setFormatter({
+        percent: function(v, rd) {
+            if (!rd.tg_parent) {
+                return "";
+            }
+            const p = (rd.size / rd.tg_parent.size * 100).toFixed(2);
+            return `<div class="gui-percent" title="${p}%"><div style="width:${p}%;"></div></div>`;
+        }
     });
 
     flatGrid.setOption({
