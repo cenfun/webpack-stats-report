@@ -199,9 +199,10 @@ body
     display: block;
 }
 
-.gui-table {
+.gui-body-main {
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
 /*
@@ -230,6 +231,10 @@ filter
     display: inline-block;
 }
 
+.gui-chart-type {
+    padding: 5px 5px;
+}
+
 /*
 grid and chart
 */
@@ -239,6 +244,14 @@ grid and chart
 
 .gui-chart {
     padding: 10px 10px;
+}
+
+.gui-treemap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid #ccc;
 }
 
 /*

@@ -3,16 +3,47 @@ import { Grid, $ } from "turbogrid";
 import css from "./style.css";
 import tempMain from "./main.html";
 import Popup from "./popup.js";
+import Treemap from "./treemap.js";
 import Util from "./util.js";
 
 const style = document.createElement("style");
 style.setAttribute("type", "text/css");
 style.innerHTML = css;
 document.head.appendChild(style);
-
 document.body.innerHTML = tempMain;
 
 const statsData = Util.initStatsData(window.statsData);
+
+//=================================================================================================================================
+
+let popupDetail;
+const showDetail = function(rowData) {
+    if (popupDetail) {
+        popupDetail.destroy();
+    }
+    popupDetail = new Popup();
+    popupDetail.renderDetail(rowData);
+};
+
+let popupModuleTypes;
+const showModuleTypes = function(moduleTypes) {
+    if (popupModuleTypes) {
+        popupModuleTypes.destroy();
+    }
+    popupModuleTypes = new Popup();
+    popupModuleTypes.renderModuleTypes(moduleTypes);
+};
+
+let popupInfo;
+const showInfo = function(title, list, color) {
+    if (popupInfo) {
+        popupInfo.destroy();
+    }
+    popupInfo = new Popup();
+    popupInfo.renderInfo(title, list, color);
+};
+
+//=================================================================================================================================
 
 let grid;
 
@@ -26,6 +57,7 @@ const keywords = {
     type: [],
     name: []
 };
+
 const bindEvents = function() {
     $(".gui-group").bind("change", function(e) {
         const item = e.currentTarget;
@@ -80,45 +112,6 @@ const filterHandler = function(rowData) {
         return false;
     }
     return true;
-};
-
-const initTabs = function() {
-    $(".gui-tab").delegate(".gui-tab-item", "click", function(e) {
-        const $item = $(e.target);
-        let data = $item.attr("data");
-        data = data || "table";
-        $(".gui-tab-item").removeClass("selected");
-        $(".gui-body-item").removeClass("selected");
-        $(`.gui-tab-item[data='${data}']`).addClass("selected");
-        $(`.gui-body-item[data='${data}']`).addClass("selected");
-    });
-};
-
-let popupDetail;
-const showDetail = function(rowData) {
-    if (popupDetail) {
-        popupDetail.destroy();
-    }
-    popupDetail = new Popup();
-    popupDetail.renderDetail(rowData);
-};
-
-let popupModuleTypes;
-const showModuleTypes = function(moduleTypes) {
-    if (popupModuleTypes) {
-        popupModuleTypes.destroy();
-    }
-    popupModuleTypes = new Popup();
-    popupModuleTypes.renderModuleTypes(moduleTypes);
-};
-
-let popupInfo;
-const showInfo = function(title, list, color) {
-    if (popupInfo) {
-        popupInfo.destroy();
-    }
-    popupInfo = new Popup();
-    popupInfo.renderInfo(title, list, color);
 };
 
 const createGrid = function() {
@@ -287,7 +280,131 @@ const createGrid = function() {
     grid.render();
 };
 
-window.onload = function() {
+//=================================================================================================================================
+
+const chartTypes = [{
+    id: "modules-type",
+    name: "Modules Group By Type",
+    getDataList: function() {
+        const dataList = statsData.modules.subs.map(item => {
+            return {
+                name: item.name,
+                value: item.size
+            };
+        });
+
+        return dataList;
+    }
+}, {
+    id: "modules-path",
+    name: "Modules Group By Path",
+    getDataList: function() {
+        return [];
+    }
+}, {
+    id: "assets",
+    name: "Assets",
+    getDataList: function() {
+        return [];
+    }
+}, {
+    id: "assets-no-map",
+    name: "Assets No Map",
+    getDataList: function() {
+        return [];
+    }
+}, {
+    id: "chunks",
+    name: "Chunks",
+    getDataList: function() {
+        return [];
+    }
+}];
+
+const renderChart = function($container, w, h, list) {
+    $container.empty();
+
+    const canvas = $(`<canvas width="${w}" height="${h}"></canvas>`).appendTo($container).get(0);
+    const ctx = canvas.getContext("2d");
+
+    //ctx.textBaseline = "top";
+    ctx.strokeStyle = "#cccccc";
+    
+    list.forEach(item => {
+        
+        if (item.color) {
+            ctx.fillStyle = item.color;
+            ctx.fillRect(item.x, item.y, item.w, item.h);
+            return;
+        }
+        ctx.strokeRect(item.x, item.y, item.w, item.h);
+        //ctx.strokeText(item.data.name, item.x, item.y, item.w);
+
+    });
+
+};
+
+const updateChart = function() {
+    const typeId = $(".gui-chart-type").val();
+    const chartType = chartTypes.find(item => item.id === typeId);
+    const dataList = chartType.getDataList();
+    const $treemap = $(".gui-treemap");
+    const w = $treemap.width();
+    const h = $treemap.height();
+    const treemap = new Treemap(w, h, dataList);
+    const list = treemap.getList();
+    renderChart($treemap, w, h, list);
+};
+
+let timeout_resize;
+const resizeChart = function() {
+    clearTimeout(timeout_resize);
+    timeout_resize = setTimeout(function() {
+        updateChart();
+    }, 100);
+};
+
+let chart;
+const createChart = function() {
+    if (chart) {
+        return;
+    }
+    chart = true;
+
+    const options = chartTypes.map(item => {
+        return `<option value="${item.id}">${item.name}</option>`;
+    }).join("");
+
+    $(".gui-chart-type").html(options).bind("change", function() {
+        updateChart();
+    });
+    updateChart();
+
+    window.addEventListener("resize", function() {
+        resizeChart();
+    });
+};
+
+//=================================================================================================================================
+
+const initTabs = function() {
+    $(".gui-tab").delegate(".gui-tab-item", "click", function(e) {
+        const $item = $(e.target);
+        let data = $item.attr("data");
+        data = data || "table";
+        $(".gui-tab-item").removeClass("selected");
+        $(".gui-body-item").removeClass("selected");
+        $(`.gui-tab-item[data='${data}']`).addClass("selected");
+        $(`.gui-body-item[data='${data}']`).addClass("selected");
+        if (data === "chart") {
+            createChart();
+        }
+    });
+    //default table
+    createGrid();
+};
+
+const initInfo = function() {
     $(".gui-title").html(statsData.title);
 
     //footer info
@@ -327,6 +444,9 @@ window.onload = function() {
     const time = new Date(info.timestamp).toLocaleString();
     $(".gui-info-right").html(`Generated <span>${time}</span> <a href="https://webpack.js.org/" target="_blank">webpack</a> v${info.version}`);
 
+};
+
+window.onload = function() {
+    initInfo();
     initTabs();
-    createGrid();
 };

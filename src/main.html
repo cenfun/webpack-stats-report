@@ -9,7 +9,7 @@
     <div class="gui-body gui-flex-auto">
 
         <div class="gui-body-item selected" data="table">
-            <div class="gui-table gui-flex-column">
+            <div class="gui-body-main gui-flex-column">
                 <div class="gui-filter gui-flex-row">
                     <div class="gui-flex-auto">
                         Filter:
@@ -38,8 +38,13 @@
         </div>
 
         <div class="gui-body-item" data="chart">
-            <div class="gui-chart">
-                Not ready yet!
+            <div class="gui-body-main gui-flex-column">
+                <div class="gui-filter gui-flex-row">
+                    <select class="gui-chart-type"></select>
+                </div>
+                <div class="gui-chart gui-flex-auto">
+                    <div class="gui-treemap"></div>
+                </div>
             </div>
         </div>
 
