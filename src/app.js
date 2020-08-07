@@ -47,7 +47,7 @@ export default {
     created() {
         this.statsData = Util.initStatsData(window.statsData);
         console.log(this.statsData);
-        this.initGridRows();
+        this.initGridColumns();
         this.initInfo();
     },
 
@@ -73,12 +73,14 @@ export default {
         },
         
         filterHandler(rowData) {
-            let gid = rowData.id;
-            if (rowData.tg_parent) {
-                gid = rowData.tg_parent.id;
-            }
-            if (!this.groups[gid]) {
-                return false;
+            if (!this.treeView) {
+                let gid = rowData.id;
+                if (rowData.tg_parent) {
+                    gid = rowData.tg_parent.id;
+                }
+                if (!this.groups[gid]) {
+                    return false;
+                }
             }
             for (const field in this.keywords) {
                 const matchedKey = `${field}_matched`;
@@ -139,78 +141,28 @@ export default {
                 this.grid = this.createGrid();
             }
             
-            let rows = this.rows;
-            if (this.treeView) {
-                rows = this.treeViewRows;
-            }
-
             const gridData = {
                 columns: this.columns,
-                rows: rows
+                rows: this.getGridRows()
             };
 
+            this.grid.setOption(this.getGridOption());
             this.grid.setData(gridData);
             this.grid.render();
 
         },
 
         createGrid() {
-
-            this.columns = [{
-                id: "name",
-                name: "Name",
-                maxWidth: 2048
-            }, {
-                id: "size",
-                name: "Size",
-                align: "right",
-                dataType: "size",
-                width: 80
-            }, {
-                id: "percent",
-                name: "",
-                sortable: false,
-                formatter: "percent",
-                width: 100
-            }, {
-                id: "type",
-                name: "Type",
-                align: "center",
-                width: 65
-            }, {
-                id: "chunk",
-                name: "Chunk",
-                width: 80,
-                maxWidth: 1024
-            }, {
-                id: "asset",
-                name: "Asset",
-                width: 80,
-                maxWidth: 1024
-            }, {
-                id: "depth",
-                name: "Depth",
-                align: "center",
-                width: 50
-            }];
-
             const grid = new Grid(".gui-grid");
-           
             const self = this;
             grid.bind("onClick", function(e, d) {
-
                 const icon = d.e.target;
                 if (icon.classList.contains("tg-detail-icon")) {
                     const rowData = this.getRowItem(d.row);
                     self.showDetail(rowData);
                 }
-
                 this.unselectAll();
                 this.setSelectedRow(d.row, d.e);
-            });
-
-            grid.bind("onRenderComplete", function() {
-                //bindEvents();
             });
 
             grid.bind("onRenderUpdate", function() {
@@ -227,32 +179,154 @@ export default {
                 });
                 const totalWidth = $(".gui-grid").width();
                 const w = totalWidth - width - grid.getScrollBarWidth();
-
                 grid.setColumnWidth("name", w);
             });
 
-            grid.setFormatter({
-                percent: function(v, rd) {
-                    if (!rd.tg_parent) {
-                        return "";
-                    }
-                    const p = (rd.size / rd.tg_parent.size * 100).toFixed(2);
-                    return `<div class="gui-percent" title="${p}%"><div style="width:${p}%;"></div></div>`;
+            return grid;
+
+        },
+
+        getGridRows() {
+
+            if (!this.treeView) {
+                if (this.gridRows) {
+                    return this.gridRows;
                 }
+                this.gridRows = [this.statsData.assets, this.statsData.chunks, this.statsData.modules].map(parent => {
+                    return {
+                        ... parent,
+                        subs: parent.subs.map(sub => {
+                            return {
+                                ... sub,
+                                percent: (sub.size / parent.size * 100).toFixed(2)
+                            };
+                        })
+                    };
+                });
+                return this.gridRows;
+            }
+
+            return this.getTreeViewRows();
+        },
+
+        getTreeViewRows() {
+            
+            if (!this.treeViewRows) {
+                this.treeViewRows = {};
+            }
+
+            const gy = this.groupBy;
+
+            const rows = this.treeViewRows[gy];
+            if (rows) {
+                return rows;
+            }
+            //tree group
+            const tree = {
+                name: "Modules",
+                map: {},
+                files: [],
+                size: 0
+            };
+            
+            this.statsData.modules.subs.forEach(m => {
+                const arr = m.name.split(/\/|\\/g);
+                if (gy) {
+                    arr.unshift(m[gy]);
+                }
+                const paths = arr.filter(n => {
+                    if (!n || n === "." || n === "..") {
+                        return false;
+                    }
+                    return true;
+                });
+                const filename = paths.pop();
+                let parent = tree;
+                paths.forEach(p => {
+                    let sub = parent.map[p];
+                    if (!sub) {
+                        sub = {
+                            name: p,
+                            map: {},
+                            files: [],
+                            size: 0
+                        };
+                        parent.map[p] = sub;
+                    }
+                    parent = sub;
+                });
+                parent.files.push({
+                    ... m,
+                    name: filename
+                });
             });
 
-            grid.setOption({
+            const initSubs = function(parent) {
+                const map = parent.map;
+                const subs = [];
+                for (const k in map) {
+                    subs.push(map[k]);
+                }
+                delete parent.map;
+                parent.subs = subs.concat(parent.files);
+                delete parent.files;
+                if (subs.length) {
+                    subs.forEach(item => {
+                        initSubs(item);
+                    });
+                }
+                if (!parent.subs.length) {
+                    delete parent.subs;
+                }
+            };
+            initSubs(tree);
+
+            const initSize = function(parent) {
+                if (parent.subs) {
+                    let size = 0;
+                    parent.subs.forEach(sub => {
+                        initSize(sub);
+                        size += sub.size;
+                    });
+                    parent.size = size;
+                }
+            };
+            initSize(tree);
+
+            const initPercent = function(parent) {
+                if (parent.subs) {
+                    const len = parent.subs.length;
+                    parent.subs.forEach(sub => {
+                        if (len > 1) {
+                            sub.percent = (sub.size / parent.size * 100).toFixed(2);
+                        }
+                        initPercent(sub);
+                    });
+                   
+                }
+            };
+            initPercent(tree);
+
+            //console.log(tree);
+
+            this.treeViewRows[gy] = tree.subs;
+
+            return tree.subs;
+        },
+
+        getGridOption() {
+            return {
                 bindWindowResize: true,
                 textSelectable: true,
                 rowHeight: 27,
                 sortField: "size",
                 sortAsc: false,
                 sortOnInit: true,
-                collapseAll: null,
-                rowNumberType: "list",
-                rowFilter: function(rowData) {
-                    return self.filterHandler(rowData);
-                },
+
+                collapseAll: this.treeView ? true : null,
+                rowNumberType: this.treeView ? "leaf" : "list",
+
+                rowFilter: this.filterHandler,
                 stringFormat: function(v, rd, cd) {
                     const id = cd.id;
                     const color = rd[`${id}_color`];
@@ -294,24 +368,65 @@ export default {
                         return `<span style="color:${rowData.size_color};">${s}</span>`;
                     }
                     return s;
+                },
+                percentFormat: function(v) {
+                    if (!v) {
+                        return "";
+                    }
+                    return `
+                    <div class="gui-percent gui-flex-row">
+                        <div class="gui-percent-label">${v}%</div>
+                        <div class="gui-percent-chart gui-flex-auto">
+                            <div style="width:${v}%;"></div>
+                        </div>
+                    </div>
+                    `;
                 }
-            });
-
-            return grid;
+            };
 
         },
 
-        initGridRows() {
-            this.rows = [this.statsData.assets, this.statsData.chunks, this.statsData.modules];
-            this.treeViewRows = [this.statsData.modules];
+        initGridColumns() {
 
-            if (this.groupBy === "type") {
-
-            } else if (this.groupBy === "chunk") {
-
-            } else {
-
-            }
+            this.columns = [{
+                id: "name",
+                name: "Name",
+                maxWidth: 2048
+            }, {
+                id: "size",
+                name: "Size",
+                align: "right",
+                dataType: "size",
+                width: 80
+            }, {
+                id: "percent",
+                name: "",
+                sortable: false,
+                dataType: "percent",
+                align: "right",
+                minWidth: 173,
+                width: 173
+            }, {
+                id: "type",
+                name: "Type",
+                align: "center",
+                width: 65
+            }, {
+                id: "chunk",
+                name: "Chunk",
+                width: 80,
+                maxWidth: 1024
+            }, {
+                id: "asset",
+                name: "Asset",
+                width: 80,
+                maxWidth: 1024
+            }, {
+                id: "depth",
+                name: "Depth",
+                align: "center",
+                width: 50
+            }];
 
         },
 
