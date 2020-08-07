@@ -7,7 +7,7 @@ export default {
         return {
             info: {},
             treeView: false,
-            modulesGroupBy: "",
+            groupBy: "",
             groups: {
                 assets: true,
                 chunks: true,
@@ -24,6 +24,9 @@ export default {
     },
 
     watch: {
+        groupBy: function() {
+            this.renderGrid();
+        },
         treeView: function() {
             this.renderGrid();
         },
@@ -44,6 +47,7 @@ export default {
     created() {
         this.statsData = Util.initStatsData(window.statsData);
         console.log(this.statsData);
+        this.initGridRows();
         this.initInfo();
     },
 
@@ -96,6 +100,33 @@ export default {
             return true;
         },
 
+        updateFilterInfo() {
+            let len = 0;
+            let size = 0;
+            const rows = this.grid.getGridRowsData();
+            rows.forEach(item => {
+                if (!item.tg_parent) {
+                    return;
+                }
+                if (item.tg_parent.id !== "modules") {
+                    return;
+                }
+                size += item.size;
+                len += 1;
+            });
+
+            const totalModulesSize = this.statsData.modules.size;
+            const totalModulesLength = this.statsData.modules.subs.length;
+        
+            let sizeStr = `${Util.BF(size)}`;
+            if (len !== totalModulesLength) {
+                const per = (size / totalModulesSize * 100).toFixed(2);
+                sizeStr += `, ${per}%`;
+            }
+            this.filterModules = len;
+            this.filterSize = sizeStr;
+        },
+
         updateGrid() {
             if (this.grid) {
                 this.grid.update();
@@ -104,23 +135,28 @@ export default {
 
         renderGrid() {
 
-            if (this.grid) {
-                this.grid.destroy();
-                this.grid = null;
+            if (!this.grid) {
+                this.grid = this.createGrid();
             }
-
-            let rows = [this.statsData.assets, this.statsData.chunks, this.statsData.modules];
+            
+            let rows = this.rows;
             if (this.treeView) {
-                rows = [this.statsData.modules];
+                rows = this.treeViewRows;
             }
 
-            const totalModulesSize = this.statsData.modules.size;
-            const totalModulesLength = this.statsData.modules.subs.length;
+            const gridData = {
+                columns: this.columns,
+                rows: rows
+            };
 
-            const grid = new Grid(".gui-grid");
-            this.grid = grid;
+            this.grid.setData(gridData);
+            this.grid.render();
 
-            const columns = [{
+        },
+
+        createGrid() {
+
+            this.columns = [{
                 id: "name",
                 name: "Name",
                 maxWidth: 2048
@@ -158,13 +194,8 @@ export default {
                 width: 50
             }];
 
-            const gridData = {
-                columns: columns,
-                rows: rows
-            };
-
-            grid.setData(gridData);
-
+            const grid = new Grid(".gui-grid");
+           
             const self = this;
             grid.bind("onClick", function(e, d) {
 
@@ -183,34 +214,12 @@ export default {
             });
 
             grid.bind("onRenderUpdate", function() {
-
-                let len = 0;
-                let size = 0;
-                const rows = grid.getGridRowsData();
-                rows.forEach(item => {
-                    if (!item.tg_parent) {
-                        return;
-                    }
-                    if (item.tg_parent.id !== "modules") {
-                        return;
-                    }
-                    size += item.size;
-                    len += 1;
-                });
-        
-                let sizeStr = `${Util.BF(size)}`;
-                if (len !== totalModulesLength) {
-                    const per = (size / totalModulesSize * 100).toFixed(2);
-                    sizeStr += `, ${per}%`;
-                }
-                self.filterModules = len;
-                self.filterSize = sizeStr;
-                
+                self.updateFilterInfo();
             });
 
             grid.bind("onResize", function(e, d) {
                 let width = 0;
-                columns.forEach(item => {
+                self.columns.forEach(item => {
                     if (item.id === "name") {
                         return;
                     }
@@ -288,7 +297,22 @@ export default {
                 }
             });
 
-            grid.render();
+            return grid;
+
+        },
+
+        initGridRows() {
+            this.rows = [this.statsData.assets, this.statsData.chunks, this.statsData.modules];
+            this.treeViewRows = [this.statsData.modules];
+
+            if (this.groupBy === "type") {
+
+            } else if (this.groupBy === "chunk") {
+
+            } else {
+
+            }
+
         },
 
         initInfo() {
