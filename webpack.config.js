@@ -1,13 +1,17 @@
-const StatsReportPlugin = require("./lib/plugin.js");
+const StatsReportPlugin = require("./lib/index.js").StatsReportPlugin;
+const VueLoaderPlugin = require("vue-loader").VueLoaderPlugin;
+const TerserPlugin = require("terser-webpack-plugin");
+
 module.exports = {
     mode: "production",
+    //mode: "development",
     output: {
         filename: "webpack-stats-report.js",
         umdNamedDefine: true,
         library: "webpack-stats-report",
         libraryTarget: "umd"
     },
-    plugins: [new StatsReportPlugin({
+    plugins: [new VueLoaderPlugin(), new StatsReportPlugin({
         title: "Stats Report - webpack-stats-report",
         output: ".temp/stats-report.html",
         outputStatsJson: true,
@@ -17,6 +21,17 @@ module.exports = {
             }
         }
     })],
+    optimization: {
+        minimizer: [
+            new TerserPlugin({
+                terserOptions: {
+                    output: {
+                        comments: false
+                    }
+                }
+            })
+        ]
+    },
     module: {
         rules: [{
             test: /\.js$/,
@@ -30,13 +45,33 @@ module.exports = {
                 }
             }
         }, {
-            test: /\.(css|html)$/,
-            exclude: /node_modules/,
-            use: {
-                loader: "raw-loader",
+            test: /\.(css|scss)$/,
+            use: [{
+                loader: "style-loader",
                 options: {
-                    esModule: false
+                    //Reuses a single style element
+                    injectType: "singletonStyleTag",
+                    attributes: {
+                        //Add custom attrs to style for debug
+                        context: "app"
+                    }
                 }
+            }, {
+                loader: "css-loader",
+                options: {
+                    esModule: false,
+                    import: false,
+                    sourceMap: false
+                }
+            }, {
+                // compiles Sass to CSS
+                loader: "sass-loader"
+            }]
+        }, {
+            test: /\.vue$/,
+            loader: "vue-loader",
+            options: {
+                hotReload: false
             }
         }]
     }
