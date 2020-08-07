@@ -5,39 +5,44 @@
         <div class="gui-logo"></div>
     </div>
     <div class="gui-filter gui-flex-row">
-         <label>
-            <input type="checkbox" v-model="treeMode" />
-            Tree Mode
-        </label>
-        <div class="gui-separator"></div>
-        <label>
-            <input type="checkbox" v-model="groups.assets" class="gui-group gui-assets" checked />
-            Assets
-        </label>
-        <label>
-            <input type="checkbox" v-model="groups.chunks" class="gui-group gui-chunks" checked />
-            Chunks
-        </label>
-        <label>
-            <input type="checkbox" v-model="groups.modules" class="gui-group gui-modules" checked />
-            Modules
-        </label>
+       
+        <div class="gui-flex-auto">
+            <label>
+                Modules
+            </label>
+            <div class="gui-hs-5"></div>
+            <label>
+                <input type="checkbox" v-model="treeView" />
+                View as Tree
+            </label>
+            <div class="gui-hs-5"></div>
+            <label v-show="treeView">
+                <select v-model="modulesGroupBy">
+                    <option value="">No Group</option>
+                    <option value="type">Group By Type</option>
+                    <option value="chunk">Group By Chunk</option>
+                </select>
+            </label>
+        </div>
 
-        <label v-show="treeMode">
-            <select v-model="modulesGroupBy">
-                <option value="">No Group</option>
-                <option value="type">Group By Type</option>
-                <option value="chunk">Group By Chunk</option>
-            </select>
-        </label>
-
+        <div class="gui-flex-row" v-show="!treeView">
+             <label>
+                <input type="checkbox" v-model="groups.assets" class="gui-group gui-assets" checked />
+                Assets
+            </label>
+            <div class="gui-separator"></div>
+            <label>
+                <input type="checkbox" v-model="groups.chunks" class="gui-group gui-chunks" checked />
+                Chunks
+            </label>
+        </div>
     </div>
     <div class="gui-filter gui-flex-row">
         Filter:
         <input v-model="keywords.chunk" @focus="$event.target.select()" class="gui-keywords" name="chunk" placeholder="Chunk" title="Chunk" />
         <input v-model="keywords.type" @focus="$event.target.select()" class="gui-keywords" name="type" placeholder="Type" title="Type" />
         <input v-model="keywords.name" @focus="$event.target.select()" class="gui-keywords" name="name" placeholder="Name" title="Chunk" />
-        <span class="gui-filter-info"></span>
+        <div>Found <b>{{filterModules}}</b> modules (Size: {{filterSize}})</div>
     </div>
     <div class="gui-grid gui-flex-auto"></div>
     <div class="gui-footer gui-flex-row">

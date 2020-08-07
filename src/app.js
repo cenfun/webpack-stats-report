@@ -6,7 +6,7 @@ export default {
     data() {
         return {
             info: {},
-            treeMode: false,
+            treeView: false,
             modulesGroupBy: "",
             groups: {
                 assets: true,
@@ -17,11 +17,16 @@ export default {
                 chunk: "",
                 type: "",
                 name: ""
-            }
+            },
+            filterModules: 0,
+            filterSize: ""
         };
     },
 
     watch: {
+        treeView: function() {
+            this.renderGrid();
+        },
         groups: {
             deep: true,
             handler: function() {
@@ -98,7 +103,17 @@ export default {
         },
 
         renderGrid() {
-            const rows = [this.statsData.assets, this.statsData.chunks, this.statsData.modules];
+
+            if (this.grid) {
+                this.grid.destroy();
+                this.grid = null;
+            }
+
+            let rows = [this.statsData.assets, this.statsData.chunks, this.statsData.modules];
+            if (this.treeView) {
+                rows = [this.statsData.modules];
+            }
+
             const totalModulesSize = this.statsData.modules.size;
             const totalModulesLength = this.statsData.modules.subs.length;
 
@@ -169,11 +184,6 @@ export default {
 
             grid.bind("onRenderUpdate", function() {
 
-                if (!$(".gui-modules").get(0).checked) {
-                    $(".gui-filter-info").html("");
-                    return;
-                }
-
                 let len = 0;
                 let size = 0;
                 const rows = grid.getGridRowsData();
@@ -188,13 +198,14 @@ export default {
                     len += 1;
                 });
         
-                let sizeStr = `<b>${Util.BF(size)}</b>`;
+                let sizeStr = `${Util.BF(size)}`;
                 if (len !== totalModulesLength) {
                     const per = (size / totalModulesSize * 100).toFixed(2);
                     sizeStr += `, ${per}%`;
                 }
-                const info = `Found <b>${len.toLocaleString()}</b> modules (Size: ${sizeStr})`;
-                $(".gui-filter-info").html(info);
+                self.filterModules = len;
+                self.filterSize = sizeStr;
+                
             });
 
             grid.bind("onResize", function(e, d) {
