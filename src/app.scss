@@ -233,6 +233,7 @@ header
     height: 40px;
     position: relative;
     z-index: 10;
+    border-bottom: 1px solid #ccc;
 }
 
 .gui-title {
@@ -252,11 +253,20 @@ filter
     overflow: hidden;
 }
 
-.gui-filter .gui-separator {
+.gui-separator {
     width: 1px;
     height: 19px;
     border-right: 1px dotted #333;
     margin: 0 15px;
+}
+
+.gui-arrow-next {
+    margin: 0 5px;
+    height: 22px;
+    width: 16px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAK5JREFUOI3tkUFOQkEQRN/XD+upqrmKK+IPyEW8niFiCEcx8Q6fM2iGBbjRhMxe366T7uquLvjnFyX5SLIFsP1s+wgsuwUkrSTNSTbAfUl2kg7Aov+KWifbp1LrBIyS3pTsgbFbJMmT7VOSB2Bp++jk5Wff3Q2NobXWhmH4+q5p7bN3+0bSLGkFLCQdSrLrslBqnSTNpdZHYFSyV/LaNQzg5D3JGi4xXp/Xn8Af5AzxiCE7T8CmVAAAAABJRU5ErkJggg==');
 }
 
 .gui-input[name=chunk],
@@ -267,7 +277,7 @@ filter
 
 .gui-input[name=name] {
     margin-left: 5px;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 /*

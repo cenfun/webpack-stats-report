@@ -19,24 +19,27 @@
         </div>
 
         <div class="gui-hs-10"></div>
+        <div>Group by:</div>
+
+        <div class="gui-arrow-next"></div>
 
         <div class="gui-checkbox">
             <input class="gui-control-input" id="cb-chunk" type="checkbox" v-model="group.chunk" />
-            <label class="gui-control-label" for="cb-chunk" tooltip="">Group by Chunk</label>
+            <label class="gui-control-label" for="cb-chunk" tooltip="">Chunk</label>
         </div>
 
-        <div class="gui-hs-10"></div>
+        <div class="gui-arrow-next"></div>
 
         <div class="gui-checkbox">
             <input class="gui-control-input" id="cb-type" type="checkbox" v-model="group.type" />
-            <label class="gui-control-label" for="cb-type" tooltip="">Group by Type</label>
+            <label class="gui-control-label" for="cb-type" tooltip="">Type</label>
         </div>
 
-         <div class="gui-hs-10"></div>
+         <div class="gui-arrow-next"></div>
 
          <div class="gui-checkbox">
-            <input class="gui-control-input" id="cb-dir" type="checkbox" v-model="group.dir" />
-            <label class="gui-control-label" for="cb-dir" tooltip="">Group by Dir</label>
+            <input class="gui-control-input" id="cb-folder" type="checkbox" v-model="group.folder" />
+            <label class="gui-control-label" for="cb-folder" tooltip="">Folder</label>
         </div>
 
     </div>

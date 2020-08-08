@@ -12,7 +12,7 @@ export default {
                 modules: true,
                 chunk: false,
                 type: false,
-                dir: false
+                folder: false
             },
             
             keywords: {
@@ -186,7 +186,7 @@ export default {
             if (!g.modules) {
                 g.type = false;
                 g.chunk = false;
-                g.dir = false;
+                g.folder = false;
             }
 
             const key = Object.keys(g).map(k => `${k}_${g[k]}`).join("_");
@@ -252,8 +252,8 @@ export default {
                 list = this.groupModulesByType(list);
             }
 
-            if (g.dir) {
-                this.groupModulesByDir(list);
+            if (g.folder) {
+                this.groupModulesByFolder(list);
             }
 
             //final handler size and percent
@@ -358,15 +358,16 @@ export default {
             return newList;
         },
 
-        groupModulesByDir(list) {
+        groupModulesByFolder(list) {
 
-            list.forEach(dir => {
+            list.forEach(item => {
 
-                dir.collapsed = false;
-                dir.map = {};
-                dir.files = [];
+                const folder = item;
+                folder.collapsed = false;
+                folder.map = {};
+                folder.files = [];
             
-                dir.subs.forEach(m => {
+                folder.subs.forEach(m => {
                     const arr = m.name.split(/\/|\\/g);
                     const paths = arr.filter(n => {
                         //maybe need ../
@@ -376,7 +377,7 @@ export default {
                         return true;
                     });
                     const filename = paths.pop();
-                    let parent = dir;
+                    let parent = folder;
                     paths.forEach(p => {
                         let sub = parent.map[p];
                         if (!sub) {
@@ -414,7 +415,7 @@ export default {
                         });
                     }
                 };
-                initSubs(dir);
+                initSubs(folder);
             
             });
 
