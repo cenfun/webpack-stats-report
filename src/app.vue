@@ -48,7 +48,7 @@
         <input v-model="keywords.chunk" @focus="$event.target.select()" class="gui-input" name="chunk" placeholder="Chunk" title="Chunk" />
         <input v-model="keywords.type" @focus="$event.target.select()" class="gui-input" name="type" placeholder="Type" title="Type" />
         <input v-model="keywords.name" @focus="$event.target.select()" class="gui-input" name="name" placeholder="Name" title="Chunk" />
-        <span v-if="group.modules">Found <b>{{filterModules}}</b> modules (Size: {{filterSize}})</span>
+        <span v-if="group.modules">Found <b>{{filterModules}}</b> sub modules (Size: {{filterSize}})</span>
     </div>
     <div class="gui-grid gui-flex-auto"></div>
     <div class="gui-footer gui-flex-row">

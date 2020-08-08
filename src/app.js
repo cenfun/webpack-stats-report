@@ -124,13 +124,19 @@ export default {
 
         renderGrid() {
 
+            const key = this.getRowsKey();
+            if (this.previousKey === key) {
+                return;
+            }
+            this.previousKey = key;
+
             if (!this.grid) {
                 this.grid = this.createGrid();
             }
             
             const gridData = {
                 columns: this.columns,
-                rows: this.getGridRows()
+                rows: this.getGridRows(key)
             };
 
             this.grid.setOption(this.getGridOption());
@@ -173,12 +179,7 @@ export default {
 
         },
 
-        getGridRows() {
-
-            if (!this.gridRowsCache) {
-                this.gridRowsCache = {};
-            }
-
+        getRowsKey() {
             const g = {
                 ... this.group
             };
@@ -189,9 +190,14 @@ export default {
                 g.folder = false;
             }
 
-            const key = Object.keys(g).map(k => `${k}_${g[k]}`).join("_");
+            return Object.keys(g).map(k => `${k}_${g[k]}`).join("_");
+        },
 
-            //console.log(key);
+        getGridRows(key) {
+
+            if (!this.gridRowsCache) {
+                this.gridRowsCache = {};
+            }
 
             const cacheRows = this.gridRowsCache[key];
             if (cacheRows) {
@@ -202,7 +208,6 @@ export default {
             this.gridRowsCache[key] = rows;
             return rows;
 
-            
         },
 
         generateGridRows() {

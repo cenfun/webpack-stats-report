@@ -95,7 +95,8 @@ export default class Popup {
     renderModuleTypes(moduleTypes) {
         this.$container.find(".gui-popup-header").html("Module Types");
         const arr = [];
-        const th = "<tr><th style=\"width:80px;\">Type</th><th style=\"width:80px;\">Color</th><th>Patterns (<a href=\"https://github.com/micromatch/micromatch\" target=\"_blank\">micromatch</a>)</th></tr>";
+        const link = " (<a href=\"https://github.com/micromatch/micromatch\" target=\"_blank\">micromatch</a>)";
+        const th = `<tr><th>Type</th><th>Color</th><th>Patterns${link}</th><th>Description</th></tr>`;
         arr.push(th);
         Object.keys(moduleTypes).forEach(type => {
             const item = moduleTypes[type];
@@ -106,7 +107,8 @@ export default class Popup {
                     return `<div>${item}</div>`;
                 }).join("");
             }
-            const html = `<tr><td style="color:${color};">${type}</td><td style="color:${color};">${color}</td><td>${patterns}</td></tr>`;
+            const description = item.description || "";
+            const html = `<tr><td style="color:${color};">${type}</td><td style="color:${color};">${color}</td><td>${patterns}</td><td>${description}</td></tr>`;
             arr.push(html);
         });
         const html = `<table class="gui-popup-table">${arr.join("")}</table>`;
