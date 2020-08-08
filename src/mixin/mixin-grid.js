@@ -13,6 +13,7 @@ export default {
         renderGrid() {
 
             Util.store.set("assets", this.group.assets ? 1 : "");
+            Util.store.set("type", this.group.type ? 1 : "");
 
             const key = this.getRowsKey();
             if (this.previousKey === key) {

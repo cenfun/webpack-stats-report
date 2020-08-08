@@ -145,6 +145,7 @@ const App = {
         console.log(this.statsData);
 
         this.group.assets = !!Util.store.get("assets");
+        this.group.type = !!Util.store.get("type");
 
         this.initGridColumns();
         this.initInfo();
