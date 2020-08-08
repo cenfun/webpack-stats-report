@@ -43,6 +43,9 @@ export default {
     created() {
         this.statsData = Util.initStatsData(window.statsData);
         console.log(this.statsData);
+
+        this.group.assets = !!Util.store.get("assets");
+
         this.initGridColumns();
         this.initInfo();
     },
@@ -94,10 +97,10 @@ export default {
             let size = 0;
             const rows = this.grid.getGridRowsData();
             rows.forEach(item => {
-                if (!item.tg_parent) {
+                if (item.subs) {
                     return;
                 }
-                if (item.tg_parent.id !== "modules") {
+                if (item.tg_parent && item.tg_parent.id === "assets") {
                     return;
                 }
                 size += item.size;
@@ -123,6 +126,8 @@ export default {
         },
 
         renderGrid() {
+
+            Util.store.set("assets", this.group.assets ? 1 : "");
 
             const key = this.getRowsKey();
             if (this.previousKey === key) {

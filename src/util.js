@@ -35,6 +35,33 @@ const Util = {
         return v;
     },
 
+    store: {
+        key(k) {
+            return `wsr_${k}`;
+        },
+        get(k, dv = "") {
+            k = Util.store.key(k);
+            let v = null;
+            try {
+                v = window.localStorage.getItem(k);
+            } catch (e) {
+                console.log(e);
+            }
+            if (v === null) {
+                return dv;
+            }
+            return v;
+        },
+        set(k, v) {
+            k = Util.store.key(k);
+            try {
+                window.localStorage.setItem(k, v);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+    },
+
     initStatsData: function(statsData) {
         const map = statsData.map;
         delete statsData.map;
