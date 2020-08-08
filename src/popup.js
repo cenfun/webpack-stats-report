@@ -104,7 +104,7 @@ export default class Popup {
             let patterns = item.patterns || "";
             if (patterns instanceof Array) {
                 patterns = patterns.map(item => {
-                    return `<div>${item}</div>`;
+                    return `<div style="white-space:nowrap;">${item}</div>`;
                 }).join("");
             }
             const description = item.description || "";
