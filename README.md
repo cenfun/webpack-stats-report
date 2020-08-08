@@ -51,5 +51,5 @@ more details: [options.js](./lib/options.js)
 
 ## Changelog
 
-* v1.0.3
-    * fixed layout
+* v1.1.0
+    * new layout
