@@ -1,4 +1,9 @@
 {
+    "eslint.validate": [
+        "vue",
+        "html",
+        "javascript"
+    ],
     "css.validate": false,
     "editor.codeActionsOnSave": {
         "source.fixAll.stylelint": true
@@ -6,5 +11,8 @@
     "editor.formatOnSave": true,
     "eslint.format.enable": true,
     "less.validate": false,
-    "scss.validate": false
+    "scss.validate": false,
+    "[vue]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    }
 }

@@ -12,13 +12,13 @@ module.exports = {
         "assert": true
     },
 
-    "extends": [
-        "eslint:recommended"
+    "plugins": [
+        "vue"
     ],
 
-    //should "npm install eslint-plugin-es -g" for VSCode in global
-    "plugins": [
-        //"es"
+    "extends": [
+        "eslint:recommended",
+        "plugin:vue/recommended"
     ],
 
     "root": true,
@@ -29,7 +29,6 @@ module.exports = {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-
 
     //https://eslint.org/docs/4.0.0/rules/
 
@@ -192,6 +191,24 @@ module.exports = {
             "int32Hint": false
         }],
         "template-curly-spacing": "error",
-        "unicode-bom": "error"
+        "unicode-bom": "error",
+        "vue/attributes-order": ["warn", {
+            "alphabetical": true
+        }],
+        "vue/html-indent": ["error", 4, {
+            "alignAttributesVertically": true,
+            "attribute": 1,
+            "baseIndent": 1,
+            "closeBracket": 0
+        }],
+        "vue/html-quotes": ["error", "double"],
+        "vue/max-attributes-per-line": ["error", {
+            "multiline": {
+                "allowFirstLine": true,
+                "max": 3
+            },
+            "singleline": 3
+        }],
+        "vue/mustache-interpolation-spacing": ["error", "always"]
     }
 };

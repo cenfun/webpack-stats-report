@@ -11,6 +11,24 @@ const Util = {
         }
         return num;
     },
+
+    toList: function(data) {
+        if (typeof(data) === "undefined") {
+            return [];
+        }
+        if (data instanceof Array) {
+            return data;
+        }
+        return [data];
+    },
+
+    token: function(len, pre = "") {
+        let str = Math.random().toString().substr(2);
+        if (len) {
+            str = str.substr(0, Util.toNum(len));
+        }
+        return pre + str;
+    },
     
     BF: function(v, digits = 1, base = 1024) {
         v = Util.toNum(v, true);
