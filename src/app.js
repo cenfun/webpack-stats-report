@@ -6,13 +6,15 @@ export default {
     data() {
         return {
             info: {},
-            treeView: false,
-            groupBy: "",
-            groups: {
+
+            group: {
                 assets: true,
-                chunks: true,
-                modules: true
+                modules: true,
+                chunk: false,
+                type: false,
+                dir: false
             },
+            
             keywords: {
                 chunk: "",
                 type: "",
@@ -24,16 +26,10 @@ export default {
     },
 
     watch: {
-        groupBy: function() {
-            this.renderGrid();
-        },
-        treeView: function() {
-            this.renderGrid();
-        },
-        groups: {
+        group: {
             deep: true,
             handler: function() {
-                this.updateGrid();
+                this.renderGrid();
             }
         },
         keywords: {
@@ -73,15 +69,6 @@ export default {
         },
         
         filterHandler(rowData) {
-            if (!this.treeView) {
-                let gid = rowData.id;
-                if (rowData.tg_parent) {
-                    gid = rowData.tg_parent.id;
-                }
-                if (!this.groups[gid]) {
-                    return false;
-                }
-            }
             for (const field in this.keywords) {
                 const matchedKey = `${field}_matched`;
                 rowData[matchedKey] = null;
@@ -188,99 +175,88 @@ export default {
 
         getGridRows() {
 
-            if (!this.treeView) {
-                if (this.gridRows) {
-                    return this.gridRows;
-                }
-                this.gridRows = [this.statsData.assets, this.statsData.chunks, this.statsData.modules].map(parent => {
-                    return {
-                        ... parent,
-                        subs: parent.subs.map(sub => {
-                            return {
-                                ... sub,
-                                percent: (sub.size / parent.size * 100).toFixed(2)
-                            };
-                        })
-                    };
-                });
-                return this.gridRows;
+            if (!this.gridRowsCache) {
+                this.gridRowsCache = {};
             }
 
-            return this.getTreeViewRows();
+            const g = {
+                ... this.group
+            };
+
+            if (!g.modules) {
+                g.type = false;
+                g.chunk = false;
+                g.dir = false;
+            }
+
+            const key = Object.keys(g).map(k => `${k}_${g[k]}`).join("_");
+
+            //console.log(key);
+
+            const cacheRows = this.gridRowsCache[key];
+            if (cacheRows) {
+                return cacheRows;
+            }
+
+            const rows = this.generateGridRows();
+            this.gridRowsCache[key] = rows;
+            return rows;
+
+            
         },
 
-        getTreeViewRows() {
-            
-            if (!this.treeViewRows) {
-                this.treeViewRows = {};
+        generateGridRows() {
+
+            const g = this.group;
+
+            if (!g.assets && !g.modules) {
+                return [];
             }
 
-            const gy = this.groupBy;
-
-            const rows = this.treeViewRows[gy];
-            if (rows) {
-                return rows;
+            if (!g.modules) {
+                return this.getAssetsRow().subs;
             }
-            //tree group
-            const tree = {
-                name: "Modules",
-                map: {},
-                files: [],
-                size: 0
-            };
+
+            if (!g.assets) {
+                return this.getModulesRow().subs;
+            }
             
-            this.statsData.modules.subs.forEach(m => {
-                const arr = m.name.split(/\/|\\/g);
-                if (gy) {
-                    arr.unshift(m[gy]);
-                }
-                const paths = arr.filter(n => {
-                    if (!n || n === "." || n === "..") {
-                        return false;
-                    }
-                    return true;
-                });
-                const filename = paths.pop();
-                let parent = tree;
-                paths.forEach(p => {
-                    let sub = parent.map[p];
-                    if (!sub) {
-                        sub = {
-                            name: p,
-                            map: {},
-                            files: [],
-                            size: 0
-                        };
-                        parent.map[p] = sub;
-                    }
-                    parent = sub;
-                });
-                parent.files.push({
-                    ... m,
-                    name: filename
-                });
+            return [this.getAssetsRow(), this.getModulesRow()];
+        },
+
+        getAssetsRow() {
+            const assets = this.statsData.assets;
+            const subs = assets.subs.map(sub => {
+                return {
+                    ... sub,
+                    percent: (sub.size / assets.size * 100).toFixed(2)
+                };
             });
-
-            const initSubs = function(parent) {
-                const map = parent.map;
-                const subs = [];
-                for (const k in map) {
-                    subs.push(map[k]);
-                }
-                delete parent.map;
-                parent.subs = subs.concat(parent.files);
-                delete parent.files;
-                if (subs.length) {
-                    subs.forEach(item => {
-                        initSubs(item);
-                    });
-                }
-                if (!parent.subs.length) {
-                    delete parent.subs;
-                }
+            return {
+                ... assets,
+                subs
             };
-            initSubs(tree);
+        },
 
+        getModulesRow() {
+            const modules = {
+                ... this.statsData.modules
+            };
+            let list = [modules];
+            const g = this.group;
+            if (g.chunk) {
+                list = this.groupModulesByChunk(list);
+            }
+
+            if (g.type) {
+                list = this.groupModulesByType(list);
+            }
+
+            if (g.dir) {
+                this.groupModulesByDir(list);
+            }
+
+            //final handler size and percent
             const initSize = function(parent) {
                 if (parent.subs) {
                     let size = 0;
@@ -291,7 +267,7 @@ export default {
                     parent.size = size;
                 }
             };
-            initSize(tree);
+            initSize(modules);
 
             const initPercent = function(parent) {
                 if (parent.subs) {
@@ -305,13 +281,143 @@ export default {
                    
                 }
             };
-            initPercent(tree);
+            initPercent(modules);
 
-            //console.log(tree);
+            return modules;
+        },
 
-            this.treeViewRows[gy] = tree.subs;
+        groupModulesByChunk(list) {
+            let newList = [];
+            list.forEach(item => {
 
-            return tree.subs;
+                const chunks = {};
+                item.subs.forEach(sub => {
+                    const chunkName = sub.chunk;
+                    let chunk = chunks[chunkName];
+                    if (!chunk) {
+                        chunk = {
+                            name: chunkName,
+                            chunk: chunkName,
+                            collapsed: true,
+                            subs: []
+                        };
+                        chunks[chunkName] = chunk;
+                    }
+                    chunk.subs.push({
+                        ... sub
+                    });
+                });
+
+                item.subs = Object.keys(chunks).map(k => chunks[k]);
+
+                newList = newList.concat(item.subs);
+            
+            });
+
+            return newList;
+        },
+
+        groupModulesByType(list) {
+            let newList = [];
+            const moduleTypes = this.statsData.info.moduleTypes;
+            list.forEach(item => {
+
+                const types = {};
+                item.subs.forEach(sub => {
+                    const typeName = sub.type;
+                    let type = types[typeName];
+                    if (!type) {
+                        type = {
+                            name: typeName,
+                            chunk: sub.chunk,
+                            type: typeName,
+                            collapsed: true,
+                            subs: []
+                        };
+                        item.collapsed = false;
+                        //color
+                        const o = moduleTypes[typeName];
+                        if (o && o.color) {
+                            type.name_color = o.color;
+                            type.type_color = o.color;
+                        }
+
+                        types[typeName] = type;
+                    }
+                    type.subs.push({
+                        ... sub
+                    });
+                });
+
+                item.subs = Object.keys(types).map(k => types[k]);
+
+                newList = newList.concat(item.subs);
+            
+            });
+
+            return newList;
+        },
+
+        groupModulesByDir(list) {
+
+            list.forEach(dir => {
+
+                dir.collapsed = false;
+                dir.map = {};
+                dir.files = [];
+            
+                dir.subs.forEach(m => {
+                    const arr = m.name.split(/\/|\\/g);
+                    const paths = arr.filter(n => {
+                        //maybe need ../
+                        if (!n || n === "." || n === "..") {
+                            return false;
+                        }
+                        return true;
+                    });
+                    const filename = paths.pop();
+                    let parent = dir;
+                    paths.forEach(p => {
+                        let sub = parent.map[p];
+                        if (!sub) {
+                            sub = {
+                                name: p,
+                                collapsed: true,
+                                map: {},
+                                files: []
+                            };
+                            parent.map[p] = sub;
+                        }
+                        parent = sub;
+                    });
+                    parent.files.push({
+                        ... m,
+                        name: filename
+                    });
+                });
+
+                const initSubs = function(parent) {
+                    const map = parent.map;
+                    const subs = Object.keys(map).map(k => map[k]);
+                    delete parent.map;
+                    
+                    parent.subs = subs.concat(parent.files);
+                    delete parent.files;
+
+                    if (!parent.subs.length) {
+                        delete parent.subs;
+                    }
+
+                    if (subs.length) {
+                        subs.forEach(item => {
+                            initSubs(item);
+                        });
+                    }
+                };
+                initSubs(dir);
+            
+            });
+
         },
 
         getGridOption() {
@@ -322,10 +428,8 @@ export default {
                 sortField: "size",
                 sortAsc: false,
                 sortOnInit: true,
-
-                collapseAll: this.treeView ? true : null,
-                rowNumberType: this.treeView ? "leaf" : "list",
-
+                collapseAll: null,
+                rowNumberType: "list",
                 rowFilter: this.filterHandler,
                 stringFormat: function(v, rd, cd) {
                     const id = cd.id;

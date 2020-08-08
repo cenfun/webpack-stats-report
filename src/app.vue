@@ -5,44 +5,47 @@
         <div class="gui-logo"></div>
     </div>
     <div class="gui-filter gui-flex-row">
-       
-        <div class="gui-flex-auto">
-            <label>
-                <b>Modules</b>
-            </label>
-            <div class="gui-hs-5"></div>
-            <label>
-                <input type="checkbox" v-model="treeView" />
-                View as Tree
-            </label>
-            <div class="gui-hs-5"></div>
-            <label v-show="treeView">
-                <select v-model="groupBy">
-                    <option value="">No Group</option>
-                    <option value="type">Group By Type</option>
-                    <option value="chunk">Group By Chunk</option>
-                </select>
-            </label>
+        
+        <div class="gui-checkbox">
+            <input class="gui-control-input" id="cb-assets" type="checkbox" v-model="group.assets" />
+            <label class="gui-control-label" for="cb-assets" tooltip=""><b>Assets</b></label>
         </div>
 
-        <div class="gui-flex-row" v-show="!treeView">
-             <label>
-                <input type="checkbox" v-model="groups.assets" class="gui-group gui-assets" checked />
-                <b>Assets</b>
-            </label>
-            <div class="gui-separator"></div>
-            <label>
-                <input type="checkbox" v-model="groups.chunks" class="gui-group gui-chunks" checked />
-                <b>Chunks</b>
-            </label>
+        <div class="gui-separator"></div>
+
+        <div class="gui-checkbox">
+            <input class="gui-control-input" id="cb-modules" type="checkbox" v-model="group.modules" />
+            <label class="gui-control-label" for="cb-modules" tooltip=""><b>Modules</b></label>
         </div>
+
+        <div class="gui-hs-10"></div>
+
+        <div class="gui-checkbox">
+            <input class="gui-control-input" id="cb-chunk" type="checkbox" v-model="group.chunk" />
+            <label class="gui-control-label" for="cb-chunk" tooltip="">Group by Chunk</label>
+        </div>
+
+        <div class="gui-hs-10"></div>
+
+        <div class="gui-checkbox">
+            <input class="gui-control-input" id="cb-type" type="checkbox" v-model="group.type" />
+            <label class="gui-control-label" for="cb-type" tooltip="">Group by Type</label>
+        </div>
+
+         <div class="gui-hs-10"></div>
+
+         <div class="gui-checkbox">
+            <input class="gui-control-input" id="cb-dir" type="checkbox" v-model="group.dir" />
+            <label class="gui-control-label" for="cb-dir" tooltip="">Group by Dir</label>
+        </div>
+
     </div>
     <div class="gui-filter gui-flex-row">
-        Filter:
-        <input v-model="keywords.chunk" @focus="$event.target.select()" class="gui-keywords" name="chunk" placeholder="Chunk" title="Chunk" />
-        <input v-model="keywords.type" @focus="$event.target.select()" class="gui-keywords" name="type" placeholder="Type" title="Type" />
-        <input v-model="keywords.name" @focus="$event.target.select()" class="gui-keywords" name="name" placeholder="Name" title="Chunk" />
-        <span>Found <b>{{filterModules}}</b> modules (Size: {{filterSize}})</span>
+        <b>Filter:</b>
+        <input v-model="keywords.chunk" @focus="$event.target.select()" class="gui-input" name="chunk" placeholder="Chunk" title="Chunk" />
+        <input v-model="keywords.type" @focus="$event.target.select()" class="gui-input" name="type" placeholder="Type" title="Type" />
+        <input v-model="keywords.name" @focus="$event.target.select()" class="gui-input" name="name" placeholder="Name" title="Chunk" />
+        <span v-if="group.modules">Found <b>{{filterModules}}</b> modules (Size: {{filterSize}})</span>
     </div>
     <div class="gui-grid gui-flex-auto"></div>
     <div class="gui-footer gui-flex-row">

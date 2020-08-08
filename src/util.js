@@ -39,7 +39,7 @@ const Util = {
         const map = statsData.map;
         delete statsData.map;
 
-        [statsData.assets, statsData.chunks, statsData.modules].forEach(item => {
+        [statsData.assets, statsData.modules].forEach(item => {
 
             item.subs.forEach(item => {
                 item.name = map[item.name];
