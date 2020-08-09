@@ -4,6 +4,7 @@
             <tr>
                 <th>Type</th>
                 <th>Color</th>
+                <th>Priority</th>
                 <th>Patterns (<a href="https://github.com/micromatch/micromatch" target="_blank">micromatch</a>)</th>
                 <th>Description</th>
             </tr>
@@ -13,6 +14,9 @@
                 </td>
                 <td :style="{color:item.color}">
                     {{ item.color }}
+                </td>
+                <td>
+                    {{ item.priority }}
                 </td>
                 <td>
                     <div v-for="(p, j) in item.patterns" :key="j" class="gui-popup-nowrap">

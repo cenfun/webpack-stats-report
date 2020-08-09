@@ -1,5 +1,5 @@
 # webpack-stats-report
-> Generation report for webpack stats.
+> Generation HTML report for [webpack](https://github.com/webpack/webpack) [stats](https://webpack.js.org/api/stats/). 
 
 ![image](assets/screenshot.png)
 
@@ -31,7 +31,7 @@ webpack(webpackConfig, (err, stats) => {
     StatsReportGenerator({
         //options
         title: "Stats Report - webpack-stats-report",
-        output: ".temp/stats-report.html"
+        output: ".temp/stats-report.html",
         //require one more option stats
         stats: stats.toJson(toJsonOptions)
     });
@@ -48,6 +48,12 @@ webpack(webpackConfig, (err, stats) => {
 }
 ```
 more details: [options.js](./lib/options.js)
+
+## Test Webpack5 Stats
+```sh
+npm run test
+```
+see [./test/test.js](./test/test.js)
 
 ## Changelog
 

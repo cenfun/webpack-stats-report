@@ -1,7 +1,7 @@
 <template>
     <div class="gui-popup-list">
         <div v-for="(item, i) in list" :key="i" class="gui-popup-item">
-            <pre><code>{{ i+1 }}. {{ item }}</code></pre>
+            <pre><code>{{ i+1 }}. {{ formatItem(item) }}</code></pre>
         </div>
     </div>
 </template>
@@ -18,6 +18,17 @@ export default {
         return {
             items: []
         };
+    },
+
+    methods: {
+        formatItem(item) {
+            //webpack5 is object
+            if (typeof item === "object" && item.stack) {
+                return item.stack;
+            }
+            //webpack4 is string
+            return item;
+        }
     }
 };
 </script>
