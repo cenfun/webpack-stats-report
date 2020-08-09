@@ -2,13 +2,16 @@
     <div class="gui-module-types">
         <table class="gui-popup-table">
             <tr>
+                <th>P.</th>
                 <th>Type</th>
                 <th>Color</th>
-                <th>Priority</th>
                 <th>Patterns (<a href="https://github.com/micromatch/micromatch" target="_blank">micromatch</a>)</th>
                 <th>Description</th>
             </tr>
             <tr v-for="(item, i) in list" :key="i">
+                <td>
+                    {{ item.priority }}
+                </td>
                 <td>
                     {{ item.type }}
                 </td>
@@ -16,14 +19,15 @@
                     {{ item.color }}
                 </td>
                 <td>
-                    {{ item.priority }}
-                </td>
-                <td>
                     <div v-for="(p, j) in item.patterns" :key="j" class="gui-popup-nowrap">
                         {{ p }}
                     </div>
                 </td>
-                <td>{{ item.description }}</td>
+                <td>
+                    <div style="max-height: 50px; overflow: hidden;">
+                        {{ item.description }}
+                    </div>
+                </td>
             </tr>
         </table>
     </div>
