@@ -1,10 +1,10 @@
 <template>
     <div class="gui-main">
         <div class="gui-header gui-flex-row">
+            <div class="gui-logo" />
             <div class="gui-title gui-flex-auto">
                 {{ info.title }}
             </div>
-            <div class="gui-logo" />
         </div>
         <div class="gui-filter gui-flex-row">
             <div class="gui-checkbox">
@@ -70,8 +70,8 @@
         <div class="gui-footer gui-flex-row">
             <div class="gui-flex-auto">
                 <b class="gui-link gui-module-types" @click="showModuleTypes">Module Types</b>
-                <b :class="info.warningsClass" @click="showInfo('Warnings', info.warnings)">Warnings {{ info.warnings.length }}</b>
-                <b :class="info.errorsClass" @click="showInfo('Errors', info.errors)">Errors {{ info.errors.length }}</b>
+                <b :class="info.warningsClass" @click="showInfo('Webpack Warnings', info.warnings)">Warnings {{ info.warnings.length }}</b>
+                <b :class="info.errorsClass" @click="showInfo('Webpack Errors', info.errors)">Errors {{ info.errors.length }}</b>
             </div>
             <div class="gui-flex-row">
                 <div class="gui-time">
@@ -143,10 +143,7 @@ const App = {
     created() {
         this.statsData = Util.initStatsData(window.statsData);
         console.log(this.statsData);
-
-        this.group.assets = !!Util.store.get("assets");
-        this.group.type = !!Util.store.get("type");
-
+        this.initGroup();
         this.initGridColumns();
         this.initInfo();
     },
@@ -156,6 +153,24 @@ const App = {
     },
 
     methods: {
+
+        initGroup() {
+            Object.keys(this.group).forEach(k => {
+                if (k === "modules") {
+                    return;
+                }
+                this.group[k] = !!Util.store.get(k);
+            });
+        },
+
+        saveGroup() {
+            Object.keys(this.group).forEach(k => {
+                if (k === "modules") {
+                    return;
+                }
+                Util.store.set(k, this.group[k] ? 1 : "");
+            });
+        },
 
         initInfo() {
             this.info = {
@@ -203,7 +218,7 @@ const App = {
             Popup.create((h) => {
                 return {
                     props: {
-                        title: "Module Types"
+                        title: "Module Types Definition"
                     },
                     scopedSlots: {
                         default: (props) => {

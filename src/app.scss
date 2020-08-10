@@ -236,10 +236,21 @@ header
     border-bottom: 1px solid #ccc;
 }
 
+.gui-logo {
+    background: url(../assets/logo.svg);
+    background-size: 75px 30px;
+    background-repeat: no-repeat;
+    width: 75px;
+    height: 30px;
+    margin-left: 10px;
+    margin-bottom: 1px;
+}
+
 .gui-title {
     font-size: 16px;
     font-weight: bold;
     margin-left: 10px;
+    color: #555;
 }
 
 /*

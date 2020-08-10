@@ -68,6 +68,9 @@ module.exports = {
                 loader: "sass-loader"
             }]
         }, {
+            test: /\.svg$/i,
+            loader: "url-loader"
+        }, {
             test: /\.vue$/,
             loader: "vue-loader",
             options: {
