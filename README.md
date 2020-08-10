@@ -1,6 +1,6 @@
 ![](assets/logo.svg)  
 # webpack-stats-report
-> Generation HTML report for [webpack](https://github.com/webpack/webpack) [stats](https://webpack.js.org/api/stats/). 
+> Generation HTML report for [webpack](https://github.com/webpack/webpack) (v4,v5) [stats](https://webpack.js.org/api/stats/). 
 
 ![](assets/webpack-stats-report.gif)
 
@@ -58,5 +58,5 @@ see [./test/test.js](./test/test.js)
 
 ## Changelog
 
-* v1.1.0
+* v1.1.1
     * new layout
