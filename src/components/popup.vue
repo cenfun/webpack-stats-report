@@ -116,9 +116,9 @@ export default Popup;
 }
 
 .gui-popup-label {
-    padding: 8px 0;
     font-size: 16px;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 .gui-popup-item {

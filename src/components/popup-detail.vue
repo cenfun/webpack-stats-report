@@ -1,18 +1,27 @@
 <template>
     <div class="gui-detail">
-        <div class="gui-name">
+        <div class="gui-popup-label">
+            Name:
+        </div>
+        <div class="gui-popup-item">
+            <div class="gui-flex-row">
+                <div v-for="(loader, i) in rowData.loaders" :key="i" class="gui-loader gui-arrow-next">
+                    {{ loader }}-loader
+                </div>
+            </div>
+            {{ rowData.name }}
+        </div>
+
+        <div v-if="rowData.fullName" class="gui-popup-tip">
             <div class="gui-popup-label">
-                Name:
+                Full Name:
             </div>
             <div class="gui-popup-item">
-                {{ nameContent }}
-                <div v-if="rowData.fullName" class="gui-popup-tip">
-                    ({{ rowData.fullName }})
-                </div>
+                {{ rowData.fullName }}
             </div>
         </div>
 
-        <div v-if="rowData.asset" class="gui-asset">
+        <div v-if="rowData.asset">
             <div class="gui-popup-label">
                 Asset:
             </div>
@@ -21,7 +30,7 @@
             </div>
         </div>
 
-        <div v-if="rowData.issuerPath.length" class="gui-path">
+        <div v-if="rowData.issuerPath.length">
             <div class="gui-popup-label">
                 Path:
             </div>
@@ -33,14 +42,12 @@
             </div>
         </div>
 
-        <div class="gui-chunk">
-            <div class="gui-popup-label">
-                Chunk:
-            </div>
-            <div class="gui-popup-item">
-                <div class="gui-popup-arrow" />
-                {{ rowData.chunk }}
-            </div>
+        <div class="gui-popup-label">
+            Chunk:
+        </div>
+        <div class="gui-popup-item">
+            <div class="gui-popup-arrow" />
+            {{ rowData.chunk }}
         </div>
     </div>
 </template>
@@ -52,22 +59,18 @@ export default {
             type: Object,
             default: () => ({})
         }
-    },
-
-    data() {
-        return {
-            nameContent: ""
-        };
-    },
-
-    created() {
-        let str = "";
-        if (this.rowData.loaders) {
-            str += this.rowData.loaders.map(item => `${item}-loader -&gt; `).join("");
-        }
-        str += this.rowData.name;
-        this.nameContent = str;
     }
 
 };
 </script>
+<style>
+.gui-popup-item .gui-loader {
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 18px;
+    width: auto;
+    background-position-x: right;
+    height: auto;
+    margin: 0;
+}
+</style>

@@ -35,6 +35,22 @@ export default {
 
         },
 
+        updateColumnWidth() {
+            if (!this.grid) {
+                return;
+            }
+            let width = 0;
+            this.columns.forEach(item => {
+                if (item.id === "name") {
+                    return;
+                }
+                width += item.width;
+            });
+            const totalWidth = $(".gui-grid").width();
+            const w = totalWidth - width - this.grid.getScrollBarWidth();
+            this.grid.setColumnWidth("name", w);
+        },
+
         createGrid() {
             const grid = new Grid(".gui-grid");
             const self = this;
@@ -52,17 +68,12 @@ export default {
                 self.updateFilterInfo();
             });
 
+            grid.bind("onRowExpanded", function(e, d) {
+                self.updateColumnWidth();
+            });
+
             grid.bind("onResize", function(e, d) {
-                let width = 0;
-                self.columns.forEach(item => {
-                    if (item.id === "name") {
-                        return;
-                    }
-                    width += item.width;
-                });
-                const totalWidth = $(".gui-grid").width();
-                const w = totalWidth - width - grid.getScrollBarWidth();
-                grid.setColumnWidth("name", w);
+                self.updateColumnWidth();
             });
 
             return grid;
