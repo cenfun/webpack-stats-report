@@ -1,4 +1,3 @@
-![](assets/logo.svg)  
 # webpack-stats-report
 > Generation HTML report for [webpack](https://github.com/webpack/webpack) (v4,v5) [stats](https://webpack.js.org/api/stats/). 
 

@@ -1,7 +1,6 @@
 <template>
     <div class="gui-main">
         <div class="gui-header gui-flex-row">
-            <div class="gui-logo" />
             <div class="gui-title gui-flex-auto">
                 {{ info.title }}
             </div>
