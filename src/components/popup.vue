@@ -138,8 +138,10 @@ export default Popup;
 }
 
 .gui-popup-tip {
-    margin-top: 5px;
     color: #666;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .gui-popup-arrow {
