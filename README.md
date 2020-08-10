@@ -1,8 +1,8 @@
-![image](assets/logo.svg)  
+![](assets/logo.svg)  
 # webpack-stats-report
 > Generation HTML report for [webpack](https://github.com/webpack/webpack) [stats](https://webpack.js.org/api/stats/). 
 
-![image](assets/screenshot.png)
+![](assets/webpack-stats-report.gif)
 
 ## Install
 ```sh
