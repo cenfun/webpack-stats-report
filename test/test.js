@@ -5,6 +5,7 @@ StatsReportGenerator({
     //options
     title: "Stats Report - webpack5",
     output: path.resolve(__dirname, "../.temp/stats-report-webpack5.html"),
+    outputStatsJson: true,
     //custom module types
     moduleTypes: {
         test: {

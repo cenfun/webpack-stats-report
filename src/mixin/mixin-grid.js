@@ -46,13 +46,13 @@ export default {
                 }
                 width += item.width;
             });
-            const totalWidth = $(".gui-grid").width();
+            const totalWidth = $(".lui-grid").width();
             const w = totalWidth - width - this.grid.getScrollBarWidth();
             this.grid.setColumnWidth("name", w);
         },
 
         createGrid() {
-            const grid = new Grid(".gui-grid");
+            const grid = new Grid(".lui-grid");
             const self = this;
             grid.bind("onClick", function(e, d) {
                 const icon = d.e.target;
@@ -121,6 +121,7 @@ export default {
                 sortOnInit: true,
                 collapseAll: null,
                 rowNumberType: "list",
+                rowNotFound: "No Results",
                 rowFilter: this.filterHandler,
                 stringFormat: function(v, rd, cd) {
                     const id = cd.id;
@@ -169,9 +170,9 @@ export default {
                         return "";
                     }
                     return `
-                    <div class="gui-percent gui-flex-row">
-                        <div class="gui-percent-label">${v}%</div>
-                        <div class="gui-percent-chart gui-flex-auto">
+                    <div class="lui-percent lui-flex-row">
+                        <div class="lui-percent-label">${v}%</div>
+                        <div class="lui-percent-chart lui-flex-auto">
                             <div style="width:${v}%;"></div>
                         </div>
                     </div>
@@ -209,18 +210,18 @@ export default {
             }, {
                 id: "chunk",
                 name: "Chunk",
-                width: 80,
+                width: 65,
                 maxWidth: 1024
             }, {
                 id: "asset",
                 name: "Asset",
-                width: 80,
+                width: 50,
                 maxWidth: 1024
             }, {
                 id: "depth",
                 name: "Depth",
                 align: "center",
-                width: 50
+                width: 48
             }];
 
         }

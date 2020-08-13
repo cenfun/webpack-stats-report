@@ -1,6 +1,6 @@
 <template>
-    <div class="gui-popup-list">
-        <div v-for="(item, i) in list" :key="i" class="gui-popup-item">
+    <div class="lui-modal-list">
+        <div v-for="(item, i) in list" :key="i" class="lui-modal-item">
             <pre><code>{{ i+1 }}. {{ formatItem(item) }}</code></pre>
         </div>
     </div>

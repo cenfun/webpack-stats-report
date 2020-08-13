@@ -1,6 +1,6 @@
 <template>
-    <div class="gui-module-types">
-        <table class="gui-popup-table">
+    <div class="lui-module-types">
+        <table class="lui-modal-table">
             <tr>
                 <th>P.</th>
                 <th>Type</th>
@@ -19,7 +19,7 @@
                     {{ item.color }}
                 </td>
                 <td>
-                    <div v-for="(p, j) in item.patterns" :key="j" class="gui-popup-nowrap">
+                    <div v-for="(p, j) in item.patterns" :key="j" class="lui-modal-nowrap">
                         {{ p }}
                     </div>
                 </td>

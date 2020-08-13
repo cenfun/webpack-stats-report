@@ -1,102 +1,104 @@
 <template>
-    <div class="gui-main">
-        <div class="gui-header gui-flex-row">
-            <div class="gui-title gui-flex-auto">
+    <div class="lui-main">
+        <div class="lui-header lui-flex-row">
+            <div class="lui-title lui-flex-auto">
                 {{ info.title }}
             </div>
-        </div>
-        <div class="gui-filter gui-flex-row">
-            <div class="gui-checkbox">
-                <input id="cb-assets" v-model="group.assets" class="gui-control-input"
-                       type="checkbox"
-                >
-                <label class="gui-control-label" for="cb-assets" tooltip=""><b>Assets</b></label>
-            </div>
-
-            <div class="gui-separator" />
-
-            <div class="gui-checkbox">
-                <input id="cb-modules" v-model="group.modules" class="gui-control-input"
-                       type="checkbox"
-                >
-                <label class="gui-control-label" for="cb-modules" tooltip=""><b>Modules</b></label>
-            </div>
-
-            <div class="gui-hs-10" />
-            <div>Group by:</div>
-
-            <div class="gui-arrow-next" />
-
-            <div class="gui-checkbox">
-                <input id="cb-chunk" v-model="group.chunk" class="gui-control-input"
-                       type="checkbox"
-                >
-                <label class="gui-control-label" for="cb-chunk" tooltip="">Chunk</label>
-            </div>
-
-            <div class="gui-arrow-next" />
-
-            <div class="gui-checkbox">
-                <input id="cb-type" v-model="group.type" class="gui-control-input"
-                       type="checkbox"
-                >
-                <label class="gui-control-label" for="cb-type" tooltip="">Type</label>
-            </div>
-
-            <div class="gui-arrow-next" />
-
-            <div class="gui-checkbox">
-                <input id="cb-folder" v-model="group.folder" class="gui-control-input"
-                       type="checkbox"
-                >
-                <label class="gui-control-label" for="cb-folder" tooltip="">Folder</label>
+            <div class="lui-flex-row">
+                <LuiCheckbox v-model="group.assets">
+                    <b>Assets</b>
+                </LuiCheckbox>
+                <div class="lui-separator" />
+                <LuiCheckbox v-model="group.modules">
+                    <b>Modules</b>
+                </LuiCheckbox>
             </div>
         </div>
-        <div class="gui-filter gui-flex-row">
-            <b>Filter:</b>
-            <input v-model="keywords.chunk" class="gui-input" name="chunk"
-                   placeholder="Chunk" title="Chunk" @focus="$event.target.select()"
-            >
-            <input v-model="keywords.type" class="gui-input" name="type"
-                   placeholder="Type" title="Type" @focus="$event.target.select()"
-            >
-            <input v-model="keywords.name" class="gui-input" name="name"
-                   placeholder="Name" title="Chunk" @focus="$event.target.select()"
-            >
-            <span v-if="group.modules">Found <b>{{ filterModules }}</b> modules (Size: {{ filterSize }})</span>
+        <div class="lui-filter lui-flex-row">
+            <div class="lui-flex-auto lui-flex-row">
+                <div><b>Group:</b></div>
+                <div class="lui-hs-10" />
+                <LuiCheckbox v-model="group.chunk" label="Chunk" />
+                <div class="lui-arrow-next" />
+                <LuiCheckbox v-model="group.type" label="Type" />
+                <div class="lui-arrow-next" />
+                <LuiCheckbox v-model="group.folder" label="Folder" />
+            </div>
+            <div class="lui-flex-row">
+                <div><b>Size:</b></div>
+                <div class="lui-hs-10" />
+                <LuiRadio v-model="sizeType" label="Source" value="source" />
+                <div class="lui-arrow-next" />
+                <LuiRadio v-model="sizeType" label="Minified" value="minified" />
+                <div class="lui-arrow-next" />
+                <LuiRadio v-model="sizeType" label="Gzip" value="gzip" />
+            </div>
         </div>
-        <div class="gui-grid gui-flex-auto" />
-        <div class="gui-footer gui-flex-row">
-            <div class="gui-flex-auto">
-                <b class="gui-link gui-module-types" @click="showModuleTypes">Module Types</b>
+        <div class="lui-filter lui-flex-row">
+            <LuiInput v-model="keywords.chunk"
+                      name="chunk"
+                      placeholder="Chunk"
+                      title="Chunk"
+            >
+                <b>Filter:</b>
+            </LuiInput>
+            <LuiInput v-model="keywords.type"
+                      name="type"
+                      placeholder="Type"
+                      title="Type"
+            />
+            <LuiInput v-model="keywords.name"
+                      name="name"
+                      placeholder="Name"
+                      title="Chunk"
+                      width="150px"
+            />
+            <span v-if="group.modules" class="lui-filter-info">Found <b>{{ filterModules }}</b> modules (Size: {{ filterSize }})</span>
+        </div>
+        <div class="lui-grid lui-flex-auto" />
+        <div class="lui-footer lui-flex-row">
+            <div class="lui-flex-auto">
+                <b class="lui-link lui-module-types" @click="showModuleTypes">Module Types</b>
                 <b :class="info.warningsClass" @click="showInfo('Webpack Warnings', info.warnings)">Warnings {{ info.warnings.length }}</b>
                 <b :class="info.errorsClass" @click="showInfo('Webpack Errors', info.errors)">Errors {{ info.errors.length }}</b>
             </div>
-            <div class="gui-flex-row">
-                <div class="gui-time">
+            <div class="lui-flex-row">
+                <div class="lui-time">
                     Generated {{ info.timeH }}
                 </div>
-                <div class="gui-hs-10" />
+                <div class="lui-hs-10" />
                 <a href="https://webpack.js.org/" target="_blank">webpack</a>
-                <div class="gui-hs-5" />
+                <div class="lui-hs-5" />
                 <div>v{{ info.version }}</div>
             </div>
         </div>
     </div>
 </template>
 <script>
-import createElement from "./helper/create-element.js";
 import Util from "./helper/util.js";
-import Popup from "./components/popup.vue";
-import PopupDetail from "./components/popup-detail.vue";
-import PopupModuleTypes from "./components/popup-module-types.vue";
-import PopupInfo from "./components/popup-info.vue";
+
+import {
+    createElement,
+    LuiCheckbox,
+    LuiRadio,
+    LuiInput,
+    LuiModal
+} from "lithops-ui";
+
+import ModalDetail from "./components/modal-detail.vue";
+import ModalModuleTypes from "./components/modal-module-types.vue";
+import ModalInfo from "./components/modal-info.vue";
 
 import MixinFilter from "./mixin/mixin-filter.js";
 import MixinGroup from "./mixin/mixin-group.js";
 import MixinGrid from "./mixin/mixin-grid.js";
 
 const App = {
+    components: {
+        LuiCheckbox,
+        LuiRadio,
+        LuiInput
+    },
     mixins: [
         MixinFilter,
         MixinGroup,
@@ -113,7 +115,8 @@ const App = {
                 type: false,
                 folder: false
             },
-            
+            sizeType: "source",
+
             keywords: {
                 chunk: "",
                 type: "",
@@ -178,14 +181,14 @@ const App = {
             };
 
             if (this.info.warnings.length > 0) {
-                this.info.warningsClass = "gui-link gui-info-warnings";
+                this.info.warningsClass = "lui-link lui-info-warnings";
             } else {
-                this.info.warningsClass = "gui-info-disabled";
+                this.info.warningsClass = "lui-info-disabled";
             }
             if (this.info.errors.length > 0) {
-                this.info.errorsClass = "gui-link gui-info-errors";
+                this.info.errorsClass = "lui-link lui-info-errors";
             } else {
-                this.info.errorsClass = "gui-info-disabled";
+                this.info.errorsClass = "lui-info-disabled";
             }
             this.info.timeH = new Date(this.info.timestamp).toLocaleString();
         },
@@ -195,14 +198,14 @@ const App = {
         },
     
         showDetail(rowData) {
-            Popup.create((h) => {
+            LuiModal.create((h) => {
                 return {
                     props: {
                         title: "Module Detail"
                     },
                     scopedSlots: {
                         default: (props) => {
-                            return h(PopupDetail, {
+                            return h(ModalDetail, {
                                 props: {
                                     rowData: rowData
                                 }
@@ -214,14 +217,14 @@ const App = {
         },
 
         showModuleTypes() {
-            Popup.create((h) => {
+            LuiModal.create((h) => {
                 return {
                     props: {
                         title: "Module Types Definition"
                     },
                     scopedSlots: {
                         default: (props) => {
-                            return h(PopupModuleTypes, {
+                            return h(ModalModuleTypes, {
                                 props: {
                                     moduleTypes: this.statsData.info.moduleTypes
                                 }
@@ -236,14 +239,14 @@ const App = {
             if (!list || !list.length) {
                 return;
             }
-            Popup.create((h) => {
+            LuiModal.create((h) => {
                 return {
                     props: {
                         title: title
                     },
                     scopedSlots: {
                         default: (props) => {
-                            return h(PopupInfo, {
+                            return h(ModalInfo, {
                                 props: {
                                     list: list
                                 }

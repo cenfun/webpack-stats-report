@@ -1,52 +1,52 @@
 <template>
-    <div class="gui-detail">
-        <div class="gui-popup-label">
+    <div class="lui-detail">
+        <div class="lui-modal-label">
             Name:
         </div>
-        <div class="gui-popup-item">
-            <div class="gui-flex-row">
-                <div v-for="(loader, i) in rowData.loaders" :key="i" class="gui-loader gui-arrow-next">
+        <div class="lui-modal-item">
+            <div class="lui-flex-row">
+                <div v-for="(loader, i) in rowData.loaders" :key="i" class="lui-loader lui-arrow-next">
                     {{ loader }}-loader
                 </div>
             </div>
             {{ rowData.name }}
         </div>
 
-        <div v-if="rowData.fullName" class="gui-popup-tip">
-            <div class="gui-popup-label">
+        <div v-if="rowData.fullName" class="lui-modal-tip">
+            <div class="lui-modal-label">
                 Full Name:
             </div>
-            <div class="gui-popup-item">
+            <div class="lui-modal-item">
                 {{ rowData.fullName }}
             </div>
         </div>
 
         <div v-if="rowData.asset">
-            <div class="gui-popup-label">
+            <div class="lui-modal-label">
                 Asset:
             </div>
-            <div class="gui-popup-item">
+            <div class="lui-modal-item">
                 {{ rowData.asset }}
             </div>
         </div>
 
         <div v-if="rowData.issuerPath.length">
-            <div class="gui-popup-label">
+            <div class="lui-modal-label">
                 Path:
             </div>
-            <div class="gui-popup-list">
-                <div v-for="(item, index) in rowData.issuerPath" :key="index" class="gui-popup-item">
-                    <div class="gui-popup-arrow" />
+            <div class="lui-modal-list">
+                <div v-for="(item, index) in rowData.issuerPath" :key="index" class="lui-modal-item">
+                    <div class="lui-modal-arrow" />
                     {{ item }}
                 </div>
             </div>
         </div>
 
-        <div class="gui-popup-label">
+        <div class="lui-modal-label">
             Chunk:
         </div>
-        <div class="gui-popup-item">
-            <div class="gui-popup-arrow" />
+        <div class="lui-modal-item">
+            <div class="lui-modal-arrow" />
             {{ rowData.chunk }}
         </div>
     </div>
@@ -64,7 +64,7 @@ export default {
 };
 </script>
 <style>
-.gui-popup-item .gui-loader {
+.lui-modal-item .lui-loader {
     display: inline-block;
     white-space: nowrap;
     padding-right: 18px;

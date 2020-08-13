@@ -15,6 +15,8 @@ module.exports = {
         title: "Stats Report - webpack-stats-report",
         output: ".temp/stats-report.html",
         outputStatsJson: true,
+        generateMinifiedSize: true,
+        generateGzipSize: true,
         moduleTypes: {
             module: {
                 color: ""
@@ -53,7 +55,7 @@ module.exports = {
                     injectType: "singletonStyleTag",
                     attributes: {
                         //Add custom attrs to style for debug
-                        context: "app"
+                        context: "webpack-stats-report"
                     }
                 }
             }, {
