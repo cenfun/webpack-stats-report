@@ -10,6 +10,7 @@
   "scripts": {
     "build": "npx webpack",
     "build-dev": "npx webpack --mode=development",
+    "dev": "cls && npm run build && npm run build && npm run test",
     "test": "node ./test/test.js"
   },
   "repository": {
