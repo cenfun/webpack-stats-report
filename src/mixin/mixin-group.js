@@ -53,17 +53,21 @@ export default {
             }
 
             //final handler size and percent
-            const initSize = function(parent) {
+            const initSize = function(parent, sizeId) {
                 if (parent.subs) {
                     let size = 0;
                     parent.subs.forEach(sub => {
-                        initSize(sub);
-                        size += sub.size;
+                        initSize(sub, sizeId);
+                        size += sub[sizeId];
                     });
-                    parent.size = size;
+                    parent[sizeId] = size;
                 }
             };
-            initSize(modules);
+            initSize(modules, "size");
+            if (this.info.hasMinifiedAndGzipSize) {
+                initSize(modules, "sizeMinified");
+                initSize(modules, "sizeGzip");
+            }
 
             const initPercent = function(parent) {
                 if (parent.subs) {

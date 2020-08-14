@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "build": "npx webpack",
+    "build-dev": "npx webpack --mode=development",
     "test": "node ./test/test.js"
   },
   "repository": {

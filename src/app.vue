@@ -24,14 +24,12 @@
                 <div class="lui-arrow-next" />
                 <LuiCheckbox v-model="group.folder" label="Folder" />
             </div>
-            <div class="lui-flex-row">
+            <div v-if="info.hasMinifiedAndGzipSize" class="lui-flex-row">
                 <div><b>Size:</b></div>
                 <div class="lui-hs-10" />
-                <LuiRadio v-model="sizeType" label="Source" value="source" />
+                <LuiCheckbox v-model="size.minified" label="Minified" />
                 <div class="lui-arrow-next" />
-                <LuiRadio v-model="sizeType" label="Minified" value="minified" />
-                <div class="lui-arrow-next" />
-                <LuiRadio v-model="sizeType" label="Gzip" value="gzip" />
+                <LuiCheckbox v-model="size.gzip" label="Gzip" />
             </div>
         </div>
         <div class="lui-filter lui-flex-row">
@@ -80,7 +78,6 @@ import Util from "./helper/util.js";
 import {
     createElement,
     LuiCheckbox,
-    LuiRadio,
     LuiInput,
     LuiModal
 } from "lithops-ui";
@@ -96,7 +93,6 @@ import MixinGrid from "./mixin/mixin-grid.js";
 const App = {
     components: {
         LuiCheckbox,
-        LuiRadio,
         LuiInput
     },
     mixins: [
@@ -115,7 +111,10 @@ const App = {
                 type: false,
                 folder: false
             },
-            sizeType: "source",
+            size: {
+                minified: false,
+                gzip: false
+            },
 
             keywords: {
                 chunk: "",
@@ -134,6 +133,12 @@ const App = {
                 this.renderGrid();
             }
         },
+        size: {
+            deep: true,
+            handler: function() {
+                this.updateGridColumns();
+            }
+        },
         keywords: {
             deep: true,
             handler: function() {
@@ -146,7 +151,6 @@ const App = {
         this.statsData = Util.initStatsData(window.statsData);
         console.log(this.statsData);
         this.initGroup();
-        this.initGridColumns();
         this.initInfo();
     },
 

@@ -23,9 +23,9 @@ export default {
             if (!this.grid) {
                 this.grid = this.createGrid();
             }
-            
+
             const gridData = {
-                columns: this.columns,
+                columns: this.getGridColumns(),
                 rows: this.getGridRows(key)
             };
 
@@ -35,7 +35,7 @@ export default {
 
         },
 
-        updateColumnWidth() {
+        updateGridNameWidth() {
             if (!this.grid) {
                 return;
             }
@@ -48,6 +48,9 @@ export default {
             });
             const totalWidth = $(".lui-grid").width();
             const w = totalWidth - width - this.grid.getScrollBarWidth();
+            if (w < 300) {
+                return;
+            }
             this.grid.setColumnWidth("name", w);
         },
 
@@ -69,11 +72,11 @@ export default {
             });
 
             grid.bind("onRowExpanded", function(e, d) {
-                self.updateColumnWidth();
+                self.updateGridNameWidth();
             });
 
             grid.bind("onResize", function(e, d) {
-                self.updateColumnWidth();
+                self.updateGridNameWidth();
             });
 
             return grid;
@@ -158,12 +161,9 @@ export default {
                     }
                     return v;
                 },
-                sizeFormat: function(v, rowData) {
-                    const s = Util.BF(v);
-                    if (rowData.size_color) {
-                        return `<span style="color:${rowData.size_color};">${s}</span>`;
-                    }
-                    return s;
+                sizeFormat: function(v, rd, cd) {
+                    v = Util.BF(v);
+                    return this.option.stringFormat(v, rd, cd);
                 },
                 percentFormat: function(v) {
                     if (!v) {
@@ -182,18 +182,32 @@ export default {
 
         },
 
-        initGridColumns() {
+        updateGridColumns() {
+            if (!this.grid) {
+                return;
+            }
+            if (this.size.minified) {
+                this.grid.showColumn("sizeMinified");
+            } else {
+                this.grid.hideColumn("sizeMinified");
+            }
+            if (this.size.gzip) {
+                this.grid.showColumn("sizeGzip");
+            } else {
+                this.grid.hideColumn("sizeGzip");
+            }
+            this.updateGridNameWidth();
+        },
+
+        getGridColumns() {
+            if (this.columns) {
+                return this.columns;
+            }
 
             this.columns = [{
                 id: "name",
                 name: "Name",
                 maxWidth: 2048
-            }, {
-                id: "size",
-                name: "Size",
-                align: "right",
-                dataType: "size",
-                width: 80
             }, {
                 id: "percent",
                 name: "",
@@ -202,6 +216,26 @@ export default {
                 align: "right",
                 minWidth: 173,
                 width: 173
+            }, {
+                id: "size",
+                name: "Size",
+                align: "right",
+                dataType: "size",
+                width: 80
+            }, {
+                id: "sizeMinified",
+                name: "Minified",
+                align: "right",
+                dataType: "size",
+                originalWidth: 80,
+                width: 0
+            }, {
+                id: "sizeGzip",
+                name: "Gzip",
+                align: "right",
+                dataType: "size",
+                originalWidth: 80,
+                width: 0
             }, {
                 id: "type",
                 name: "Type",
@@ -224,6 +258,7 @@ export default {
                 width: 48
             }];
 
+            return this.columns;
         }
     }
 

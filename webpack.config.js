@@ -15,8 +15,7 @@ module.exports = {
         title: "Stats Report - webpack-stats-report",
         output: ".temp/stats-report.html",
         outputStatsJson: true,
-        generateMinifiedSize: true,
-        generateGzipSize: true,
+        generateMinifiedAndGzipSize: true,
         moduleTypes: {
             module: {
                 color: ""
