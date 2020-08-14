@@ -130,12 +130,14 @@ const App = {
         group: {
             deep: true,
             handler: function() {
+                this.saveStore();
                 this.renderGrid();
             }
         },
         size: {
             deep: true,
             handler: function() {
+                this.saveStore();
                 this.updateGridColumns();
             }
         },
@@ -150,8 +152,9 @@ const App = {
     created() {
         this.statsData = Util.initStatsData(window.statsData);
         console.log(this.statsData);
-        this.initGroup();
         this.initInfo();
+        //after info
+        this.initStore();
     },
 
     mounted() {
@@ -160,21 +163,29 @@ const App = {
 
     methods: {
 
-        initGroup() {
+        initStore() {
             Object.keys(this.group).forEach(k => {
                 if (k === "modules") {
                     return;
                 }
                 this.group[k] = !!Util.store.get(k);
             });
+            if (this.info.hasMinifiedAndGzipSize) {
+                Object.keys(this.size).forEach(k => {
+                    this.size[k] = !!Util.store.get(k);
+                });
+            }
         },
 
-        saveGroup() {
+        saveStore() {
             Object.keys(this.group).forEach(k => {
                 if (k === "modules") {
                     return;
                 }
                 Util.store.set(k, this.group[k] ? 1 : "");
+            });
+            Object.keys(this.size).forEach(k => {
+                Util.store.set(k, this.size[k] ? 1 : "");
             });
         },
 
@@ -197,10 +208,6 @@ const App = {
             this.info.timeH = new Date(this.info.timestamp).toLocaleString();
         },
 
-        select(e) {
-            e.target.select();
-        },
-    
         showDetail(rowData) {
             LuiModal.create((h) => {
                 return {

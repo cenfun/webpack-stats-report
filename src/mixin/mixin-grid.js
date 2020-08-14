@@ -18,8 +18,6 @@ export default {
             }
             this.previousKey = key;
 
-            this.saveGroup();
-
             if (!this.grid) {
                 this.grid = this.createGrid();
             }
@@ -39,6 +37,7 @@ export default {
             if (!this.grid) {
                 return;
             }
+
             let width = 0;
             this.columns.forEach(item => {
                 if (item.id === "name") {
@@ -228,14 +227,14 @@ export default {
                 align: "right",
                 dataType: "size",
                 originalWidth: 80,
-                width: 0
+                width: this.size.minified ? 80 : 0
             }, {
                 id: "sizeGzip",
                 name: "Gzip",
                 align: "right",
                 dataType: "size",
                 originalWidth: 80,
-                width: 0
+                width: this.size.gzip ? 80 : 0
             }, {
                 id: "type",
                 name: "Type",
