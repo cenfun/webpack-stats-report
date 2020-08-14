@@ -31,8 +31,8 @@ module.exports = {
 ```js
 const webpack = require('webpack');
 const StatsReportGenerator = require("webpack-stats-report").StatsReportGenerator;
-webpack(webpackConfig, (err, stats) => {
-    StatsReportGenerator({
+webpack(webpackConfig, async (err, stats) => {
+   await StatsReportGenerator({
         //options
         title: "Stats Report - webpack-stats-report",
         output: ".temp/stats-report.html",
