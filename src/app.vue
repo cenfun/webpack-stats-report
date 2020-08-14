@@ -4,7 +4,10 @@
             <div class="lui-title lui-flex-auto">
                 {{ info.title }}
             </div>
-            <div class="lui-flex-row">
+            <div class="lui-flex-row" />
+        </div>
+        <div class="lui-filter lui-flex-row">
+            <div class="lui-flex-auto lui-flex-row">
                 <LuiCheckbox v-model="group.assets">
                     <b>Assets</b>
                 </LuiCheckbox>
@@ -12,12 +15,9 @@
                 <LuiCheckbox v-model="group.modules">
                     <b>Modules</b>
                 </LuiCheckbox>
-            </div>
-        </div>
-        <div class="lui-filter lui-flex-row">
-            <div class="lui-flex-auto lui-flex-row">
-                <div><b>Group:</b></div>
                 <div class="lui-hs-10" />
+                <div>Group:</div>
+                <div class="lui-hs-5" />
                 <LuiCheckbox v-model="group.chunk" label="Chunk" />
                 <div class="lui-arrow-next" />
                 <LuiCheckbox v-model="group.type" label="Type" />
@@ -25,8 +25,8 @@
                 <LuiCheckbox v-model="group.folder" label="Folder" />
             </div>
             <div v-if="info.hasMinifiedAndGzipSize" class="lui-flex-row">
-                <div><b>Size:</b></div>
-                <div class="lui-hs-10" />
+                <div>Size:</div>
+                <div class="lui-hs-5" />
                 <LuiCheckbox v-model="size.minified" label="Minified" />
                 <div class="lui-arrow-next" />
                 <LuiCheckbox v-model="size.gzip" label="Gzip" />
