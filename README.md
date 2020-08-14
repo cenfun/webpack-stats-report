@@ -48,6 +48,8 @@ webpack(webpackConfig, (err, stats) => {
 {
     title: "Stats Report",
     output: "stats-report.html",
+    outputStatsJson: false,
+    generateMinifiedAndGzipSize: false
     ...
 }
 ```
@@ -60,6 +62,9 @@ npm run test
 see [./test/test.js](./test/test.js)
 
 ## Changelog
+
+* v1.1.2
+    * added minified/gzip size
 
 * v1.1.1
     * new layout
