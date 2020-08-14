@@ -63,7 +63,13 @@ export default {
 
 };
 </script>
-<style>
+<style lang="scss">
+.lui-detail {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
 .lui-modal-item .lui-loader {
     display: inline-block;
     white-space: nowrap;

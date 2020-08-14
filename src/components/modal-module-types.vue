@@ -60,3 +60,10 @@ export default {
 
 };
 </script>
+<style lang="scss">
+.lui-module-types {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+</style>

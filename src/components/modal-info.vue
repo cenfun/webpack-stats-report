@@ -1,5 +1,5 @@
 <template>
-    <div class="lui-modal-list">
+    <div class="lui-info lui-modal-list">
         <div v-for="(item, i) in list" :key="i" class="lui-modal-item">
             <pre><code>{{ i+1 }}. {{ formatItem(item) }}</code></pre>
         </div>
@@ -32,3 +32,10 @@ export default {
     }
 };
 </script>
+<style lang="scss">
+.lui-info {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+</style>
