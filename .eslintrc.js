@@ -13,11 +13,13 @@ module.exports = {
     },
 
     "plugins": [
+        "chain",
         "vue"
     ],
 
     "extends": [
         "eslint:recommended",
+        "plugin:chain/recommended",
         "plugin:vue/recommended"
     ],
 
@@ -35,6 +37,9 @@ module.exports = {
     "rules": {
         "arrow-spacing": "error",
         "block-spacing": "error",
+        "chain/dependencies": ["error", {
+            "noDevDependenciesDir": ["**/lib/**"]
+        }],
         "comma-dangle": ["error", "never"],
         "comma-spacing": ["error", {
             "after": true,
