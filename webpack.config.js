@@ -47,6 +47,7 @@ module.exports = {
             }
         }, {
             test: /\.(css|scss)$/,
+            sideEffects: true,
             use: [{
                 loader: "style-loader",
                 options: {
