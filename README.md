@@ -63,6 +63,10 @@ see [./test/test.js](./test/test.js)
 
 ## Changelog
 
+* v1.1.3
+    * fixed dependencies 
+    * fixed module path format issue
+
 * v1.1.2
     * added minified/gzip size
 
