@@ -63,6 +63,10 @@ see [./test/test.js](./test/test.js)
 
 ## Changelog
 
+* v1.1.4
+    * updated to webpack5
+    * fixed json filename and webpack5 buildin
+
 * v1.1.3
     * fixed dependencies 
     * fixed module path format issue
