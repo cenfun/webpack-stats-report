@@ -42,7 +42,8 @@ main
 header
 */
 .lui-header {
-    background: #dee1e6;
+    background: #000;
+    color: #eee;
     height: 40px;
     position: relative;
     border-bottom: 1px solid #ccc;
@@ -52,7 +53,6 @@ header
 .lui-title {
     font-size: 16px;
     font-weight: bold;
-    color: #555;
 }
 
 /*
