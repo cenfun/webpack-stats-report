@@ -63,6 +63,9 @@ see [./test/test.js](./test/test.js)
 
 ## Changelog
 
+* v1.1.7
+    * added lz-string to minify json data
+
 * v1.1.6
     * fix minified and gzip for webpack5 stats
 
