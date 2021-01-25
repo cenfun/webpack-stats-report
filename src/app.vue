@@ -73,6 +73,7 @@
     </div>
 </template>
 <script>
+const LzString = require("lz-string");
 import Util from "./helper/util.js";
 
 import {
@@ -150,7 +151,8 @@ const App = {
     },
 
     created() {
-        this.statsData = Util.initStatsData(window.statsData);
+        const statsData = JSON.parse(LzString.decompressFromBase64(window.statsData));
+        this.statsData = Util.initStatsData(statsData);
         console.log(this.statsData);
         this.initInfo();
         //after info

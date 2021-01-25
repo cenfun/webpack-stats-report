@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/cenfun/webpack-stats-report#readme",
   "dependencies": {
+    "lz-string": "^1.4.4",
     "micromatch": "^4.0.2",
     "terser": "^5.5.1"
   },
