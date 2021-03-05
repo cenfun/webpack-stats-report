@@ -1,18 +1,22 @@
 {
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "css.validate": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll.stylelint": true
+    },
+    "editor.formatOnSave": true,
+    "eslint.format.enable": true,
     "eslint.validate": [
         "vue",
         "html",
         "javascript"
     ],
-    "css.validate": false,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.stylelint": true
-    },
-    "editor.formatOnSave": true,
-    "eslint.format.enable": true,
     "less.validate": false,
-    "scss.validate": false,
-    "[vue]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    }
+    "scss.validate": false
 }

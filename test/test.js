@@ -1,10 +1,18 @@
+const fs = require("fs");
 const path = require("path");
+const assert = require("assert");
+const Util = require("../lib/util.js");
+const options = require("../lib/options.js");
+
+console.log("==================================================================");
+console.log("test StatsReportGenerator");
 const StatsReportGenerator = require("../lib").StatsReportGenerator;
 const statsJson = require("./webpack5.stats.js");
+const outputPath = path.resolve(__dirname, "../.temp/stats-report-webpack5.html");
 StatsReportGenerator({
     //options
     title: "Stats Report - webpack5",
-    output: path.resolve(__dirname, "../.temp/stats-report-webpack5.html"),
+    output: outputPath,
     outputStatsJson: true,
 
     //test if no source
@@ -24,3 +32,16 @@ StatsReportGenerator({
     //require one more option stats
     stats: statsJson
 });
+assert(fs.existsSync(outputPath));
+
+console.log("==================================================================");
+console.log("test isMatch external");
+const externalPatterns = options.moduleTypes.external.patterns;
+assert.strictEqual(Util.isMatch('external "name"', externalPatterns), true);
+assert.strictEqual(Util.isMatch('external "pre-name"', externalPatterns), true);
+assert.strictEqual(Util.isMatch('external "node_modules/pre-name"', externalPatterns), true);
+assert.strictEqual(Util.isMatch('external "@package/pre-name"', externalPatterns), true);
+assert.strictEqual(Util.isMatch('external "@pre-package/pre-name"', externalPatterns), true);
+
+
+console.log("==================================================================");

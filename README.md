@@ -63,6 +63,9 @@ see [./test/test.js](./test/test.js)
 
 ## Changelog
 
+* v1.1.8
+    * fixed external "@pre-package/pre-name" issue
+
 * v1.1.7
     * added lz-string to minify json data
 
