@@ -37,7 +37,12 @@ webpack(webpackConfig, async (err, stats) => {
         title: "Stats Report - webpack-stats-report",
         output: ".temp/stats-report.html",
         //require one more option stats
-        stats: stats.toJson(toJsonOptions)
+        stats: stats.toJson({
+            //source for generateMinifiedAndGzipSize = true
+            source: true,
+            reasons: false,
+            chunkModules: false
+        })
     });
 });
 ```
@@ -55,13 +60,16 @@ webpack(webpackConfig, async (err, stats) => {
 ```
 more details: [options.js](./lib/options.js)
 
-## Test Webpack5 Stats
+## Test
 ```sh
 npm run test
 ```
 see [./test/test.js](./test/test.js)
 
 ## Changelog
+
+* v1.1.9
+    * fixed size issue
 
 * v1.1.8
     * fixed external "@pre-package/pre-name" issue

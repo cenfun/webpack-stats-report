@@ -58,7 +58,8 @@ export default {
                     let size = 0;
                     parent.subs.forEach(sub => {
                         initSize(sub, sizeId);
-                        size += sub[sizeId];
+                        const n = sub[sizeId] || 0;
+                        size += n;
                     });
                     parent[sizeId] = size;
                 }
