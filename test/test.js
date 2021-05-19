@@ -5,6 +5,17 @@ const Util = require("../lib/util.js");
 const options = require("../lib/options.js");
 
 console.log("==================================================================");
+console.log("test formatMatchPath");
+assert.strictEqual(Util.formatMatchPath("a/b/c"), "a/b/c");
+assert.strictEqual(Util.formatMatchPath(".a/b/c"), "a/b/c");
+assert.strictEqual(Util.formatMatchPath("./a/b/c"), "a/b/c");
+assert.strictEqual(Util.formatMatchPath("../a/b/c"), "a/b/c");
+assert.strictEqual(Util.formatMatchPath("../../a/b/c"), "a/b/c");
+assert.strictEqual(Util.formatMatchPath("../../../a/b/c"), "a/b/c");
+assert.strictEqual(Util.formatMatchPath("./../../a/b/c"), "a/b/c");
+assert.strictEqual(Util.formatMatchPath("../../a/b/c/../"), "a/b/c/../");
+
+console.log("==================================================================");
 console.log("test isMatch external");
 const externalPatterns = options.moduleTypes.external.patterns;
 assert.strictEqual(Util.isMatch('external "name"', externalPatterns), true);
@@ -12,6 +23,13 @@ assert.strictEqual(Util.isMatch('external "pre-name"', externalPatterns), true);
 assert.strictEqual(Util.isMatch('external "node_modules/pre-name"', externalPatterns), true);
 assert.strictEqual(Util.isMatch('external "@package/pre-name"', externalPatterns), true);
 assert.strictEqual(Util.isMatch('external "@pre-package/pre-name"', externalPatterns), true);
+
+console.log("==================================================================");
+console.log("test isMatch loader");
+const loaderPatterns = options.moduleTypes.loader.patterns;
+assert.strictEqual(Util.isMatch("../d-loader", loaderPatterns), false);
+assert.strictEqual(Util.isMatch("../node_modules/xxx-loader/path-to", loaderPatterns), true);
+assert.strictEqual(Util.isMatch("../../node_modules/xxx-loader/path-to", loaderPatterns), true);
 
 console.log("==================================================================");
 console.log("test StatsReportGenerator");

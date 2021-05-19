@@ -68,6 +68,9 @@ see [./test/test.js](./test/test.js)
 
 ## Changelog
 
+* v1.1.10
+    * fixed ../../ path loader not matched issue
+
 * v1.1.9
     * fixed size issue
 
