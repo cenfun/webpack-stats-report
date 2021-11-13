@@ -1,22 +1,23 @@
-const fs = require("fs");
-const path = require("path");
-const assert = require("assert");
-const Util = require("../lib/util.js");
-const options = require("../lib/options.js");
+const fs = require('fs');
+const path = require('path');
+const assert = require('assert');
+const Util = require('../lib/util.js');
+const options = require('../lib/options.js');
 
-console.log("==================================================================");
-console.log("test formatMatchPath");
-assert.strictEqual(Util.formatMatchPath("a/b/c"), "a/b/c");
-assert.strictEqual(Util.formatMatchPath(".a/b/c"), "a/b/c");
-assert.strictEqual(Util.formatMatchPath("./a/b/c"), "a/b/c");
-assert.strictEqual(Util.formatMatchPath("../a/b/c"), "a/b/c");
-assert.strictEqual(Util.formatMatchPath("../../a/b/c"), "a/b/c");
-assert.strictEqual(Util.formatMatchPath("../../../a/b/c"), "a/b/c");
-assert.strictEqual(Util.formatMatchPath("./../../a/b/c"), "a/b/c");
-assert.strictEqual(Util.formatMatchPath("../../a/b/c/../"), "a/b/c/../");
+console.log('==================================================================');
+console.log('test formatMatchPath');
+assert.strictEqual(Util.formatMatchPath('a/b/c'), 'a/b/c');
+assert.strictEqual(Util.formatMatchPath('.a/b/c'), 'a/b/c');
+assert.strictEqual(Util.formatMatchPath('./a/b/c'), 'a/b/c');
+assert.strictEqual(Util.formatMatchPath('../a/b/c'), 'a/b/c');
+assert.strictEqual(Util.formatMatchPath('../../a/b/c'), 'a/b/c');
+assert.strictEqual(Util.formatMatchPath('../../../a/b/c'), 'a/b/c');
+assert.strictEqual(Util.formatMatchPath('./../../a/b/c'), 'a/b/c');
+assert.strictEqual(Util.formatMatchPath('../../a/b/c/../'), 'a/b/c/../');
 
-console.log("==================================================================");
-console.log("test isMatch external");
+console.log('==================================================================');
+console.log('test isMatch external');
+
 const externalPatterns = options.moduleTypes.external.patterns;
 assert.strictEqual(Util.isMatch('external "name"', externalPatterns), true);
 assert.strictEqual(Util.isMatch('external "pre-name"', externalPatterns), true);
@@ -24,21 +25,23 @@ assert.strictEqual(Util.isMatch('external "node_modules/pre-name"', externalPatt
 assert.strictEqual(Util.isMatch('external "@package/pre-name"', externalPatterns), true);
 assert.strictEqual(Util.isMatch('external "@pre-package/pre-name"', externalPatterns), true);
 
-console.log("==================================================================");
-console.log("test isMatch loader");
-const loaderPatterns = options.moduleTypes.loader.patterns;
-assert.strictEqual(Util.isMatch("../d-loader", loaderPatterns), false);
-assert.strictEqual(Util.isMatch("../node_modules/xxx-loader/path-to", loaderPatterns), true);
-assert.strictEqual(Util.isMatch("../../node_modules/xxx-loader/path-to", loaderPatterns), true);
 
-console.log("==================================================================");
-console.log("test StatsReportGenerator");
-const StatsReportGenerator = require("../lib").StatsReportGenerator;
-const statsJson = require("./webpack5.stats.js");
-const outputPath = path.resolve(__dirname, "../.temp/stats-report-webpack5.html");
+console.log('==================================================================');
+console.log('test isMatch loader');
+const loaderPatterns = options.moduleTypes.loader.patterns;
+assert.strictEqual(Util.isMatch('../d-loader', loaderPatterns), false);
+assert.strictEqual(Util.isMatch('../node_modules/xxx-loader/path-to', loaderPatterns), true);
+assert.strictEqual(Util.isMatch('../../node_modules/xxx-loader/path-to', loaderPatterns), true);
+
+console.log('==================================================================');
+console.log('test StatsReportGenerator');
+const StatsReportGenerator = require('../lib').StatsReportGenerator;
+const statsJson = require('./webpack5.stats.js');
+const outputPath = path.resolve(__dirname, '../.temp/stats-report-webpack5.html');
+
 StatsReportGenerator({
     //options
-    title: "Stats Report - webpack5",
+    title: 'Stats Report - webpack5',
     output: outputPath,
     outputStatsJson: true,
 
@@ -48,12 +51,12 @@ StatsReportGenerator({
     //custom module types
     moduleTypes: {
         test: {
-            patterns: ["\\(webpack\\)/test/*/**"],
-            color: "green",
+            patterns: ['\\(webpack\\)/test/*/**'],
+            color: 'green',
             priority: 3.1
         },
         source: {
-            patterns: ["*webpack/**"]
+            patterns: ['*webpack/**']
         }
     },
     //require one more option stats

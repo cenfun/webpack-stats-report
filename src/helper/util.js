@@ -1,6 +1,6 @@
 const Util = {
     toNum: function(num, toInt) {
-        if (typeof (num) !== "number") {
+        if (typeof (num) !== 'number') {
             num = parseFloat(num);
         }
         if (isNaN(num)) {
@@ -12,8 +12,13 @@ const Util = {
         return num;
     },
 
+    zero: function(s, l = 2) {
+        s = `${s}`;
+        return s.padStart(l, '0');
+    },
+
     toList: function(data) {
-        if (typeof(data) === "undefined") {
+        if (typeof (data) === 'undefined') {
             return [];
         }
         if (data instanceof Array) {
@@ -25,14 +30,14 @@ const Util = {
     BF: function(v, digits = 1, base = 1024) {
         v = Util.toNum(v, true);
         if (v === 0) {
-            return "0B";
+            return '0B';
         }
-        let prefix = "";
+        let prefix = '';
         if (v < 0) {
             v = Math.abs(v);
-            prefix = "-";
+            prefix = '-';
         }
-        const units = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+        const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
         for (let i = 0, l = units.length; i < l; i++) {
             const min = Math.pow(base, i);
             const max = Math.pow(base, i + 1);
@@ -45,11 +50,35 @@ const Util = {
         return v;
     },
 
+    TF: function(v, unit, digits = 1) {
+        v = Util.toNum(v, true);
+        if (unit) {
+            if (unit === 's') {
+                v = (v / 1000).toFixed(digits);
+            } else if (unit === 'm') {
+                v = (v / 1000 / 60).toFixed(digits);
+            } else if (unit === 'h') {
+                v = (v / 1000 / 60 / 60).toFixed(digits);
+            }
+            return Util.NF(v) + unit;
+        }
+        const s = v / 1000;
+        const hours = Math.floor(s / 60 / 60);
+        const minutes = Math.floor((s - (hours * 60 * 60)) / 60);
+        const seconds = Math.round(s - (hours * 60 * 60) - (minutes * 60));
+        return `${hours}:${Util.zero(minutes)}:${Util.zero(seconds)}`;
+    },
+
+    NF: function(v) {
+        v = Util.toNum(v);
+        return v.toLocaleString();
+    },
+
     store: {
         key(k) {
             return `wsr_${k}`;
         },
-        get(k, dv = "") {
+        get(k, dv = '') {
             k = Util.store.key(k);
             let v = null;
             try {
@@ -76,9 +105,9 @@ const Util = {
         const map = statsData.map;
         delete statsData.map;
 
-        [statsData.assets, statsData.modules].forEach(item => {
+        [statsData.assets, statsData.modules].forEach(am => {
 
-            item.subs.forEach(item => {
+            am.subs.forEach(item => {
                 item.name = map[item.name];
                 //fullName
                 if (item.chunk) {

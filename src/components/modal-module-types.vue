@@ -1,39 +1,51 @@
 <template>
-    <div class="lui-module-types">
-        <table class="lui-modal-table">
-            <tr>
-                <th>P.</th>
-                <th>Type</th>
-                <th>Color</th>
-                <th>Patterns (<a href="https://github.com/micromatch/micromatch" target="_blank">micromatch</a>)</th>
-                <th>Description</th>
-            </tr>
-            <tr v-for="(item, i) in list" :key="i">
-                <td>
-                    {{ item.priority }}
-                </td>
-                <td>
-                    {{ item.type }}
-                </td>
-                <td :style="{color:item.color}">
-                    {{ item.color }}
-                </td>
-                <td>
-                    <div v-for="(p, j) in item.patterns" :key="j" class="lui-modal-nowrap">
-                        {{ p }}
-                    </div>
-                </td>
-                <td>
-                    <div style="max-height: 50px; overflow: hidden;">
-                        {{ item.description }}
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
+  <div class="lui-module-types">
+    <table class="lui-modal-table">
+      <tr>
+        <th>P.</th>
+        <th>Type</th>
+        <th>Color</th>
+        <th>
+          Patterns (<a
+            href="https://github.com/micromatch/micromatch"
+            target="_blank"
+          >micromatch</a>)
+        </th>
+        <th>Description</th>
+      </tr>
+      <tr
+        v-for="(item, i) in list"
+        :key="i"
+      >
+        <td>
+          {{ item.priority }}
+        </td>
+        <td>
+          {{ item.type }}
+        </td>
+        <td :style="{color:item.color}">
+          {{ item.color }}
+        </td>
+        <td>
+          <div
+            v-for="(p, j) in item.patterns"
+            :key="j"
+            class="lui-modal-nowrap"
+          >
+            {{ p }}
+          </div>
+        </td>
+        <td>
+          <div style="max-height: 50px; overflow: hidden;">
+            {{ item.description }}
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
 </template>
 <script>
-import Util from "../helper/util.js";
+import Util from '../helper/util.js';
 
 export default {
     props: {
