@@ -64,10 +64,10 @@ export default {
                     parent[sizeId] = size;
                 }
             };
-            initSize(modules, "size");
+            initSize(modules, 'size');
             if (this.info.hasMinifiedAndGzipSize) {
-                initSize(modules, "sizeMinified");
-                initSize(modules, "sizeGzip");
+                initSize(modules, 'sizeMinified');
+                initSize(modules, 'sizeGzip');
             }
 
             const initPercent = function(parent) {
@@ -172,7 +172,7 @@ export default {
                     const arr = m.name.split(/\/|\\/g);
                     const paths = arr.filter(n => {
                         //maybe need ../
-                        if (!n || n === "." || n === "..") {
+                        if (!n || n === '.' || n === '..') {
                             return false;
                         }
                         return true;
@@ -211,8 +211,8 @@ export default {
                     }
 
                     if (subs.length) {
-                        subs.forEach(item => {
-                            initSubs(item);
+                        subs.forEach(it => {
+                            initSubs(it);
                         });
                     }
                 };

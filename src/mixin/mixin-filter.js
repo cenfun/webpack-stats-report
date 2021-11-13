@@ -1,4 +1,4 @@
-import Util from "../helper/util.js";
+import Util from '../helper/util.js';
 
 export default {
 
@@ -28,7 +28,7 @@ export default {
                     continue;
                 }
                 const v = rowData[field];
-                if (typeof v === "undefined") {
+                if (typeof v === 'undefined') {
                     return false;
                 }
                 const value = `${v}`.toLowerCase();
@@ -48,7 +48,7 @@ export default {
                 if (item.subs) {
                     return;
                 }
-                if (item.tg_parent && item.tg_parent.id === "assets") {
+                if (item.tg_parent && item.tg_parent.id === 'assets') {
                     return;
                 }
                 size += item.size;
