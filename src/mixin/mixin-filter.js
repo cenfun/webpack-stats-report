@@ -41,11 +41,16 @@ export default {
         },
 
         updateFilterInfo() {
+            if (this.hasGroup) {
+                return;
+            }
+
             let len = 0;
             let size = 0;
             const rows = this.grid.getGridRowsData();
             rows.forEach(item => {
                 if (item.subs) {
+                    //console.log(item);
                     return;
                 }
                 if (item.tg_parent && item.tg_parent.id === 'assets') {

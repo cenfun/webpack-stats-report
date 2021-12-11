@@ -38,7 +38,7 @@ export default {
                 sortOnInit: true,
                 collapseAll: null,
                 rowNumberType: 'list',
-                rowNotFound: 'No Results',
+                rowNotFound: '<div>No Results</div>',
                 rowFilter: this.filterHandler
             });
 
@@ -106,13 +106,12 @@ export default {
             if (!this.grid) {
                 return;
             }
-
             let width = 0;
             this.columns.forEach(item => {
-                if (item.id === 'name') {
+                if (item.id === 'name' || item.tg_invisible) {
                     return;
                 }
-                width += item.width;
+                width += item.tg_width;
             });
             const totalWidth = $('.lui-grid').width();
             const w = totalWidth - width - this.grid.getScrollBarWidth();
@@ -190,12 +189,12 @@ export default {
                 return;
             }
             if (this.size.minified) {
-                this.grid.showColumn('sizeMinified', 80);
+                this.grid.showColumn('sizeMinified');
             } else {
                 this.grid.hideColumn('sizeMinified');
             }
             if (this.size.gzip) {
-                this.grid.showColumn('sizeGzip', 80);
+                this.grid.showColumn('sizeGzip');
             } else {
                 this.grid.hideColumn('sizeGzip');
             }
@@ -203,10 +202,7 @@ export default {
         },
 
         getGridColumns() {
-            if (this.columns) {
-                return this.columns;
-            }
-
+            //update every time for invisible
             this.columns = [{
                 id: 'name',
                 name: 'Name',
@@ -230,13 +226,15 @@ export default {
                 name: 'Minified',
                 align: 'right',
                 dataType: 'size',
-                width: this.size.minified ? 80 : 0
+                invisible: !this.size.minified,
+                width: 80
             }, {
                 id: 'sizeGzip',
                 name: 'Gzip',
                 align: 'right',
                 dataType: 'size',
-                width: this.size.gzip ? 80 : 0
+                invisible: !this.size.gzip,
+                width: 80
             }, {
                 id: 'type',
                 name: 'Type',

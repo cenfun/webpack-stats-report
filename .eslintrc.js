@@ -242,15 +242,6 @@ const fixableRules = {
 };
 
 
-// plugin special rules
-const sonarjsRules = {
-    'sonarjs/cognitive-complexity': 'off',
-    'sonarjs/no-collapsible-if': 'off',
-    'sonarjs/no-duplicate-string': 'off',
-    'sonarjs/no-identical-functions': 'off'
-};
-
-
 module.exports = {
     'root': true,
     // system globals
@@ -269,15 +260,13 @@ module.exports = {
 
     // should "npm install eslint-plugin-es -g" for VSCode in global
     'plugins': [
-        'sonarjs',
-        //'chain',
+        'chain',
         'vue',
         'html'
     ],
 
     'extends': [
-        'plugin:sonarjs/recommended',
-        //'plugin:chain/recommended',
+        'plugin:chain/recommended',
         'plugin:vue/recommended',
         'eslint:recommended'
     ],
@@ -293,7 +282,6 @@ module.exports = {
     'rules': {
         ... recommendedRules,
         ... normalRules,
-        ... fixableRules,
-        ... sonarjsRules
+        ... fixableRules
     }
 };

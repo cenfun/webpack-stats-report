@@ -64,12 +64,14 @@
       >
         <b>Filter:</b>
       </LuiInput>
+      <div class="lui-hs-5" />
       <LuiInput
         v-model="keywords.type"
         name="type"
         placeholder="Type"
         title="Type"
       />
+      <div class="lui-hs-5" />
       <LuiInput
         v-model="keywords.name"
         name="name"
@@ -78,7 +80,7 @@
         width="150px"
       />
       <span
-        v-if="group.modules"
+        v-if="group.modules && !hasGroup"
         class="lui-filter-info"
       >Found <b>{{ filterModules }}</b> modules (Size: {{ filterSize }})</span>
     </div>
@@ -107,7 +109,7 @@
   </div>
 </template>
 <script>
-const LzString = require('lz-string');
+import decompress from 'lz-utils/lib/decompress.js';
 import Util from './helper/util.js';
 
 import {
@@ -185,8 +187,18 @@ const App = {
         }
     },
 
+    computed: {
+        hasGroup: function() {
+            const g = this.group;
+            if (g.chunk || g.type || g.folder) {
+                return true;
+            }
+            return false;
+        }
+    },
+
     created() {
-        const statsData = JSON.parse(LzString.decompressFromBase64(window.statsData));
+        const statsData = JSON.parse(decompress(window.statsData));
         this.statsData = Util.initStatsData(statsData);
         console.log(this.statsData);
         this.initInfo();
