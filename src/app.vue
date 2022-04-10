@@ -56,33 +56,33 @@
       </div>
     </div>
     <div class="lui-filter lui-flex-row">
-      <LuiInput
-        v-model="keywords.chunk"
-        name="chunk"
-        placeholder="Chunk"
-        title="Chunk"
-      >
-        <b>Filter:</b>
-      </LuiInput>
-      <div class="lui-hs-5" />
-      <LuiInput
-        v-model="keywords.type"
-        name="type"
-        placeholder="Type"
-        title="Type"
-      />
-      <div class="lui-hs-5" />
-      <LuiInput
-        v-model="keywords.name"
-        name="name"
-        placeholder="Name"
-        title="Chunk"
-        width="150px"
-      />
-      <span
-        v-if="group.modules && !hasGroup"
-        class="lui-filter-info"
-      >Found <b>{{ filterModules }}</b> modules (Size: {{ filterSize }})</span>
+      <LuiFlex spacing="10">
+        <LuiInput
+          v-model="keywords.chunk"
+          name="chunk"
+          placeholder="Chunk"
+          title="Chunk"
+        >
+          <b>Filter:</b>
+        </LuiInput>
+        <LuiInput
+          v-model="keywords.type"
+          name="type"
+          placeholder="Type"
+          title="Type"
+        />
+        <LuiInput
+          v-model="keywords.name"
+          name="name"
+          placeholder="Name"
+          title="Chunk"
+          width="150px"
+        />
+        <span
+          v-if="group.modules && !hasGroup"
+          class="lui-filter-info"
+        >Found <b>{{ filterModules }}</b> modules (Size: {{ filterSize }})</span>
+      </LuiFlex>
     </div>
     <div class="lui-grid lui-flex-auto" />
     <div class="lui-footer lui-flex-row">
@@ -116,6 +116,7 @@ import {
     createElement,
     LuiCheckbox,
     LuiInput,
+    LuiFlex,
     LuiModal,
     LuiPopover
 } from 'lithops-ui';
@@ -124,20 +125,25 @@ import ModalDetail from './components/modal-detail.vue';
 import ModalModuleTypes from './components/modal-module-types.vue';
 import ModalInfo from './components/modal-info.vue';
 
-import MixinFilter from './mixin/mixin-filter.js';
-import MixinGroup from './mixin/mixin-group.js';
-import MixinGrid from './mixin/mixin-grid.js';
+const mixins = [];
+const context = require.context('./mixin', true, /\.js$/);
+const paths = context.keys();
+paths.forEach((path) => {
+    mixins.push(context(path).default);
+});
+
+//console.log(mixins);
+// import MixinFilter from './mixin/mixin-filter.js';
+// import MixinGroup from './mixin/mixin-group.js';
+// import MixinGrid from './mixin/mixin-grid.js';
 
 const App = {
     components: {
+        LuiFlex,
         LuiCheckbox,
         LuiInput
     },
-    mixins: [
-        MixinFilter,
-        MixinGroup,
-        MixinGrid
-    ],
+    mixins: mixins,
     data() {
         return {
             info: {},

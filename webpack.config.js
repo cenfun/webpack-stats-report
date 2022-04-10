@@ -5,6 +5,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
     mode: 'production',
     //mode: "development",
+    //https://webpack.js.org/configuration/devtool/#devtool
+    //devtool: 'source-map',
     output: {
         filename: 'webpack-stats-report.js',
         umdNamedDefine: true,
@@ -15,12 +17,7 @@ module.exports = {
         title: 'Stats Report - webpack-stats-report',
         output: '.temp/stats-report.html',
         outputStatsJson: true,
-        generateMinifiedAndGzipSize: true,
-        moduleTypes: {
-            module: {
-                color: ''
-            }
-        }
+        generateMinifiedAndGzipSize: true
     })],
     optimization: {
         minimizer: [

@@ -1,4 +1,4 @@
-import { Grid, $ } from 'turbogrid';
+import { Grid } from 'turbogrid';
 import Util from '../helper/util.js';
 
 export default {
@@ -102,25 +102,6 @@ export default {
 
         },
 
-        updateGridNameWidth() {
-            if (!this.grid) {
-                return;
-            }
-            let width = 0;
-            this.columns.forEach(item => {
-                if (item.id === 'name' || item.tg_invisible) {
-                    return;
-                }
-                width += item.tg_width;
-            });
-            const totalWidth = $('.lui-grid').width();
-            const w = totalWidth - width - this.grid.getScrollBarWidth();
-            if (w < 300) {
-                return;
-            }
-            this.grid.setColumnWidth('name', w);
-        },
-
         createGrid() {
             const grid = new Grid('.lui-grid');
             grid.bind('onClick', (e, d) => {
@@ -139,14 +120,6 @@ export default {
 
             grid.bind('onRenderUpdate', () => {
                 this.updateFilterInfo();
-            });
-
-            grid.bind('onRowExpanded', (e, d) => {
-                this.updateGridNameWidth();
-            });
-
-            grid.bind('onResize', (e, d) => {
-                this.updateGridNameWidth();
             });
 
             return grid;
@@ -198,7 +171,6 @@ export default {
             } else {
                 this.grid.hideColumn('sizeGzip');
             }
-            this.updateGridNameWidth();
         },
 
         getGridColumns() {
@@ -206,6 +178,7 @@ export default {
             this.columns = [{
                 id: 'name',
                 name: 'Name',
+                width: 500,
                 maxWidth: 2048
             }, {
                 id: 'percent',
