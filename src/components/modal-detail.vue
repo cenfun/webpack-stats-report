@@ -65,6 +65,20 @@
         {{ rowData.chunk }}
       </div>
     </div>
+
+    <div class="lui-modal-label">
+      Type:
+    </div>
+    <div class="lui-modal-item">
+      {{ rowData.type }}
+    </div>
+
+    <div class="lui-modal-label">
+      Size:
+    </div>
+    <div class="lui-modal-item">
+      {{ rowData.sizeH }}
+    </div>
   </div>
 </template>
 <script>

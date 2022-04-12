@@ -291,6 +291,7 @@ const App = {
 
             this.flyoverVisible = true;
 
+            rowData.sizeH = Util.BF(rowData.size);
             this.flyoverData = rowData;
 
         },
