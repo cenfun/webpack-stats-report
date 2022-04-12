@@ -71,7 +71,7 @@ export default {
             
                     if (rd.issuerPath) {
                         v += `
-                            <div class="tg-cell-hover-icon tg-popover-icon" title="Click for Detail">
+                            <div class="tg-cell-hover-icon tg-flyover-icon" title="Click for Detail">
                                 <div class="tg-issuer-icon" />
                             </div>
                         `;
@@ -103,17 +103,23 @@ export default {
         createGrid() {
             const grid = new Grid('.lui-grid');
             grid.bind('onClick', (e, d) => {
+                const rowData = grid.getRowItem(d.row);
+
+                let openFlyover = false;
                 const icon = d.e.target;
-                if (icon.classList.contains('tg-popover-icon')) {
-                    const rowData = grid.getRowItem(d.row);
-                    this.showPopover(icon, rowData);
+                if (icon.classList.contains('tg-flyover-icon')) {
+                    openFlyover = true;
                 }
+                this.showFlyover(rowData, openFlyover);
+
                 grid.unselectAll();
                 grid.setSelectedRow(d.row, d.e);
+
             });
 
-            grid.bind('onScroll', (e, d) => {
-                this.hidePopover();
+            grid.bind('onDblClick', (e, d) => {
+                const rowData = grid.getRowItem(d.row);
+                this.showFlyover(rowData, true);
             });
 
             grid.bind('onRenderUpdate', () => {

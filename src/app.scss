@@ -192,7 +192,7 @@ detail
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 15'%3e%3ccircle cx='7.5' cy='7.5' r='6.5' fill='none' stroke='%235e5e5e' vector-effect='non-scaling-stroke' stroke-miterlimit='10'/%3e%3cpath stroke='none' d='M6.75 3.75H8V5H6.75zM9.125 11V9.875h-1V6h-2.25v1.125h1v2.75h-1V11h3.25z'/%3e%3c/svg%3e");
 }
 
-.tg-popover-icon {
+.tg-flyover-icon {
     position: absolute;
     top: 0;
     right: 0;
@@ -202,8 +202,30 @@ detail
     cursor: pointer;
 }
 
-.lui-grid .tg-popover-icon.tg-popover-icon-pin {
-    display: block;
+.lui-flyover-main {
+    height: 100%;
+    overflow: hidden;
+}
+
+.lui-flyover-header {
+    height: 40px;
+    line-height: 40px;
+    background-color: #666;
+    border-bottom: 1px solid #ccc;
+    padding: 0 10px;
+    color: #fff;
+}
+
+.lui-flyover-close {
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.lui-flyover-content {
+    padding: 10px;
+    overflow: auto;
 }
 
 /*
@@ -213,17 +235,25 @@ modal slot
 .lui-modal-label {
     font-size: 16px;
     font-weight: bold;
-    margin-top: 10px;
 }
 
 .lui-modal-item {
     padding: 5px;
     border-bottom: 1px solid #f5f5f5;
     position: relative;
+    margin-bottom: 10px;
 }
 
 .lui-modal-item:hover {
     background-color: #f5f5f5;
+}
+
+.lui-modal-list {
+    margin-bottom: 10px;
+}
+
+.lui-modal-list .lui-modal-item {
+    margin-bottom: 0;
 }
 
 .lui-modal-line {

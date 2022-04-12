@@ -104,6 +104,26 @@
         </div>
       </div>
     </div>
+    <LuiFlyover
+      ref="flyover"
+      :visible="flyoverVisible"
+      position="right"
+      width="50%"
+    >
+      <div class="lui-flyover-main lui-flex-column">
+        <div class="lui-flyover-header">
+          <div
+            class="lui-flyover-close"
+            @click="flyoverVisible=false"
+          >
+            X
+          </div>
+        </div>
+        <div class="lui-flyover-content lui-flex-auto">
+          <ModalDetail :row-data="flyoverData" />
+        </div>
+      </div>
+    </LuiFlyover>
   </div>
 </template>
 <script>
@@ -116,7 +136,7 @@ import {
     LuiInput,
     LuiFlex,
     LuiModal,
-    LuiPopover
+    LuiFlyover
 } from 'lithops-ui';
 
 import ModalDetail from './components/modal-detail.vue';
@@ -130,16 +150,13 @@ paths.forEach((path) => {
     mixins.push(context(path).default);
 });
 
-//console.log(mixins);
-// import MixinFilter from './mixin/mixin-filter.js';
-// import MixinGroup from './mixin/mixin-group.js';
-// import MixinGrid from './mixin/mixin-grid.js';
-
 const App = {
     components: {
         LuiFlex,
         LuiCheckbox,
-        LuiInput
+        LuiInput,
+        LuiFlyover,
+        ModalDetail
     },
     mixins: mixins,
     data() {
@@ -164,7 +181,10 @@ const App = {
                 name: ''
             },
             filterModules: 0,
-            filterSize: ''
+            filterSize: '',
+
+            flyoverVisible: false,
+            flyoverData: null
         };
     },
 
@@ -262,40 +282,17 @@ const App = {
             this.info.durationH = Util.TF(this.info.duration, 's', 2);
         },
 
-        hidePopover() {
-            if (this.popover) {
-                this.popover.$destroy();
-                this.popover = null;
-            }
-        },
 
-        showPopover(elem, rowData) {
-            this.hidePopover();
-            this.popover = LuiPopover.create((h) => {
-                return {
-                    props: {
-                        target: elem,
-                        title: rowData.name,
-                        hasHeader: false,
-                        width: 500
-                    },
-                    scopedSlots: {
-                        default: (props) => {
-                            return h(ModalDetail, {
-                                props: {
-                                    rowData: rowData
-                                }
-                            });
-                        }
-                    },
-                    on: {
-                        close: function() {
-                            elem.classList.remove('tg-popover-icon-pin');
-                        }
-                    }
-                };
-            });
-            elem.classList.add('tg-popover-icon-pin');
+        showFlyover(rowData, force) {
+
+            if (!this.flyoverVisible && !force) {
+                return;
+            }
+
+            this.flyoverVisible = true;
+
+            this.flyoverData = rowData;
+
         },
 
         showModuleTypes() {

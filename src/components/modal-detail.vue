@@ -56,12 +56,14 @@
       </div>
     </div>
 
-    <div class="lui-modal-label">
-      Chunk:
-    </div>
-    <div class="lui-modal-item">
-      <div class="lui-modal-arrow" />
-      {{ rowData.chunk }}
+    <div v-if="rowData.chunk">
+      <div class="lui-modal-label">
+        Chunk:
+      </div>
+      <div class="lui-modal-item">
+        <div class="lui-modal-arrow" />
+        {{ rowData.chunk }}
+      </div>
     </div>
   </div>
 </template>
@@ -93,4 +95,5 @@ export default {
     height: auto;
     margin: 0;
 }
+
 </style>
