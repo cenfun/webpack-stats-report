@@ -68,8 +68,9 @@ see [./test/test.js](./test/test.js)
 
 ## Changelog
 
-* v1.2.2
+* v1.2.3
     * fixed sync path
+    * fixed report
 
 * v1.1.10
     * fixed ../../ path loader not matched issue

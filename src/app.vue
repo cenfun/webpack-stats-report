@@ -55,6 +55,13 @@
       <LuiFlex spacing="10">
         <div>Filter:</div>
         <LuiInput
+          v-model="keywords.name"
+          name="name"
+          placeholder="Name"
+          title="Chunk"
+          width="150px"
+        />
+        <LuiInput
           v-model="keywords.chunk"
           name="chunk"
           placeholder="Chunk"
@@ -66,17 +73,10 @@
           placeholder="Type"
           title="Type"
         />
-        <LuiInput
-          v-model="keywords.name"
-          name="name"
-          placeholder="Name"
-          title="Chunk"
-          width="150px"
-        />
         <span
           v-if="group.modules && !hasGroup"
           class="lui-filter-info"
-        >Found <b>{{ filterModules }}</b> modules (Size: {{ filterSize }})</span>
+        >Found <b>{{ filterModules }}</b> modules ({{ filterSize }})</span>
       </LuiFlex>
     </div>
     <div class="lui-grid lui-flex-auto" />
