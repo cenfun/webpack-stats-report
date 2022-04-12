@@ -89,9 +89,7 @@ export default {
                     return `
                     <div class="lui-percent lui-flex-row">
                         <div class="lui-percent-label">${v}%</div>
-                        <div class="lui-percent-chart lui-flex-auto">
-                            <div style="width:${v}%;"></div>
-                        </div>
+                        <div class="lui-percent-chart lui-flex-auto" style="background:linear-gradient(to right, #999 ${v}%, #fff ${v}%);"></div>
                     </div>
                     `;
                 }

@@ -68,10 +68,8 @@ header
 filter
 */
 .lui-filter {
-    padding: 0 10px;
+    padding: 5px 10px;
     border-bottom: 1px solid #ddd;
-    line-height: 40px;
-    height: 40px;
     overflow: hidden;
 }
 
@@ -83,11 +81,9 @@ filter
     width: 1px;
     height: 19px;
     border-right: 1px dotted #333;
-    margin: 0 10px;
 }
 
 .lui-arrow-next {
-    margin: 0 5px;
     height: 22px;
     width: 16px;
     background-repeat: no-repeat;
@@ -115,11 +111,6 @@ grid
         height: 15px;
         border: 1px solid #999;
         border-radius: 3px;
-
-        div {
-            height: 100%;
-            background: #999;
-        }
     }
 }
 

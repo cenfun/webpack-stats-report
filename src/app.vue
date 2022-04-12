@@ -11,8 +11,8 @@
         >webpack v{{ info.version }}</a>
       </div>
     </div>
-    <div class="lui-filter lui-flex-row">
-      <div class="lui-flex-auto lui-flex-row">
+    <div class="lui-filter">
+      <LuiFlex spacing="10">
         <LuiCheckbox v-model="group.assets">
           <b>Assets</b>
         </LuiCheckbox>
@@ -20,9 +20,6 @@
         <LuiCheckbox v-model="group.modules">
           <b>Modules</b>
         </LuiCheckbox>
-        <div class="lui-hs-10" />
-        <div>Group:</div>
-        <div class="lui-hs-5" />
         <LuiCheckbox
           v-model="group.chunk"
           label="Chunk"
@@ -37,34 +34,32 @@
           v-model="group.folder"
           label="Folder"
         />
-      </div>
-      <div
-        v-if="info.hasMinifiedAndGzipSize"
-        class="lui-flex-row"
-      >
-        <div>Size:</div>
-        <div class="lui-hs-5" />
-        <LuiCheckbox
-          v-model="size.minified"
-          label="Minified"
-        />
-        <div class="lui-arrow-next" />
-        <LuiCheckbox
-          v-model="size.gzip"
-          label="Gzip"
-        />
-      </div>
+        <div class="lui-flex-empty" />
+        <LuiFlex
+          v-if="info.hasMinifiedAndGzipSize"
+          spacing="5"
+        >
+          <LuiCheckbox
+            v-model="size.minified"
+            label="Minified"
+          />
+          <div class="lui-arrow-next" />
+          <LuiCheckbox
+            v-model="size.gzip"
+            label="Gzip"
+          />
+        </LuiFlex>
+      </LuiFlex>
     </div>
-    <div class="lui-filter lui-flex-row">
+    <div class="lui-filter">
       <LuiFlex spacing="10">
+        <div>Filter:</div>
         <LuiInput
           v-model="keywords.chunk"
           name="chunk"
           placeholder="Chunk"
           title="Chunk"
-        >
-          <b>Filter:</b>
-        </LuiInput>
+        />
         <LuiInput
           v-model="keywords.type"
           name="type"
@@ -102,7 +97,10 @@
       </div>
       <div class="lui-flex-row">
         <div class="lui-time">
-          Generated {{ info.timeH }} in {{ info.durationH }}
+          Generated {{ info.timeH }} in {{ info.durationH }} by <a
+            href="https://github.com/cenfun/webpack-stats-report"
+            target="_blank"
+          >WSR</a>
         </div>
       </div>
     </div>
