@@ -1,10 +1,13 @@
 <template>
-  <div class="lui-detail">
+  <div
+    v-if="rowData"
+    class="lui-detail"
+  >
     <div class="lui-modal-label">
       Name:
     </div>
     <div class="lui-modal-item">
-      <div class="lui-flex-row">
+      <div>
         <div
           v-for="(loader, i) in rowData.loaders"
           :key="i"
@@ -87,7 +90,7 @@ export default {
     props: {
         rowData: {
             type: Object,
-            default: () => ({})
+            default: null
         }
     }
 

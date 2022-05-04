@@ -107,17 +107,45 @@
     <LuiFlyover
       ref="flyover"
       :visible="flyoverVisible"
-      position="right"
       width="50%"
+      position="right"
     >
       <div class="lui-flyover-main lui-flex-column">
         <div class="lui-flyover-header">
-          <div
-            class="lui-flyover-close"
-            @click="flyoverVisible=false"
-          >
-            X
-          </div>
+          <LuiFlex spacing="10">
+            <div
+              class="lui-flyover-icon"
+              @click="flyoverVisible=false"
+            >
+              <div class="lui-icon lui-icon-arrow-right" />
+            </div>
+            <div class="lui-flyover-title lui-flex-auto">
+              Detail
+            </div>
+
+            <!-- <div
+              v-if="!flyoverMaximize"
+              class="lui-flyover-icon"
+              @click="flyoverMaximize=true"
+            >
+              <div class="lui-icon lui-icon-maximize" />
+            </div>
+
+            <div
+              v-if="flyoverMaximize"
+              class="lui-flyover-icon"
+              @click="flyoverMaximize=false"
+            >
+              <div class="lui-icon lui-icon-restore" />
+            </div> -->
+
+            <div
+              class="lui-flyover-icon"
+              @click="flyoverVisible=false"
+            >
+              <div class="lui-icon lui-icon-close" />
+            </div>
+          </LuiFlex>
         </div>
         <div class="lui-flyover-content lui-flex-auto">
           <ModalDetail :row-data="flyoverData" />
@@ -184,6 +212,7 @@ const App = {
             filterSize: '',
 
             flyoverVisible: false,
+            //flyoverMaximize: false,
             flyoverData: null
         };
     },

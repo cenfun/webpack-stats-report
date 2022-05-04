@@ -68,6 +68,9 @@ see [./test/test.js](./test/test.js)
 
 ## Changelog
 
+* v1.2.4
+    * fixed js error and icons
+
 * v1.2.3
     * fixed sync path
     * fixed report

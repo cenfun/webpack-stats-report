@@ -45,12 +45,12 @@ assert.strictEqual(Util.isMatch('../../node_modules/xxx-loader/path-to', loaderP
 console.log('==================================================================');
 console.log('test StatsReportGenerator');
 const StatsReportGenerator = require('../lib').StatsReportGenerator;
-const statsJson = require('./webpack5.stats.js');
-const outputPath = path.resolve(__dirname, '../.temp/stats-report-webpack5.html');
+const statsJson = require('./case.json');
+const outputPath = path.resolve(__dirname, '../.temp/stats-report-case.html');
 
 StatsReportGenerator({
     //options
-    title: 'Stats Report - webpack5',
+    title: 'Stats Report - case',
     output: outputPath,
     outputStatsJson: true,
 
@@ -59,14 +59,6 @@ StatsReportGenerator({
 
     //custom module types
     moduleTypes: {
-        test: {
-            patterns: ['\\(webpack\\)/test/*/**'],
-            color: 'green',
-            priority: 3.1
-        },
-        source: {
-            patterns: ['*webpack/**']
-        }
     },
     //require one more option stats
     stats: statsJson
