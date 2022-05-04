@@ -1,5 +1,5 @@
 # Webpack Stats Report
-> Generation HTML report for [webpack](https://github.com/webpack/webpack) (v4,v5) [stats](https://webpack.js.org/api/stats/). 
+> Generating [Webpack](https://github.com/webpack/webpack) [Stats](https://webpack.js.org/api/stats/) Report in HTML Grid. 
 
 ![npm](https://img.shields.io/npm/v/webpack-stats-report.svg)
 ![npm](https://img.shields.io/npm/dt/webpack-stats-report.svg)
