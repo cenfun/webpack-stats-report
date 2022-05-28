@@ -3,7 +3,7 @@ import Util from '../helper/util.js';
 export default {
 
     methods: {
-        
+
         isMatch(value, list, rowData, matchedKey) {
             for (let i = 0, l = list.length; i < l; i++) {
                 const k = list[i];
@@ -18,12 +18,12 @@ export default {
             }
             return false;
         },
-        
+
         filterHandler(rowData) {
             for (const field in this.keywords) {
                 const matchedKey = `${field}_matched`;
                 rowData[matchedKey] = null;
-                const list = this.keywords[field].trim().toLowerCase().split(/\s+/g).filter(item => item);
+                const list = this.keywords[field].trim().toLowerCase().split(/\s+/g).filter((item) => item);
                 if (!list.length) {
                     continue;
                 }
@@ -48,7 +48,7 @@ export default {
             let len = 0;
             let size = 0;
             const rows = this.grid.getGridRowsData();
-            rows.forEach(item => {
+            rows.forEach((item) => {
                 if (item.subs) {
                     //console.log(item);
                     return;
@@ -62,7 +62,7 @@ export default {
 
             const totalModulesSize = this.statsData.modules.size;
             const totalModulesLength = this.statsData.modules.subs.length;
-        
+
             let sizeStr = `${Util.BF(size)}`;
             if (len !== totalModulesLength) {
                 const per = (size / totalModulesSize * 100).toFixed(2);

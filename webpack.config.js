@@ -2,23 +2,28 @@ const StatsReportPlugin = require('./lib/index.js').StatsReportPlugin;
 const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 
+process.env.NODE_ENV = 'production';
+
 module.exports = {
     mode: 'production',
-    //mode: "development",
+    //mode: 'development',
     //https://webpack.js.org/configuration/devtool/#devtool
     //devtool: 'source-map',
+
     output: {
         filename: 'webpack-stats-report.js',
         umdNamedDefine: true,
         library: 'webpack-stats-report',
         libraryTarget: 'umd'
     },
+
     plugins: [new VueLoaderPlugin(), new StatsReportPlugin({
         title: 'Stats Report - webpack-stats-report',
         output: '.temp/stats-report.html',
         outputStatsJson: true,
         generateMinifiedAndGzipSize: true
     })],
+
     optimization: {
         minimizer: [
             new TerserPlugin({
@@ -51,7 +56,6 @@ module.exports = {
             }
         }, {
             test: /\.(css|scss)$/,
-            sideEffects: true,
             use: [{
                 loader: 'style-loader',
                 options: {
@@ -74,14 +78,11 @@ module.exports = {
                 loader: 'sass-loader'
             }]
         }, {
+            test: /\.vue$/,
+            loader: 'vue-loader'
+        }, {
             test: /\.svg$/i,
             type: 'asset/inline'
-        }, {
-            test: /\.vue$/,
-            loader: 'vue-loader',
-            options: {
-                hotReload: false
-            }
         }]
     }
 };

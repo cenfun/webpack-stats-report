@@ -16,13 +16,13 @@ export default {
             if (!g.assets) {
                 return this.getModulesRow().subs;
             }
-            
+
             return [this.getAssetsRow(), this.getModulesRow()];
         },
 
         getAssetsRow() {
             const assets = this.statsData.assets;
-            const subs = assets.subs.map(sub => {
+            const subs = assets.subs.map((sub) => {
                 return {
                     ... sub,
                     percent: (sub.size / assets.size * 100).toFixed(2)
@@ -56,7 +56,7 @@ export default {
             const initSize = function(parent, sizeId) {
                 if (parent.subs) {
                     let size = 0;
-                    parent.subs.forEach(sub => {
+                    parent.subs.forEach((sub) => {
                         initSize(sub, sizeId);
                         const n = sub[sizeId] || 0;
                         size += n;
@@ -73,13 +73,13 @@ export default {
             const initPercent = function(parent) {
                 if (parent.subs) {
                     const len = parent.subs.length;
-                    parent.subs.forEach(sub => {
+                    parent.subs.forEach((sub) => {
                         if (len > 1) {
                             sub.percent = (sub.size / parent.size * 100).toFixed(2);
                         }
                         initPercent(sub);
                     });
-                   
+
                 }
             };
             initPercent(modules);
@@ -89,10 +89,10 @@ export default {
 
         groupModulesByChunk(list) {
             let newList = [];
-            list.forEach(item => {
+            list.forEach((item) => {
 
                 const chunks = {};
-                item.subs.forEach(sub => {
+                item.subs.forEach((sub) => {
                     const chunkName = sub.chunk;
                     let chunk = chunks[chunkName];
                     if (!chunk) {
@@ -109,10 +109,10 @@ export default {
                     });
                 });
 
-                item.subs = Object.keys(chunks).map(k => chunks[k]);
+                item.subs = Object.keys(chunks).map((k) => chunks[k]);
 
                 newList = newList.concat(item.subs);
-            
+
             });
 
             return newList;
@@ -121,10 +121,10 @@ export default {
         groupModulesByType(list) {
             let newList = [];
             const moduleTypes = this.statsData.info.moduleTypes;
-            list.forEach(item => {
+            list.forEach((item) => {
 
                 const types = {};
-                item.subs.forEach(sub => {
+                item.subs.forEach((sub) => {
                     const typeName = sub.type;
                     let type = types[typeName];
                     if (!type) {
@@ -150,10 +150,10 @@ export default {
                     });
                 });
 
-                item.subs = Object.keys(types).map(k => types[k]);
+                item.subs = Object.keys(types).map((k) => types[k]);
 
                 newList = newList.concat(item.subs);
-            
+
             });
 
             return newList;
@@ -161,16 +161,16 @@ export default {
 
         groupModulesByFolder(list) {
 
-            list.forEach(item => {
+            list.forEach((item) => {
 
                 const folder = item;
                 folder.collapsed = false;
                 folder.map = {};
                 folder.files = [];
-            
-                folder.subs.forEach(m => {
+
+                folder.subs.forEach((m) => {
                     const arr = m.name.split(/\/|\\/g);
-                    const paths = arr.filter(n => {
+                    const paths = arr.filter((n) => {
                         //maybe need ../
                         if (!n || n === '.' || n === '..') {
                             return false;
@@ -179,7 +179,7 @@ export default {
                     });
                     const filename = paths.pop();
                     let parent = folder;
-                    paths.forEach(p => {
+                    paths.forEach((p) => {
                         let sub = parent.map[p];
                         if (!sub) {
                             sub = {
@@ -200,9 +200,9 @@ export default {
 
                 const initSubs = function(parent) {
                     const map = parent.map;
-                    const subs = Object.keys(map).map(k => map[k]);
+                    const subs = Object.keys(map).map((k) => map[k]);
                     delete parent.map;
-                    
+
                     parent.subs = subs.concat(parent.files);
                     delete parent.files;
 
@@ -211,16 +211,16 @@ export default {
                     }
 
                     if (subs.length) {
-                        subs.forEach(it => {
+                        subs.forEach((it) => {
                             initSubs(it);
                         });
                     }
                 };
                 initSubs(folder);
-            
+
             });
 
         }
-        
+
     }
 };

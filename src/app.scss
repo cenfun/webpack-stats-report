@@ -27,7 +27,7 @@ a:hover {
     text-decoration: underline;
 }
 
-.lui-icon {
+.vui-icon {
     display: block;
     width: 20px;
     height: 20px;
@@ -35,33 +35,33 @@ a:hover {
     opacity: 0.8;
 }
 
-.lui-icon:hover {
+.vui-icon:hover {
     opacity: 1;
 }
 
-.lui-icon-close {
+.vui-icon-close {
     background-image: url("./images/chrome-close.svg");
 }
 
 /*
-.lui-icon-maximize {
+.vui-icon-maximize {
     background-image: url("./images/chrome-maximize.svg");
 }
 
-.lui-icon-restore {
+.vui-icon-restore {
     background-image: url("./images/chrome-restore.svg");
 }
 
 */
 
-.lui-icon-arrow-right {
+.vui-icon-arrow-right {
     background-image: url("./images/d-arrow-right.svg");
 }
 
 /*
 main
 */
-.lui-main {
+.vui-main {
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -72,7 +72,7 @@ main
 /*
 header
 */
-.lui-header {
+.vui-header {
     background: #000;
     color: #eee;
     height: 40px;
@@ -90,7 +90,7 @@ header
     }
 }
 
-.lui-title {
+.vui-title {
     font-size: 16px;
     font-weight: bold;
 }
@@ -98,23 +98,23 @@ header
 /*
 filter
 */
-.lui-filter {
+.vui-filter {
     padding: 5px 10px;
     border-bottom: 1px solid #ddd;
     overflow: hidden;
 }
 
-.lui-filter-info {
+.vui-filter-info {
     margin-left: 10px;
 }
 
-.lui-separator {
+.vui-separator {
     width: 1px;
     height: 19px;
     border-right: 1px dotted #333;
 }
 
-.lui-arrow-next {
+.vui-arrow-next {
     height: 22px;
     width: 16px;
     background-repeat: no-repeat;
@@ -126,18 +126,18 @@ filter
 grid
 */
 
-.lui-grid {
+.vui-grid {
     overflow: hidden;
 }
 
-.lui-grid .tg-row .lui-percent {
-    .lui-percent-label {
+.vui-grid .tg-row .vui-percent {
+    .vui-percent-label {
         width: 60px;
         text-align: right;
         padding-right: 3px;
     }
 
-    .lui-percent-chart {
+    .vui-percent-chart {
         width: 100%;
         height: 15px;
         border: 1px solid #999;
@@ -148,42 +148,42 @@ grid
 /*
 footer
 */
-.lui-footer {
+.vui-footer {
     background: #f5f5f5;
     position: relative;
     padding: 8px;
     border-top: 1px solid #eee;
 }
 
-.lui-footer,
-.lui-footer a:link,
-.lui-footer a:visited {
+.vui-footer,
+.vui-footer a:link,
+.vui-footer a:visited {
     color: #888;
 }
 
-.lui-footer a:hover {
+.vui-footer a:hover {
     color: #333;
 }
 
-.lui-link {
+.vui-link {
     cursor: pointer;
     margin-right: 10px;
 }
 
-.lui-link:hover {
+.vui-link:hover {
     text-decoration: underline;
 }
 
-.lui-info-disabled {
+.vui-info-disabled {
     margin-right: 10px;
     font-weight: normal;
 }
 
-.lui-info-warnings {
+.vui-info-warnings {
     color: orange;
 }
 
-.lui-info-errors {
+.vui-info-errors {
     color: red;
 }
 
@@ -233,30 +233,30 @@ detail
     cursor: pointer;
 }
 
-.lui-flyover-main {
+.vui-flyover-main {
     height: 100%;
     overflow: hidden;
 }
 
-.lui-flyover-header {
+.vui-flyover-header {
     height: 40px;
     background-color: #666;
     border-bottom: 1px solid #ccc;
     padding: 0 10px;
 }
 
-.lui-flyover-icon {
+.vui-flyover-icon {
     cursor: pointer;
     padding: 9px 0;
 }
 
-.lui-flyover-title {
+.vui-flyover-title {
     color: #fff;
     font-size: 16px;
     font-weight: bold;
 }
 
-.lui-flyover-content {
+.vui-flyover-content {
     padding: 10px;
     overflow: auto;
 }
@@ -265,44 +265,44 @@ detail
 modal slot
 */
 
-.lui-modal-label {
+.vui-modal-label {
     font-size: 16px;
     font-weight: bold;
 }
 
-.lui-modal-item {
+.vui-modal-item {
     padding: 5px;
     border-bottom: 1px solid #f5f5f5;
     position: relative;
     margin-bottom: 10px;
 }
 
-.lui-modal-item:hover {
+.vui-modal-item:hover {
     background-color: #f5f5f5;
 }
 
-.lui-modal-list {
+.vui-modal-list {
     margin-bottom: 10px;
 }
 
-.lui-modal-list .lui-modal-item {
+.vui-modal-list .vui-modal-item {
     margin-bottom: 0;
 }
 
-.lui-modal-line {
+.vui-modal-line {
     word-break: break-word;
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
 
-.lui-modal-tip {
+.vui-modal-tip {
     color: #666;
     word-break: break-all;
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
 
-.lui-modal-arrow {
+.vui-modal-arrow {
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -312,20 +312,20 @@ modal slot
     background-image: url("./images/arrow-right-bottom.svg");
 }
 
-.lui-modal-table {
+.vui-modal-table {
     margin-top: 5px;
     position: relative;
     border-collapse: collapse;
     width: 100%;
 }
 
-.lui-modal-table th,
-.lui-modal-table td {
+.vui-modal-table th,
+.vui-modal-table td {
     text-align: left;
     border: 1px solid #eee;
     padding: 5px;
 }
 
-.lui-modal-nowrap {
+.vui-modal-nowrap {
     white-space: nowrap;
 }

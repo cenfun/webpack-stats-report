@@ -1,6 +1,6 @@
 <template>
-  <div class="lui-module-types">
-    <table class="lui-modal-table">
+  <div class="vui-module-types">
+    <table class="vui-modal-table">
       <tr>
         <th>P.</th>
         <th>Type</th>
@@ -30,7 +30,7 @@
           <div
             v-for="(p, j) in item.patterns"
             :key="j"
-            class="lui-modal-nowrap"
+            class="vui-modal-nowrap"
           >
             {{ p }}
           </div>
@@ -62,7 +62,7 @@ export default {
     },
 
     created() {
-        this.list = Object.keys(this.moduleTypes).map(type => {
+        this.list = Object.keys(this.moduleTypes).map((type) => {
             const item = this.moduleTypes[type];
             item.patterns = Util.toList(item.patterns);
             item.type = type;
@@ -73,7 +73,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.lui-module-types {
+.vui-module-types {
     width: 100%;
     height: 100%;
     overflow: auto;

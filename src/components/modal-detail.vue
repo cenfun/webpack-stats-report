@@ -1,17 +1,17 @@
 <template>
   <div
     v-if="rowData"
-    class="lui-detail"
+    class="vui-detail"
   >
-    <div class="lui-modal-label">
+    <div class="vui-modal-label">
       Name:
     </div>
-    <div class="lui-modal-item">
+    <div class="vui-modal-item">
       <div>
         <div
           v-for="(loader, i) in rowData.loaders"
           :key="i"
-          class="lui-loader lui-arrow-next"
+          class="vui-loader vui-arrow-next"
         >
           <a
             target="_blank"
@@ -24,62 +24,62 @@
 
     <div
       v-if="rowData.fullName"
-      class="lui-modal-tip"
+      class="vui-modal-tip"
     >
-      <div class="lui-modal-label">
+      <div class="vui-modal-label">
         Full Name:
       </div>
-      <div class="lui-modal-item">
+      <div class="vui-modal-item">
         {{ rowData.fullName }}
       </div>
     </div>
 
     <div v-if="rowData.asset">
-      <div class="lui-modal-label">
+      <div class="vui-modal-label">
         Asset:
       </div>
-      <div class="lui-modal-item">
+      <div class="vui-modal-item">
         {{ rowData.asset }}
       </div>
     </div>
 
     <div v-if="rowData.issuerPath.length">
-      <div class="lui-modal-label">
+      <div class="vui-modal-label">
         Path:
       </div>
-      <div class="lui-modal-list">
+      <div class="vui-modal-list">
         <div
           v-for="(item, index) in rowData.issuerPath"
           :key="index"
-          class="lui-modal-item"
+          class="vui-modal-item"
         >
-          <div class="lui-modal-arrow" />
+          <div class="vui-modal-arrow" />
           {{ item }}
         </div>
       </div>
     </div>
 
     <div v-if="rowData.chunk">
-      <div class="lui-modal-label">
+      <div class="vui-modal-label">
         Chunk:
       </div>
-      <div class="lui-modal-item">
-        <div class="lui-modal-arrow" />
+      <div class="vui-modal-item">
+        <div class="vui-modal-arrow" />
         {{ rowData.chunk }}
       </div>
     </div>
 
-    <div class="lui-modal-label">
+    <div class="vui-modal-label">
       Type:
     </div>
-    <div class="lui-modal-item">
+    <div class="vui-modal-item">
       {{ rowData.type }}
     </div>
 
-    <div class="lui-modal-label">
+    <div class="vui-modal-label">
       Size:
     </div>
-    <div class="lui-modal-item">
+    <div class="vui-modal-item">
       {{ rowData.sizeH }}
     </div>
   </div>
@@ -97,13 +97,13 @@ export default {
 };
 </script>
 <style lang="scss">
-.lui-detail {
+.vui-detail {
     width: 100%;
     height: 100%;
     overflow: auto;
 }
 
-.lui-modal-item .lui-loader {
+.vui-modal-item .vui-loader {
     display: inline-block;
     white-space: nowrap;
     padding-right: 18px;

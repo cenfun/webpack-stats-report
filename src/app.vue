@@ -1,73 +1,73 @@
 <template>
-  <div class="lui-main">
-    <div class="lui-header lui-flex-row">
-      <div class="lui-title lui-flex-auto">
+  <div class="vui-main">
+    <div class="vui-header vui-flex-row">
+      <div class="vui-title vui-flex-auto">
         {{ info.title }}
       </div>
-      <div class="lui-flex-row">
+      <div class="vui-flex-row">
         <a
           href="https://webpack.js.org/"
           target="_blank"
         >webpack v{{ info.version }}</a>
       </div>
     </div>
-    <div class="lui-filter">
-      <LuiFlex spacing="10">
-        <LuiCheckbox v-model="group.assets">
+    <div class="vui-filter">
+      <VuiFlex spacing="10">
+        <VuiCheckbox v-model="group.assets">
           <b>Assets</b>
-        </LuiCheckbox>
-        <div class="lui-separator" />
-        <LuiCheckbox v-model="group.modules">
+        </VuiCheckbox>
+        <div class="vui-separator" />
+        <VuiCheckbox v-model="group.modules">
           <b>Modules</b>
-        </LuiCheckbox>
-        <LuiCheckbox
+        </VuiCheckbox>
+        <VuiCheckbox
           v-model="group.chunk"
           label="Chunk"
         />
-        <div class="lui-arrow-next" />
-        <LuiCheckbox
+        <div class="vui-arrow-next" />
+        <VuiCheckbox
           v-model="group.type"
           label="Type"
         />
-        <div class="lui-arrow-next" />
-        <LuiCheckbox
+        <div class="vui-arrow-next" />
+        <VuiCheckbox
           v-model="group.folder"
           label="Folder"
         />
-        <div class="lui-flex-empty" />
-        <LuiFlex
+        <div class="vui-flex-empty" />
+        <VuiFlex
           v-if="info.hasMinifiedAndGzipSize"
           spacing="5"
         >
-          <LuiCheckbox
+          <VuiCheckbox
             v-model="size.minified"
             label="Minified"
           />
-          <div class="lui-arrow-next" />
-          <LuiCheckbox
+          <div class="vui-arrow-next" />
+          <VuiCheckbox
             v-model="size.gzip"
             label="Gzip"
           />
-        </LuiFlex>
-      </LuiFlex>
+        </VuiFlex>
+      </VuiFlex>
     </div>
-    <div class="lui-filter">
-      <LuiFlex spacing="10">
+    <div class="vui-filter">
+      <VuiFlex spacing="10">
         <div>Filter:</div>
-        <LuiInput
+        <VuiInput
           v-model="keywords.name"
           name="name"
           placeholder="Name"
           title="Chunk"
           width="150px"
         />
-        <LuiInput
+        <VuiInput
           v-model="keywords.chunk"
           name="chunk"
           placeholder="Chunk"
           title="Chunk"
         />
-        <LuiInput
+        <VuiInput
           v-model="keywords.type"
           name="type"
           placeholder="Type"
@@ -75,15 +75,15 @@
         />
         <span
           v-if="group.modules && !hasGroup"
-          class="lui-filter-info"
+          class="vui-filter-info"
         >Found <b>{{ filterModules }}</b> modules ({{ filterSize }})</span>
-      </LuiFlex>
+      </VuiFlex>
     </div>
-    <div class="lui-grid lui-flex-auto" />
-    <div class="lui-footer lui-flex-row">
-      <div class="lui-flex-auto">
+    <div class="vui-grid vui-flex-auto" />
+    <div class="vui-footer vui-flex-row">
+      <div class="vui-flex-auto">
         <b
-          class="lui-link lui-module-types"
+          class="vui-link vui-module-types"
           @click="showModuleTypes"
         >Module Types</b>
         <b
@@ -95,8 +95,8 @@
           @click="showInfo('Webpack Errors', info.errors)"
         >Errors {{ info.errors.length }}</b>
       </div>
-      <div class="lui-flex-row">
-        <div class="lui-time">
+      <div class="vui-flex-row">
+        <div class="vui-time">
           Generated {{ info.timeH }} in {{ info.durationH }} by <a
             href="https://github.com/cenfun/webpack-stats-report"
             target="_blank"
@@ -104,72 +104,72 @@
         </div>
       </div>
     </div>
-    <LuiFlyover
+    <VuiFlyover
       ref="flyover"
       :visible="flyoverVisible"
       width="50%"
       position="right"
     >
-      <div class="lui-flyover-main lui-flex-column">
-        <div class="lui-flyover-header">
-          <LuiFlex spacing="10">
+      <div class="vui-flyover-main vui-flex-column">
+        <div class="vui-flyover-header">
+          <VuiFlex spacing="10">
             <div
-              class="lui-flyover-icon"
+              class="vui-flyover-icon"
               @click="flyoverVisible=false"
             >
-              <div class="lui-icon lui-icon-arrow-right" />
+              <div class="vui-icon vui-icon-arrow-right" />
             </div>
-            <div class="lui-flyover-title lui-flex-auto">
+            <div class="vui-flyover-title vui-flex-auto">
               Detail
             </div>
 
             <!-- <div
               v-if="!flyoverMaximize"
-              class="lui-flyover-icon"
+              class="vui-flyover-icon"
               @click="flyoverMaximize=true"
             >
-              <div class="lui-icon lui-icon-maximize" />
+              <div class="vui-icon vui-icon-maximize" />
             </div>
 
             <div
               v-if="flyoverMaximize"
-              class="lui-flyover-icon"
+              class="vui-flyover-icon"
               @click="flyoverMaximize=false"
             >
-              <div class="lui-icon lui-icon-restore" />
+              <div class="vui-icon vui-icon-restore" />
             </div> -->
 
             <div
-              class="lui-flyover-icon"
+              class="vui-flyover-icon"
               @click="flyoverVisible=false"
             >
-              <div class="lui-icon lui-icon-close" />
+              <div class="vui-icon vui-icon-close" />
             </div>
-          </LuiFlex>
+          </VuiFlex>
         </div>
-        <div class="lui-flyover-content lui-flex-auto">
+        <div class="vui-flyover-content vui-flex-auto">
           <ModalDetail :row-data="flyoverData" />
         </div>
       </div>
-    </LuiFlyover>
+    </VuiFlyover>
   </div>
 </template>
 <script>
 import decompress from 'lz-utils/lib/decompress.js';
 import Util from './helper/util.js';
-
-import {
-    createElement,
-    LuiCheckbox,
-    LuiInput,
-    LuiFlex,
-    LuiModal,
-    LuiFlyover
-} from 'lithops-ui';
-
 import ModalDetail from './components/modal-detail.vue';
 import ModalModuleTypes from './components/modal-module-types.vue';
 import ModalInfo from './components/modal-info.vue';
+
+import { components, createComponent } from 'vine-ui';
+const {
+    VuiCheckbox,
+    VuiInput,
+    VuiFlex,
+    VuiModal,
+    VuiFlyover
+} = components;
+//console.log(components);
 
 const mixins = [];
 const context = require.context('./mixin', true, /\.js$/);
@@ -178,15 +178,21 @@ paths.forEach((path) => {
     mixins.push(context(path).default);
 });
 
+
 const App = {
+
+    createComponent,
+
     components: {
-        LuiFlex,
-        LuiCheckbox,
-        LuiInput,
-        LuiFlyover,
+        VuiFlex,
+        VuiCheckbox,
+        VuiInput,
+        VuiFlyover,
         ModalDetail
     },
+
     mixins: mixins,
+
     data() {
         return {
             info: {},
@@ -266,27 +272,27 @@ const App = {
     methods: {
 
         initStore() {
-            Object.keys(this.group).forEach(k => {
+            Object.keys(this.group).forEach((k) => {
                 if (k === 'modules') {
                     return;
                 }
-                this.group[k] = !!Util.store.get(k);
+                this.group[k] = Boolean(Util.store.get(k));
             });
             if (this.info.hasMinifiedAndGzipSize) {
-                Object.keys(this.size).forEach(k => {
-                    this.size[k] = !!Util.store.get(k);
+                Object.keys(this.size).forEach((k) => {
+                    this.size[k] = Boolean(Util.store.get(k));
                 });
             }
         },
 
         saveStore() {
-            Object.keys(this.group).forEach(k => {
+            Object.keys(this.group).forEach((k) => {
                 if (k === 'modules') {
                     return;
                 }
                 Util.store.set(k, this.group[k] ? 1 : '');
             });
-            Object.keys(this.size).forEach(k => {
+            Object.keys(this.size).forEach((k) => {
                 Util.store.set(k, this.size[k] ? 1 : '');
             });
         },
@@ -298,14 +304,14 @@ const App = {
             };
 
             if (this.info.warnings.length > 0) {
-                this.info.warningsClass = 'lui-link lui-info-warnings';
+                this.info.warningsClass = 'vui-link vui-info-warnings';
             } else {
-                this.info.warningsClass = 'lui-info-disabled';
+                this.info.warningsClass = 'vui-info-disabled';
             }
             if (this.info.errors.length > 0) {
-                this.info.errorsClass = 'lui-link lui-info-errors';
+                this.info.errorsClass = 'vui-link vui-info-errors';
             } else {
-                this.info.errorsClass = 'lui-info-disabled';
+                this.info.errorsClass = 'vui-info-disabled';
             }
             this.info.timeH = new Date(this.info.timestamp).toLocaleString();
             this.info.durationH = Util.TF(this.info.duration, 's', 2);
@@ -326,52 +332,42 @@ const App = {
         },
 
         showModuleTypes() {
-            LuiModal.create((h) => {
+            VuiModal.createComponent({
+                title: 'Module Types Definition'
+            }, (h) => {
                 return {
-                    props: {
-                        title: 'Module Types Definition'
-                    },
-                    scopedSlots: {
-                        default: (props) => {
-                            return h(ModalModuleTypes, {
-                                props: {
-                                    moduleTypes: this.statsData.info.moduleTypes
-                                }
-                            });
-                        }
+                    default: () => {
+                        return h(ModalModuleTypes, {
+                            props: {
+                                moduleTypes: this.statsData.info.moduleTypes
+                            }
+                        });
                     }
                 };
             });
         },
-        
+
         showInfo(title, list) {
             if (!list || !list.length) {
                 return;
             }
-            LuiModal.create((h) => {
+            VuiModal.createComponent({
+                title: title
+            }, (h) => {
                 return {
-                    props: {
-                        title: title
-                    },
-                    scopedSlots: {
-                        default: (props) => {
-                            return h(ModalInfo, {
-                                props: {
-                                    list: list
-                                }
-                            });
-                        }
+                    default: () => {
+                        return h(ModalInfo, {
+                            props: {
+                                list: list
+                            }
+                        });
                     }
                 };
             });
         }
-    
-    }
-    
-};
 
-App.create = (option, container) => {
-    return createElement(App, option, container);
+    }
+
 };
 
 export default App;

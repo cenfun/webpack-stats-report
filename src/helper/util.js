@@ -26,7 +26,7 @@ const Util = {
         }
         return [data];
     },
-    
+
     BF: function(v, digits = 1, base = 1024) {
         v = Util.toNum(v, true);
         if (v === 0) {
@@ -105,9 +105,9 @@ const Util = {
         const map = statsData.map;
         delete statsData.map;
 
-        [statsData.assets, statsData.modules].forEach(am => {
+        [statsData.assets, statsData.modules].forEach((am) => {
 
-            am.subs.forEach(item => {
+            am.subs.forEach((item) => {
                 item.name = map[item.name];
                 //fullName
                 if (item.chunk) {
@@ -117,7 +117,7 @@ const Util = {
                     item.asset = map[item.asset];
                 }
                 if (item.issuerPath) {
-                    item.issuerPath = item.issuerPath.map(p => {
+                    item.issuerPath = item.issuerPath.map((p) => {
                         return map[p];
                     });
                 }

@@ -1,2 +1,6 @@
 import App from './app.vue';
-App.create({}, '.app');
+const app = App.createComponent();
+
+app.config.errorHandler = (err, instance, info) => {
+    console.log(err, instance, info);
+};

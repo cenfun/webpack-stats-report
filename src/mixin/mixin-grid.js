@@ -59,16 +59,16 @@ export default {
                         const right = v.substr(nm.index + nm.length);
                         v = `${left}<b class="color-match">${mid}</b>${right}`;
                     }
-            
+
                     const sl = rd.tg_subs_length || rd.tg_s_length;
                     if (sl && sl > 1) {
                         v += ` (${sl.toLocaleString()})`;
                     }
-            
+
                     if (rd.name_color) {
                         v = `<span style="color:${rd.name_color};">${v}</span>`;
                     }
-            
+
                     if (rd.issuerPath) {
                         v += `
                             <div class="tg-cell-hover-icon tg-flyover-icon" title="Click for Detail">
@@ -87,21 +87,21 @@ export default {
                         return '';
                     }
                     return `
-                    <div class="lui-percent lui-flex-row">
-                        <div class="lui-percent-label">${v}%</div>
-                        <div class="lui-percent-chart lui-flex-auto" style="background:linear-gradient(to right, #999 ${v}%, #fff ${v}%);"></div>
+                    <div class="vui-percent vui-flex-row">
+                        <div class="vui-percent-label">${v}%</div>
+                        <div class="vui-percent-chart vui-flex-auto" style="background:linear-gradient(to right, #999 ${v}%, #fff ${v}%);"></div>
                     </div>
                     `;
                 }
             });
-            
+
             this.grid.setData(gridData);
             this.grid.render();
 
         },
 
         createGrid() {
-            const grid = new Grid('.lui-grid');
+            const grid = new Grid('.vui-grid');
             grid.bind('onClick', (e, d) => {
                 const rowData = grid.getRowItem(d.row);
 
@@ -141,7 +141,7 @@ export default {
                 g.folder = false;
             }
 
-            return Object.keys(g).map(k => `${k}_${g[k]}`).join('_');
+            return Object.keys(g).map((k) => `${k}_${g[k]}`).join('_');
         },
 
         getGridRows(key) {
