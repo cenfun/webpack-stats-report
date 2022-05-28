@@ -122,23 +122,6 @@
             <div class="vui-flyover-title vui-flex-auto">
               Detail
             </div>
-
-            <!-- <div
-              v-if="!flyoverMaximize"
-              class="vui-flyover-icon"
-              @click="flyoverMaximize=true"
-            >
-              <div class="vui-icon vui-icon-maximize" />
-            </div>
-
-            <div
-              v-if="flyoverMaximize"
-              class="vui-flyover-icon"
-              @click="flyoverMaximize=false"
-            >
-              <div class="vui-icon vui-icon-restore" />
-            </div> -->
-
             <div
               class="vui-flyover-icon"
               @click="flyoverVisible=false"
@@ -338,9 +321,7 @@ const App = {
                 return {
                     default: () => {
                         return h(ModalModuleTypes, {
-                            props: {
-                                moduleTypes: this.statsData.info.moduleTypes
-                            }
+                            moduleTypes: this.statsData.info.moduleTypes
                         });
                     }
                 };
@@ -357,9 +338,7 @@ const App = {
                 return {
                     default: () => {
                         return h(ModalInfo, {
-                            props: {
-                                list: list
-                            }
+                            list: list
                         });
                     }
                 };
