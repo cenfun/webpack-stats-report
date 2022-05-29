@@ -45,7 +45,7 @@
   </div>
 </template>
 <script>
-import Util from '../helper/util.js';
+import Util from '../util/util.js';
 
 export default {
     props: {

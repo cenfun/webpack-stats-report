@@ -17,6 +17,13 @@ const Util = {
         return s.padStart(l, '0');
     },
 
+    isList: function(data) {
+        if (data && data instanceof Array && data.length > 0) {
+            return true;
+        }
+        return false;
+    },
+
     toList: function(data) {
         if (typeof (data) === 'undefined') {
             return [];
@@ -105,9 +112,11 @@ const Util = {
         const map = statsData.map;
         delete statsData.map;
 
-        [statsData.assets, statsData.modules].forEach((am) => {
-
-            am.subs.forEach((item) => {
+        const setMap = (list) => {
+            if (!Util.isList(list)) {
+                return;
+            }
+            list.forEach((item) => {
                 item.name = map[item.name];
                 //fullName
                 if (item.chunk) {
@@ -121,8 +130,12 @@ const Util = {
                         return map[p];
                     });
                 }
+                setMap(item.subs);
             });
+        };
 
+        [statsData.assets, statsData.modules].forEach((am) => {
+            setMap(am.subs);
         });
 
         return statsData;

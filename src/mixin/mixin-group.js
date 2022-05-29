@@ -10,17 +10,17 @@ export default {
             }
 
             if (!g.modules) {
-                return this.getAssetsRow().subs;
+                return this.getAssetsRows().subs;
             }
 
             if (!g.assets) {
-                return this.getModulesRow().subs;
+                return this.getModulesRows().subs;
             }
 
-            return [this.getAssetsRow(), this.getModulesRow()];
+            return [this.getAssetsRows(), this.getModulesRows()];
         },
 
-        getAssetsRow() {
+        getAssetsRows() {
             const assets = this.statsData.assets;
             const subs = assets.subs.map((sub) => {
                 return {
@@ -34,7 +34,7 @@ export default {
             };
         },
 
-        getModulesRow() {
+        getModulesRows() {
             const modules = {
                 ... this.statsData.modules
             };

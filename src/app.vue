@@ -139,7 +139,7 @@
 </template>
 <script>
 import decompress from 'lz-utils/lib/decompress.js';
-import Util from './helper/util.js';
+import Util from './util/util.js';
 import ModalDetail from './components/modal-detail.vue';
 import ModalModuleTypes from './components/modal-module-types.vue';
 import ModalInfo from './components/modal-info.vue';
