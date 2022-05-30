@@ -3,35 +3,22 @@ export default {
 
         generateGridRows() {
 
-            const g = this.group;
-
-            if (!g.assets && !g.modules) {
-                return [];
+            if (this.tabName === 'assets') {
+                return this.getAssetsRows();
             }
 
-            if (!g.modules) {
-                return this.getAssetsRows().subs;
-            }
+            return this.getModulesRows();
 
-            if (!g.assets) {
-                return this.getModulesRows().subs;
-            }
-
-            return [this.getAssetsRows(), this.getModulesRows()];
         },
 
         getAssetsRows() {
             const assets = this.statsData.assets;
-            const subs = assets.subs.map((sub) => {
+            return assets.subs.map((sub) => {
                 return {
                     ... sub,
                     percent: (sub.size / assets.size * 100).toFixed(2)
                 };
             });
-            return {
-                ... assets,
-                subs
-            };
         },
 
         getModulesRows() {
@@ -81,7 +68,8 @@ export default {
             };
             initPercent(modules);
 
-            return modules;
+            //only need subs
+            return modules.subs;
         },
 
         groupModulesByChunk(list) {

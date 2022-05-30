@@ -32,7 +32,7 @@ a:hover {
     width: 20px;
     height: 20px;
     overflow: hidden;
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 .vui-icon:hover {
@@ -47,6 +47,14 @@ a:hover {
     background-image: url("./images/d-arrow-right.svg");
 }
 
+.vui-icon-webpack {
+    background-image: url("./images/webpack.svg");
+}
+
+.vui-icon-github {
+    background-image: url("./images/github.svg");
+}
+
 /*
 main
 */
@@ -56,32 +64,32 @@ main
     overflow: hidden;
     width: 100%;
     height: 100%;
-}
 
-/*
-header
-*/
-.vui-header {
-    background: #000;
-    color: #eee;
-    height: 40px;
-    position: relative;
-    border-bottom: 1px solid #ccc;
-    padding: 0 10px;
+    .vui-tab {
+        display: flex;
+        flex-direction: column;
 
-    a:link,
-    a:visited {
-        color: #ccc;
-    }
+        .vui-tab-panes {
+            flex: 1;
+            overflow: hidden;
 
-    a:hover {
-        color: #fff;
+            .vui-tab-pane {
+                padding: 0;
+            }
+        }
     }
 }
 
 .vui-title {
     font-size: 16px;
     font-weight: bold;
+    text-align: center;
+}
+
+.vui-pane {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /*
@@ -129,7 +137,7 @@ grid
     .vui-percent-chart {
         width: 100%;
         height: 15px;
-        border: 1px solid #999;
+        border: 1px solid #888;
         border-radius: 3px;
     }
 }

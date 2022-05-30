@@ -1,71 +1,86 @@
 <template>
   <div class="vui-main">
-    <div class="vui-header vui-flex-row">
-      <div class="vui-title vui-flex-auto">
-        {{ info.title }}
-      </div>
-      <div class="vui-flex-row">
-        <a
-          href="https://webpack.js.org/"
-          target="_blank"
-        >webpack v{{ info.version }}</a>
-      </div>
-    </div>
-    <div class="vui-filter">
-      <VuiFlex spacing="10">
-        <VuiCheckbox v-model="group.assets">
-          <b>Assets</b>
-        </VuiCheckbox>
-        <div class="vui-separator" />
-        <VuiCheckbox v-model="group.modules">
-          <b>Modules</b>
-        </VuiCheckbox>
-        <VuiCheckbox
-          v-model="group.chunk"
-          label="Chunk"
-        />
-        <div class="vui-arrow-next" />
-        <VuiCheckbox
-          v-model="group.type"
-          label="Type"
-        />
-        <div class="vui-arrow-next" />
-        <VuiCheckbox
-          v-model="group.path"
-          label="Path"
-        />
-        <div class="vui-flex-empty" />
-      </VuiFlex>
-    </div>
-    <div class="vui-filter">
-      <VuiFlex spacing="10">
-        <div>Filter:</div>
-        <VuiInput
-          v-model="keywords.name"
-          name="name"
-          placeholder="Name"
-          title="Chunk"
-          width="150px"
-        />
-        <VuiInput
-          v-model="keywords.chunk"
-          name="chunk"
-          placeholder="Chunk"
-          title="Chunk"
-        />
-        <VuiInput
-          v-model="keywords.type"
-          name="type"
-          placeholder="Type"
-          title="Type"
-        />
-        <span
-          v-if="group.modules && !hasGroup"
-          class="vui-filter-info"
-        >Found <b>{{ filterModules }}</b> modules ({{ filterSize }})</span>
-      </VuiFlex>
-    </div>
-    <div class="vui-grid vui-flex-auto" />
+    <VuiTab
+      v-model="tabActive"
+      position="left"
+    >
+      <template #toolbar>
+        <div class="vui-title vui-flex-auto">
+          {{ info.title }}
+        </div>
+        <VuiFlex spacing="10">
+          <a
+            class="vui-icon vui-icon-webpack"
+            :title="'Webpack v'+info.version"
+            href="https://webpack.js.org/"
+            target="_blank"
+          />
+          <a
+            class="vui-icon vui-icon-github"
+            title="Webpack Stats Report"
+            href="https://github.com/cenfun/webpack-stats-report"
+            target="_blank"
+          />
+        </VuiFlex>
+      </template>
+
+      <template #tabs>
+        <div><b>Modules</b></div>
+        <div><b>Assets</b></div>
+      </template>
+      <template #panes>
+        <div class="vui-pane">
+          <div class="vui-filter">
+            <VuiFlex spacing="10">
+              <div>Filter:</div>
+              <VuiInput
+                v-model="keywords.name"
+                name="name"
+                placeholder="Name"
+                title="Chunk"
+                width="150px"
+              />
+              <VuiInput
+                v-model="keywords.chunk"
+                name="chunk"
+                placeholder="Chunk"
+                title="Chunk"
+              />
+              <VuiInput
+                v-model="keywords.type"
+                name="type"
+                placeholder="Type"
+                title="Type"
+              />
+              <span
+                v-if="group.modules && !hasGroup"
+                class="vui-filter-info"
+              >Found <b>{{ filterModules }}</b> modules ({{ filterSize }})</span>
+
+              <div class="vui-flex-empty" />
+              <div>Group:</div>
+              <VuiCheckbox
+                v-model="group.chunk"
+                label="Chunk"
+              />
+              <VuiCheckbox
+                v-model="group.type"
+                label="Type"
+              />
+              <VuiCheckbox
+                v-model="group.path"
+                label="Path"
+              />
+            </VuiFlex>
+          </div>
+          <div class="vui-grid vui-grid-modules vui-flex-auto" />
+        </div>
+        <div class="vui-pane">
+          <div class="vui-grid vui-grid-assets vui-flex-auto" />
+        </div>
+      </template>
+    </VuiTab>
+
     <div class="vui-footer vui-flex-row">
       <div class="vui-flex-auto">
         <b
@@ -83,10 +98,7 @@
       </div>
       <div class="vui-flex-row">
         <div class="vui-time">
-          Generated {{ info.timeH }} in {{ info.durationH }} by <a
-            href="https://github.com/cenfun/webpack-stats-report"
-            target="_blank"
-          >WSR</a>
+          Generated {{ info.timeH }} in {{ info.durationH }}
         </div>
       </div>
     </div>
@@ -136,7 +148,8 @@ const {
     VuiInput,
     VuiFlex,
     VuiModal,
-    VuiFlyover
+    VuiFlyover,
+    VuiTab
 } = components;
 //console.log(components);
 
@@ -157,6 +170,7 @@ const App = {
         VuiCheckbox,
         VuiInput,
         VuiFlyover,
+        VuiTab,
         ModalDetail
     },
 
@@ -166,9 +180,10 @@ const App = {
         return {
             info: {},
 
+            tabActive: 0,
+            tabName: 'modules',
+
             group: {
-                assets: true,
-                modules: true,
                 chunk: false,
                 type: false,
                 path: false
@@ -189,6 +204,14 @@ const App = {
     },
 
     watch: {
+        tabActive: function() {
+            if (this.tabActive === 1) {
+                this.tabName = 'assets';
+            } else {
+                this.tabName = 'modules';
+            }
+            this.renderGrid();
+        },
         group: {
             deep: true,
             handler: function() {
@@ -217,7 +240,11 @@ const App = {
     created() {
         const statsData = JSON.parse(decompress(window.statsData));
         this.statsData = Util.initStatsData(statsData);
-        console.log(this.statsData);
+        console.log('statsData', this.statsData);
+
+        //keep grid instance for modules and assets
+        this.gridMap = {};
+
         this.initInfo();
         //after info
         this.initStore();
@@ -231,18 +258,12 @@ const App = {
 
         initStore() {
             Object.keys(this.group).forEach((k) => {
-                if (k === 'modules') {
-                    return;
-                }
                 this.group[k] = Boolean(Util.store.get(k));
             });
         },
 
         saveStore() {
             Object.keys(this.group).forEach((k) => {
-                if (k === 'modules') {
-                    return;
-                }
                 Util.store.set(k, this.group[k] ? 1 : '');
             });
         },

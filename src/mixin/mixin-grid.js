@@ -4,9 +4,16 @@ import Util from '../util/util.js';
 export default {
 
     methods: {
+
+        getTabGrid() {
+            return this.gridMap[this.tabName];
+        },
+
+        //default grid is modules grid
         updateGrid() {
-            if (this.grid) {
-                this.grid.update();
+            const grid = this.getTabGrid();
+            if (grid) {
+                grid.update();
             }
         },
 
@@ -18,8 +25,9 @@ export default {
             }
             this.previousKey = key;
 
-            if (!this.grid) {
-                this.grid = this.createGrid();
+            let grid = this.getTabGrid();
+            if (!grid) {
+                grid = this.createGrid();
             }
 
             const gridData = {
@@ -27,9 +35,47 @@ export default {
                 rows: this.getGridRows(key)
             };
 
-            console.log(gridData);
+            console.log('gridData', key, gridData);
 
-            this.grid.setOption({
+            grid.setData(gridData);
+            grid.render();
+
+        },
+
+        createGrid() {
+
+            const grid = new Grid(`.vui-grid-${this.tabName}`);
+
+            this.gridMap[this.tabName] = grid;
+
+            if (this.tabName === 'modules') {
+                grid.bind('onClick', (e, d) => {
+                    const rowData = grid.getRowItem(d.row);
+
+                    let openFlyover = false;
+                    const icon = d.e.target;
+                    if (icon.classList.contains('tg-flyover-icon')) {
+                        openFlyover = true;
+                    }
+                    this.showFlyover(rowData, openFlyover);
+
+                    grid.unselectAll();
+                    grid.setSelectedRow(d.row, d.e);
+
+                });
+
+                grid.bind('onDblClick', (e, d) => {
+                    const rowData = grid.getRowItem(d.row);
+                    this.showFlyover(rowData, true);
+                });
+
+            }
+
+            grid.bind('onRenderUpdate', () => {
+                this.updateFilterInfo();
+            });
+
+            grid.setOption({
                 bindWindowResize: true,
                 textSelectable: true,
                 rowHeight: 27,
@@ -42,7 +88,8 @@ export default {
                 rowFilter: this.filterHandler
             });
 
-            this.grid.setFilter({
+            grid.setFilter({
+
                 string: function(v, rd, cd) {
                     const id = cd.id;
                     const color = rd[`${id}_color`];
@@ -51,6 +98,7 @@ export default {
                     }
                     return v;
                 },
+
                 tree: function(v, rd, cd, ri, ci, node) {
                     const nm = rd.name_matched;
                     if (nm) {
@@ -78,10 +126,12 @@ export default {
                     }
                     return v;
                 },
+
                 size: function(v, rd, cd) {
                     v = Util.BF(v);
                     return this.getFilter('string')(v, rd, cd);
                 },
+
                 percent: function(v) {
                     if (!v) {
                         return '';
@@ -95,53 +145,21 @@ export default {
                 }
             });
 
-            this.grid.setData(gridData);
-            this.grid.render();
-
-        },
-
-        createGrid() {
-            const grid = new Grid('.vui-grid');
-            grid.bind('onClick', (e, d) => {
-                const rowData = grid.getRowItem(d.row);
-
-                let openFlyover = false;
-                const icon = d.e.target;
-                if (icon.classList.contains('tg-flyover-icon')) {
-                    openFlyover = true;
-                }
-                this.showFlyover(rowData, openFlyover);
-
-                grid.unselectAll();
-                grid.setSelectedRow(d.row, d.e);
-
-            });
-
-            grid.bind('onDblClick', (e, d) => {
-                const rowData = grid.getRowItem(d.row);
-                this.showFlyover(rowData, true);
-            });
-
-            grid.bind('onRenderUpdate', () => {
-                this.updateFilterInfo();
-            });
-
             return grid;
 
         },
 
         getRowsKey() {
-            const g = {
-                ... this.group
-            };
+            let gs = [];
+            if (this.tabName === 'modules') {
+                const g = {
+                    ... this.group
+                };
 
-            if (!g.modules) {
-                g.type = false;
-                g.chunk = false;
-                g.path = false;
+                gs = Object.keys(g).map((k) => `${k}_${g[k]}`);
             }
-
-            return Object.keys(g).map((k) => `${k}_${g[k]}`).join('_');
+            const ls = [this.tabName].concat(gs);
+            return ls.join('_');
         },
 
         getGridRows(key) {
@@ -212,6 +230,7 @@ export default {
 
             return this.columns;
         }
+
     }
 
 };

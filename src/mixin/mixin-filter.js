@@ -44,10 +44,15 @@ export default {
             if (this.hasGroup) {
                 return;
             }
+            const grid = this.getTabGrid();
+            if (!grid) {
+                return;
+            }
 
             let len = 0;
             let size = 0;
-            const rows = this.grid.getGridRowsData();
+
+            const rows = grid.getGridRowsData();
             rows.forEach((item) => {
                 if (item.subs) {
                     //console.log(item);
