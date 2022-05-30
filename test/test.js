@@ -70,9 +70,9 @@ StatsReportGenerator({
 });
 
 console.log('==================================================================');
-console.log('test example webpack build');
+console.log('test webpack build');
 
-const exampleOutputPath = path.resolve(__dirname, '../.temp/stats-report-example.html');
+const testOutputPath = path.resolve(__dirname, '../.temp/stats-report-test.html');
 
 const webpack = require('webpack');
 
@@ -88,7 +88,7 @@ const getWebpackConf = function() {
     webpackConf.output = {
         path: path.resolve(__dirname, '../.temp'),
         umdNamedDefine: true,
-        library: 'example',
+        library: 'test',
         libraryTarget: 'umd'
     };
 
@@ -96,8 +96,8 @@ const getWebpackConf = function() {
     const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin;
 
     webpackConf.plugins = [new VueLoaderPlugin(), new StatsReportPlugin({
-        title: 'Stats Report - example',
-        output: exampleOutputPath,
+        title: 'Stats Report - test',
+        output: testOutputPath,
         outputStatsJson: true,
         generateMinifiedAndGzipSize: true
     })];
@@ -118,7 +118,7 @@ webpack(conf, function(err, stats) {
     }
 
     console.log('webpack success');
-    console.log(exampleOutputPath);
-    assert(fs.existsSync(exampleOutputPath));
+    console.log(testOutputPath);
+    assert(fs.existsSync(testOutputPath));
 
 });
