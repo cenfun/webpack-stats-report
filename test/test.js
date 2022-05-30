@@ -21,8 +21,10 @@ console.log('test isMatch source');
 
 const sourcePatterns = options.moduleTypes.source.patterns;
 assert.strictEqual(Util.isMatch('./packages/home/src/components/ sync \\.js$', sourcePatterns), true);
-assert.strictEqual(Util.isMatch('/test/cases sync ^\\.\\/[^/]+\\/[^/]+\\/index\\.js$', sourcePatterns), true);
-
+assert.strictEqual(Util.isMatch('./src/components/ sync \\.js$', sourcePatterns), true);
+assert.strictEqual(Util.isMatch('./src/mixin/ sync \\.js$', sourcePatterns), true);
+assert.strictEqual(Util.isMatch('/test/cases sync ^\\.\\/[^/]+\\/[^/]+\\/index\\.js$', sourcePatterns), false);
+assert.strictEqual(Util.isMatch('multi ./src/main.ts', sourcePatterns), true);
 
 console.log('==================================================================');
 console.log('test isMatch external');
