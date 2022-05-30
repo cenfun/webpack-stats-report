@@ -7,17 +7,15 @@
       Name:
     </div>
     <div class="vui-modal-item">
-      <div>
-        <div
-          v-for="(loader, i) in rowData.loaders"
-          :key="i"
-          class="vui-loader vui-arrow-next"
-        >
-          <a
-            target="_blank"
-            :href="'https://www.npmjs.com/package/'+loader+'-loader'"
-          >{{ loader }}-loader</a>
-        </div>
+      <div
+        v-for="(loader, i) in rowData.loaders"
+        :key="i"
+        class="vui-loader"
+      >
+        <a
+          target="_blank"
+          :href="'https://www.npmjs.com/package/'+loader+'-loader'"
+        >{{ loader }}-loader</a>
       </div>
       {{ rowData.name }}
     </div>
@@ -106,11 +104,11 @@ export default {
 .vui-modal-item .vui-loader {
     display: inline-block;
     white-space: nowrap;
-    padding-right: 18px;
-    width: auto;
-    background-position-x: right;
-    height: auto;
-    margin: 0;
+    padding-right: 20px;
+    background-repeat: no-repeat;
+    background-position: right 3px center;
+    background-image: url("../images/arrow-right.svg");
 }
+
 
 </style>
