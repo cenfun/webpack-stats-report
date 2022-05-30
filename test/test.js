@@ -55,7 +55,7 @@ StatsReportGenerator({
     outputStatsJson: true,
 
     //test if no source
-    generateMinifiedAndGzipSize: true,
+    gzipSize: true,
 
     //custom module types
     moduleTypes: {
@@ -99,7 +99,7 @@ const getWebpackConf = function() {
         title: 'Stats Report - test',
         output: testOutputPath,
         outputStatsJson: true,
-        generateMinifiedAndGzipSize: true
+        gzipSize: true
     })];
 
 

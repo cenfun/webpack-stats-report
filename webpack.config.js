@@ -19,7 +19,7 @@ module.exports = {
         title: 'Stats Report - webpack-stats-report',
         output: '.temp/stats-report.html',
         outputStatsJson: true,
-        generateMinifiedAndGzipSize: true
+        gzipSize: true
     })],
 
     optimization: {

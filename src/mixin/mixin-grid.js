@@ -161,22 +161,6 @@ export default {
 
         },
 
-        updateGridColumns() {
-            if (!this.grid) {
-                return;
-            }
-            if (this.size.minified) {
-                this.grid.showColumn('sizeMinified');
-            } else {
-                this.grid.hideColumn('sizeMinified');
-            }
-            if (this.size.gzip) {
-                this.grid.showColumn('sizeGzip');
-            } else {
-                this.grid.hideColumn('sizeGzip');
-            }
-        },
-
         getGridColumns() {
             //update every time for invisible
             this.columns = [{
@@ -199,18 +183,10 @@ export default {
                 dataType: 'size',
                 width: 80
             }, {
-                id: 'sizeMinified',
-                name: 'Minified',
-                align: 'right',
-                dataType: 'size',
-                invisible: !this.size.minified,
-                width: 80
-            }, {
                 id: 'sizeGzip',
                 name: 'Gzip',
                 align: 'right',
                 dataType: 'size',
-                invisible: !this.size.gzip,
                 width: 80
             }, {
                 id: 'type',

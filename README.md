@@ -38,7 +38,7 @@ webpack(webpackConfig, async (err, stats) => {
         output: ".temp/stats-report.html",
         //require one more option stats
         stats: stats.toJson({
-            //source for generateMinifiedAndGzipSize = true
+            //source for gzipSize = true
             source: true,
             reasons: false,
             chunkModules: false
@@ -54,7 +54,7 @@ webpack(webpackConfig, async (err, stats) => {
     title: "Stats Report",
     output: "stats-report.html",
     outputStatsJson: false,
-    generateMinifiedAndGzipSize: false
+    gzipSize: false
     ...
 }
 ```

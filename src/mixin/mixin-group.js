@@ -65,10 +65,7 @@ export default {
                 }
             };
             initSize(modules, 'size');
-            if (this.info.hasMinifiedAndGzipSize) {
-                initSize(modules, 'sizeMinified');
-                initSize(modules, 'sizeGzip');
-            }
+            initSize(modules, 'sizeGzip');
 
             const initPercent = function(parent) {
                 if (parent.subs) {

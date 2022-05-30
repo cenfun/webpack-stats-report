@@ -35,20 +35,6 @@
           label="Folder"
         />
         <div class="vui-flex-empty" />
-        <VuiFlex
-          v-if="info.hasMinifiedAndGzipSize"
-          spacing="5"
-        >
-          <VuiCheckbox
-            v-model="size.minified"
-            label="Minified"
-          />
-          <div class="vui-arrow-next" />
-          <VuiCheckbox
-            v-model="size.gzip"
-            label="Gzip"
-          />
-        </VuiFlex>
       </VuiFlex>
     </div>
     <div class="vui-filter">
@@ -187,10 +173,6 @@ const App = {
                 type: false,
                 folder: false
             },
-            size: {
-                minified: false,
-                gzip: false
-            },
 
             keywords: {
                 chunk: '',
@@ -212,13 +194,6 @@ const App = {
             handler: function() {
                 this.saveStore();
                 this.renderGrid();
-            }
-        },
-        size: {
-            deep: true,
-            handler: function() {
-                this.saveStore();
-                this.updateGridColumns();
             }
         },
         keywords: {
@@ -261,11 +236,6 @@ const App = {
                 }
                 this.group[k] = Boolean(Util.store.get(k));
             });
-            if (this.info.hasMinifiedAndGzipSize) {
-                Object.keys(this.size).forEach((k) => {
-                    this.size[k] = Boolean(Util.store.get(k));
-                });
-            }
         },
 
         saveStore() {
@@ -274,9 +244,6 @@ const App = {
                     return;
                 }
                 Util.store.set(k, this.group[k] ? 1 : '');
-            });
-            Object.keys(this.size).forEach((k) => {
-                Util.store.set(k, this.size[k] ? 1 : '');
             });
         },
 

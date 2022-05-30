@@ -20,7 +20,7 @@
     * added lz-string to minify json data
 
 * v1.1.6
-    * fix minified and gzip for webpack5 stats
+    * fix gzip for webpack5 stats
 
 * v1.1.5
     * updated UI
@@ -34,7 +34,7 @@
     * fixed module path format issue
 
 * v1.1.2
-    * added minified/gzip size
+    * added gzip size
 
 * v1.1.1
     * new layout
