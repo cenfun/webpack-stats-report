@@ -93,6 +93,7 @@ export default {
 
             grid.setOption({
                 textSelectable: true,
+                //frozenRow: 0,
                 rowHeight: 27,
                 sortField: 'size',
                 sortAsc: false,
@@ -204,7 +205,7 @@ export default {
 
         getGridColumns() {
             //update every time for invisible
-            this.columns = [{
+            const columns = [{
                 id: 'name',
                 name: 'Name',
                 width: 500,
@@ -230,28 +231,28 @@ export default {
                 dataType: 'size',
                 width: 80
             }, {
-                id: 'type',
-                name: 'Type',
-                align: 'center',
-                width: 65
-            }, {
                 id: 'chunk',
                 name: 'Chunk',
                 width: 65,
                 maxWidth: 1024
-            }, {
-                id: 'asset',
-                name: 'Asset',
-                width: 50,
-                maxWidth: 1024
-            }, {
-                id: 'depth',
-                name: 'Depth',
-                align: 'center',
-                width: 52
             }];
 
-            return this.columns;
+            if (this.tabName === 'modules') {
+                columns.push({
+                    id: 'type',
+                    name: 'Type',
+                    align: 'center',
+                    width: 65
+                });
+                columns.push({
+                    id: 'depth',
+                    name: 'Depth',
+                    align: 'center',
+                    width: 52
+                });
+            }
+
+            return columns;
         }
 
     }

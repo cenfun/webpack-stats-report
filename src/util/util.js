@@ -122,9 +122,6 @@ const Util = {
                 if (item.chunk) {
                     item.chunk = map[item.chunk];
                 }
-                if (item.asset) {
-                    item.asset = map[item.asset];
-                }
                 if (item.issuerPath) {
                     item.issuerPath = item.issuerPath.map((p) => {
                         return map[p];
