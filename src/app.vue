@@ -31,8 +31,8 @@
         />
         <div class="vui-arrow-next" />
         <VuiCheckbox
-          v-model="group.folder"
-          label="Folder"
+          v-model="group.path"
+          label="Path"
         />
         <div class="vui-flex-empty" />
       </VuiFlex>
@@ -171,7 +171,7 @@ const App = {
                 modules: true,
                 chunk: false,
                 type: false,
-                folder: false
+                path: false
             },
 
             keywords: {
@@ -207,7 +207,7 @@ const App = {
     computed: {
         hasGroup: function() {
             const g = this.group;
-            if (g.chunk || g.type || g.folder) {
+            if (g.chunk || g.type || g.path) {
                 return true;
             }
             return false;

@@ -138,7 +138,7 @@ export default {
             if (!g.modules) {
                 g.type = false;
                 g.chunk = false;
-                g.folder = false;
+                g.path = false;
             }
 
             return Object.keys(g).map((k) => `${k}_${g[k]}`).join('_');

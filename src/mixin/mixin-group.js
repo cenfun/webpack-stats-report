@@ -48,8 +48,8 @@ export default {
                 list = this.groupModulesByType(list);
             }
 
-            if (g.folder) {
-                this.groupModulesByFolder(list);
+            if (g.path) {
+                this.groupModulesByPath(list);
             }
 
             //final handler size and percent
@@ -156,16 +156,16 @@ export default {
             return newList;
         },
 
-        groupModulesByFolder(list) {
+        groupModulesByPath(list) {
 
             list.forEach((item) => {
 
-                const folder = item;
-                folder.collapsed = false;
-                folder.map = {};
-                folder.files = [];
+                const path = item;
+                path.collapsed = false;
+                path.map = {};
+                path.files = [];
 
-                folder.subs.forEach((m) => {
+                path.subs.forEach((m) => {
                     const arr = m.name.split(/\/|\\/g);
                     const paths = arr.filter((n) => {
                         //maybe need ../
@@ -175,7 +175,7 @@ export default {
                         return true;
                     });
                     const filename = paths.pop();
-                    let parent = folder;
+                    let parent = path;
                     paths.forEach((p) => {
                         let sub = parent.map[p];
                         if (!sub) {
@@ -213,7 +213,7 @@ export default {
                         });
                     }
                 };
-                initSubs(folder);
+                initSubs(path);
 
             });
 
