@@ -9,6 +9,22 @@ export default {
             return this.gridMap[this.tabName];
         },
 
+        resizeGrid() {
+            const grid = this.getTabGrid();
+            if (grid) {
+                grid.resize();
+            }
+        },
+
+        switchGrid() {
+            const grid = this.getTabGrid();
+            if (grid) {
+                grid.resize();
+                return;
+            }
+            this.renderGrid();
+        },
+
         //default grid is modules grid
         updateGrid() {
             const grid = this.getTabGrid();
@@ -76,7 +92,6 @@ export default {
             });
 
             grid.setOption({
-                bindWindowResize: true,
                 textSelectable: true,
                 rowHeight: 27,
                 sortField: 'size',

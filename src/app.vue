@@ -52,11 +52,9 @@
                 placeholder="Type"
                 title="Type"
               />
-              <span
-                v-if="group.modules && !hasGroup"
-                class="vui-filter-info"
-              >Found <b>{{ filterModules }}</b> modules ({{ filterSize }})</span>
-
+              <div class="vui-filter-info">
+                Found <b>{{ filterModules }}</b> modules ({{ filterSize }})
+              </div>
               <div class="vui-flex-empty" />
               <div>Group:</div>
               <VuiCheckbox
@@ -210,7 +208,7 @@ const App = {
             } else {
                 this.tabName = 'modules';
             }
-            this.renderGrid();
+            this.switchGrid();
         },
         group: {
             deep: true,
@@ -227,16 +225,6 @@ const App = {
         }
     },
 
-    computed: {
-        hasGroup: function() {
-            const g = this.group;
-            if (g.chunk || g.type || g.path) {
-                return true;
-            }
-            return false;
-        }
-    },
-
     created() {
         const statsData = JSON.parse(decompress(window.statsData));
         this.statsData = Util.initStatsData(statsData);
@@ -248,6 +236,11 @@ const App = {
         this.initInfo();
         //after info
         this.initStore();
+
+        window.addEventListener('resize', (e) => {
+            this.resizeGrid();
+        });
+
     },
 
     mounted() {

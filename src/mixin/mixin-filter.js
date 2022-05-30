@@ -41,9 +41,10 @@ export default {
         },
 
         updateFilterInfo() {
-            if (this.hasGroup) {
+            if (this.tabName !== 'modules') {
                 return;
             }
+
             const grid = this.getTabGrid();
             if (!grid) {
                 return;
@@ -52,18 +53,30 @@ export default {
             let len = 0;
             let size = 0;
 
+            const forEachRow = (list, callback) => {
+                if (!list) {
+                    return;
+                }
+                list.forEach((item) => {
+                    callback(item);
+                    if (item.collapsed) {
+                        //console.log(item);
+                        forEachRow(item.subs, callback);
+                    }
+                });
+            };
+
             const rows = grid.getGridRowsData();
-            rows.forEach((item) => {
-                if (item.subs) {
-                    //console.log(item);
+            //console.log(rows.length, rows);
+            forEachRow(rows, (row) => {
+                if (row.subs || row.tg_hidden) {
+                    //console.log(row);
                     return;
                 }
-                if (item.tg_parent && item.tg_parent.id === 'assets') {
-                    return;
-                }
-                size += item.size;
+                size += row.size;
                 len += 1;
             });
+
 
             const totalModulesSize = this.statsData.modules.size;
             const totalModulesLength = this.statsData.modules.subs.length;
@@ -75,6 +88,8 @@ export default {
             }
             this.filterModules = len;
             this.filterSize = sizeStr;
+
+            //console.log(this.filterSize);
         }
     }
 

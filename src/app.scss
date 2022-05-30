@@ -69,6 +69,10 @@ main
         display: flex;
         flex-direction: column;
 
+        .vui-tab-header {
+            border-top: none;
+        }
+
         .vui-tab-panes {
             flex: 1;
             overflow: hidden;
