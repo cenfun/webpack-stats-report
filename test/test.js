@@ -45,32 +45,9 @@ assert.strictEqual(Util.isMatch('../d-loader', loaderPatterns), false);
 assert.strictEqual(Util.isMatch('../node_modules/xxx-loader/path-to', loaderPatterns), true);
 assert.strictEqual(Util.isMatch('../../node_modules/xxx-loader/path-to', loaderPatterns), true);
 
-console.log('==================================================================');
-console.log('test StatsReportGenerator');
-const StatsReportGenerator = require('../lib').StatsReportGenerator;
-const statsJson = require('./case.json');
-const caseOutputPath = path.resolve(__dirname, '../.temp/stats-report-case.html');
+//console.log('==================================================================');
+//console.log('test StatsReportGenerator');
 
-StatsReportGenerator({
-    //options
-    title: 'Stats Report - case',
-    output: caseOutputPath,
-    outputStatsJson: true,
-
-    //test if no source
-    gzipSize: true,
-
-    //custom module types
-    moduleTypes: {
-    },
-    //require one more option stats
-    stats: statsJson
-}).then(function() {
-    console.log('=============================async log start ...');
-    console.log(caseOutputPath);
-    assert(fs.existsSync(caseOutputPath));
-    console.log('=============================async log end');
-});
 
 console.log('==================================================================');
 console.log('test webpack build');
@@ -99,14 +76,24 @@ const getWebpackConf = function() {
     const StatsReportPlugin = require('../lib/index.js').StatsReportPlugin;
     const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin;
 
-    webpackConf.plugins = [new VueLoaderPlugin(), new StatsReportPlugin({
-        title: 'Stats Report - test',
-        output: testOutputPath,
-        outputStatsJson: true,
-        gzipSize: true
-    })];
+    webpackConf.plugins = [
 
-    //webpackConf.externals = ['vue'];
+        new VueLoaderPlugin(),
+
+        new webpack.IgnorePlugin({
+            resourceRegExp: /^\.\/locale$/,
+            contextRegExp: /moment$/
+        }),
+
+        new StatsReportPlugin({
+            title: 'Stats Report - test',
+            output: testOutputPath,
+            outputStatsJson: true,
+            gzipSize: true
+        })
+    ];
+
+    webpackConf.externals = ['vue'];
 
 
     return webpackConf;

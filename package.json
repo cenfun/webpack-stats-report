@@ -39,6 +39,7 @@
         "eslint-plugin-chain": "^2.0.0",
         "eslint-plugin-html": "^6.2.0",
         "eslint-plugin-vue": "^9.0.1",
+        "moment": "^2.29.3",
         "postcss": "^8.4.14",
         "postcss-html": "^1.4.1",
         "postcss-scss": "^4.0.4",
