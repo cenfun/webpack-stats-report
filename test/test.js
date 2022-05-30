@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
+const EC = require('eight-colors');
 const Util = require('../lib/util.js');
 const options = require('../lib/options.js');
 
@@ -126,11 +127,11 @@ webpack(conf, function(err, stats) {
 
     // error for project
     if (stats.hasErrors()) {
-        console.log(`ERROR: Found ${info.errors.length} Errors`);
+        EC.logRed(`ERROR: Found ${info.errors.length} Errors`);
     }
 
     if (stats.hasWarnings()) {
-        console.log(`WARN: Found ${info.warnings.length} Warnings`);
+        EC.logYellow(`WARN: Found ${info.warnings.length} Warnings`);
     }
 
     console.log('webpack build finish');

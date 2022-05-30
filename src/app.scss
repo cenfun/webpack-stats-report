@@ -121,20 +121,26 @@ grid
 
 .vui-grid {
     overflow: hidden;
-}
 
-.vui-grid .tg-row .vui-percent {
-    .vui-percent-label {
-        width: 60px;
-        text-align: right;
-        padding-right: 3px;
-    }
+    .tg-row {
+        .tg-cell {
+            border-right: none;
+        }
 
-    .vui-percent-chart {
-        width: 100%;
-        height: 15px;
-        border: 1px solid #888;
-        border-radius: 3px;
+        .vui-percent {
+            .vui-percent-label {
+                width: 60px;
+                text-align: right;
+                padding-right: 3px;
+            }
+
+            .vui-percent-chart {
+                width: 100%;
+                height: 15px;
+                border: 1px solid #888;
+                border-radius: 3px;
+            }
+        }
     }
 }
 

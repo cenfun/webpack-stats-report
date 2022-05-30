@@ -13,12 +13,15 @@ export default {
 
         getAssetsRows() {
             const assets = this.statsData.assets;
-            return assets.subs.map((sub) => {
+
+            const rows = assets.subs.map((sub) => {
                 return {
                     ... sub,
                     percent: (sub.size / assets.size * 100).toFixed(2)
                 };
             });
+
+            return rows;
         },
 
         getModulesRows() {
@@ -69,7 +72,9 @@ export default {
             initPercent(modules);
 
             //only need subs
-            return modules.subs;
+            const rows = modules.subs;
+
+            return rows;
         },
 
         groupModulesByChunk(list) {
