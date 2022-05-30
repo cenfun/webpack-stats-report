@@ -103,6 +103,14 @@ export default {
                 rowFilter: this.filterHandler
             });
 
+            const getAllSubModules = (item) => {
+                let len = 0;
+                this.forEachModule(item.subs, () => {
+                    len += 1;
+                });
+                return len;
+            };
+
             grid.setFilter({
 
                 string: function(v, rd, cd) {
@@ -123,8 +131,8 @@ export default {
                         v = `${left}<b class="color-match">${mid}</b>${right}`;
                     }
 
-                    const sl = rd.tg_subs_length || rd.tg_s_length;
-                    if (sl && sl > 1) {
+                    const sl = getAllSubModules(rd);
+                    if (sl > 1) {
                         v += ` (${sl.toLocaleString()})`;
                     }
 

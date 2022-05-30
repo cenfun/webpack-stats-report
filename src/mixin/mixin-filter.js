@@ -40,6 +40,18 @@ export default {
             return true;
         },
 
+        forEachModule(list, callback) {
+            if (!list) {
+                return;
+            }
+            list.forEach((item) => {
+                if (!item.subs && !item.tg_hidden) {
+                    callback(item);
+                }
+                this.forEachModule(item.subs, callback);
+            });
+        },
+
         updateFilterInfo() {
             if (this.tabName !== 'modules') {
                 return;
@@ -53,30 +65,13 @@ export default {
             let len = 0;
             let size = 0;
 
-            const forEachRow = (list, callback) => {
-                if (!list) {
-                    return;
-                }
-                list.forEach((item) => {
-                    callback(item);
-                    if (item.collapsed) {
-                        //console.log(item);
-                        forEachRow(item.subs, callback);
-                    }
-                });
-            };
-
-            const rows = grid.getGridRowsData();
+            //do not repeat visible subs, filter has parent rows
+            const rows = grid.getGridRowsData().filter((it) => !it.tg_parent);
             //console.log(rows.length, rows);
-            forEachRow(rows, (row) => {
-                if (row.subs || row.tg_hidden) {
-                    //console.log(row);
-                    return;
-                }
+            this.forEachModule(rows, (row) => {
                 size += row.size;
                 len += 1;
             });
-
 
             const totalModulesSize = this.statsData.modules.size;
             const totalModulesLength = this.statsData.modules.subs.length;
