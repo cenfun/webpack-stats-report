@@ -2,8 +2,6 @@ const StatsReportPlugin = require('./lib/index.js').StatsReportPlugin;
 const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 
-process.env.NODE_ENV = 'production';
-
 module.exports = {
     mode: 'production',
     //mode: 'development',

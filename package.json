@@ -9,8 +9,9 @@
     ],
     "scripts": {
         "build": "npm run lint && npx webpack",
-        "dev": "cls && npm run lint && npx webpack && npx webpack && npm run test",
-        "test": "node ./test/test.js",
+        "dev": "npx webpack --mode development && npx webpack --mode development && npm run test",
+        "prod": "npx webpack && npx webpack && npm run test",
+        "test": "cd test && node ./test.js",
         "lint": "npx eslint ./src ./lib --fix && npx stylelint ./src/**/*.scss --fix"
     },
     "repository": {

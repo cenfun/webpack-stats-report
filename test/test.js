@@ -46,12 +46,12 @@ console.log('=================================================================='
 console.log('test StatsReportGenerator');
 const StatsReportGenerator = require('../lib').StatsReportGenerator;
 const statsJson = require('./case.json');
-const outputPath = path.resolve(__dirname, '../.temp/stats-report-case.html');
+const caseOutputPath = path.resolve(__dirname, '../.temp/stats-report-case.html');
 
 StatsReportGenerator({
     //options
     title: 'Stats Report - case',
-    output: outputPath,
+    output: caseOutputPath,
     outputStatsJson: true,
 
     //test if no source
@@ -63,6 +63,62 @@ StatsReportGenerator({
     //require one more option stats
     stats: statsJson
 }).then(function() {
-    console.log(outputPath);
-    assert(fs.existsSync(outputPath));
+    console.log('=============================async log start ...');
+    console.log(caseOutputPath);
+    assert(fs.existsSync(caseOutputPath));
+    console.log('=============================async log end');
+});
+
+console.log('==================================================================');
+console.log('test example webpack build');
+
+const exampleOutputPath = path.resolve(__dirname, '../.temp/stats-report-example.html');
+
+const webpack = require('webpack');
+
+const getWebpackConf = function() {
+    const webpackConf = require('../webpack.config.js');
+
+    //webpackConf.mode = 'development';
+    webpackConf.entry = {
+        entry1: path.resolve(__dirname, 'src/entry1.js'),
+        entry2: path.resolve(__dirname, 'src/entry2.js')
+    };
+
+    webpackConf.output = {
+        path: path.resolve(__dirname, '../.temp'),
+        umdNamedDefine: true,
+        library: 'example',
+        libraryTarget: 'umd'
+    };
+
+    const StatsReportPlugin = require('../lib/index.js').StatsReportPlugin;
+    const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin;
+
+    webpackConf.plugins = [new VueLoaderPlugin(), new StatsReportPlugin({
+        title: 'Stats Report - example',
+        output: exampleOutputPath,
+        outputStatsJson: true,
+        generateMinifiedAndGzipSize: true
+    })];
+
+
+    return webpackConf;
+};
+
+const conf = getWebpackConf();
+
+webpack(conf, function(err, stats) {
+    if (err) {
+        console.log(err.stack || err);
+        if (err.details) {
+            console.log(err.details);
+        }
+        return;
+    }
+
+    console.log('webpack success');
+    console.log(exampleOutputPath);
+    assert(fs.existsSync(exampleOutputPath));
+
 });
