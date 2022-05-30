@@ -82,6 +82,7 @@ const getWebpackConf = function() {
     const webpackConf = require('../webpack.config.js');
 
     //webpackConf.mode = 'development';
+
     webpackConf.entry = {
         entry1: path.resolve(__dirname, 'src/entry1.js'),
         entry2: path.resolve(__dirname, 'src/entry2.js')
@@ -104,6 +105,8 @@ const getWebpackConf = function() {
         gzipSize: true
     })];
 
+    //webpackConf.externals = ['vue'];
+
 
     return webpackConf;
 };
@@ -119,7 +122,18 @@ webpack(conf, function(err, stats) {
         return;
     }
 
-    console.log('webpack success');
+    const info = stats.toJson();
+
+    // error for project
+    if (stats.hasErrors()) {
+        console.log(`ERROR: Found ${info.errors.length} Errors`);
+    }
+
+    if (stats.hasWarnings()) {
+        console.log(`WARN: Found ${info.warnings.length} Warnings`);
+    }
+
+    console.log('webpack build finish');
     console.log(testOutputPath);
     assert(fs.existsSync(testOutputPath));
 

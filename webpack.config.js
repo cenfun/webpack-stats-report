@@ -1,6 +1,5 @@
 const StatsReportPlugin = require('./lib/index.js').StatsReportPlugin;
 const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin;
-const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -22,18 +21,6 @@ module.exports = {
         gzipSize: true
     })],
 
-    optimization: {
-        minimizer: [
-            new TerserPlugin({
-                terserOptions: {
-                    output: {
-                        comments: false
-                    }
-                },
-                extractComments: false
-            })
-        ]
-    },
     module: {
         rules: [{
             test: /\.js$/,
@@ -79,7 +66,7 @@ module.exports = {
             test: /\.vue$/,
             loader: 'vue-loader'
         }, {
-            test: /\.svg$/i,
+            test: /\.(svg|png)$/i,
             type: 'asset/inline'
         }]
     }
