@@ -142,7 +142,7 @@ export default {
 
                     if (rd.issuerPath) {
                         v += `
-                            <div class="tg-cell-hover-icon tg-flyover-icon" title="Click for Detail">
+                            <div class="tg-cell-hover-icon tg-flyover-icon" title="Click and Show Path Detail">
                                 <div class="tg-issuer-icon" />
                             </div>
                         `;

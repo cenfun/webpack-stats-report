@@ -232,9 +232,7 @@ detail
 }
 
 .vui-flyover-header {
-    height: 40px;
     background-color: #666;
-    border-bottom: 1px solid #ccc;
     padding: 0 10px;
 }
 
@@ -244,6 +242,8 @@ detail
 }
 
 .vui-flyover-title {
+    height: 41px;
+    line-height: 41px;
     color: #fff;
     font-size: 16px;
     font-weight: bold;

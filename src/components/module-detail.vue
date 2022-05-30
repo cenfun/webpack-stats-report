@@ -56,30 +56,6 @@
         </div>
       </div>
     </div>
-
-    <div v-if="rowData.chunk">
-      <div class="vui-modal-label">
-        Chunk:
-      </div>
-      <div class="vui-modal-item">
-        <div class="vui-modal-arrow" />
-        {{ rowData.chunk }}
-      </div>
-    </div>
-
-    <div class="vui-modal-label">
-      Type:
-    </div>
-    <div class="vui-modal-item">
-      {{ rowData.type }}
-    </div>
-
-    <div class="vui-modal-label">
-      Size:
-    </div>
-    <div class="vui-modal-item">
-      {{ rowData.sizeH }}
-    </div>
   </div>
 </template>
 <script>

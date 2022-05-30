@@ -116,7 +116,7 @@
               <div class="vui-icon vui-icon-arrow-right" />
             </div>
             <div class="vui-flyover-title vui-flex-auto">
-              Detail
+              Path Detail
             </div>
             <div
               class="vui-flyover-icon"
@@ -127,7 +127,7 @@
           </VuiFlex>
         </div>
         <div class="vui-flyover-content vui-flex-auto">
-          <ModalDetail :row-data="flyoverData" />
+          <ModuleDetail :row-data="flyoverData" />
         </div>
       </div>
     </VuiFlyover>
@@ -136,7 +136,7 @@
 <script>
 import decompress from 'lz-utils/lib/decompress.js';
 import Util from './util/util.js';
-import ModalDetail from './components/modal-detail.vue';
+import ModuleDetail from './components/module-detail.vue';
 import ModalModuleTypes from './components/modal-module-types.vue';
 import ModalInfo from './components/modal-info.vue';
 
@@ -169,7 +169,7 @@ const App = {
         VuiInput,
         VuiFlyover,
         VuiTab,
-        ModalDetail
+        ModuleDetail
     },
 
     mixins: mixins,
