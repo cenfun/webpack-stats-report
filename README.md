@@ -5,6 +5,10 @@
 ![npm](https://img.shields.io/npm/dt/webpack-stats-report.svg)
 ![David](https://img.shields.io/david/cenfun/webpack-stats-report.svg)
 
+## Preview Example Reports
+* [stats-report-wsr.html](https://cenfun.github.io/webpack-stats-report/stats-report-wsr.html)
+* [stats-report-test.html](https://cenfun.github.io/webpack-stats-report/stats-report-test.html)
+
 ## Install
 ```sh
 npm i webpack-stats-report -D
