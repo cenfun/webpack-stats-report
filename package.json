@@ -1,6 +1,6 @@
 {
     "name": "webpack-stats-report",
-    "version": "1.2.4",
+    "version": "2.0.0",
     "description": "webpack-stats-report",
     "main": "lib/index.js",
     "files": [
@@ -10,7 +10,7 @@
     "scripts": {
         "build": "npm run lint && npx webpack",
         "dev": "npx webpack --mode development && npx webpack --mode development && npm run test",
-        "prod": "npx webpack && npx webpack && npm run test",
+        "prod": "npm run lint && npx webpack && npx webpack && npm run test",
         "test": "cd test && node ./test.js",
         "lint": "npx eslint ./src ./lib --fix && npx stylelint ./src/**/*.scss --fix"
     },
@@ -52,7 +52,7 @@
         "stylelint-config-standard": "^25.0.0",
         "stylelint-scss": "^4.2.0",
         "turbogrid": "^2.0.7",
-        "vine-ui": "^3.0.0",
+        "vine-ui": "^3.0.1",
         "vue": "^3.2.36",
         "vue-loader": "^17.0.0",
         "webpack": "^5.72.1",

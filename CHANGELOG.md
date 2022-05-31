@@ -1,5 +1,11 @@
 # Changelog
 
+* v2.0.0
+    * updated UI with vine-ui
+
+
+---
+
 * v1.2.4
     * fixed js error and icons
 

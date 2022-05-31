@@ -5,11 +5,9 @@
 ![npm](https://img.shields.io/npm/dt/webpack-stats-report.svg)
 ![David](https://img.shields.io/david/cenfun/webpack-stats-report.svg)
 
-![](assets/webpack-stats-report.gif)
-
 ## Install
 ```sh
-npm i webpack-stats-report --save-dev
+npm i webpack-stats-report -D
 ```
 ## Usage
 
