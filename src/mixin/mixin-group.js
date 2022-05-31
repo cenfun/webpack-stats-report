@@ -162,7 +162,7 @@ export default {
                 path.files = [];
 
                 path.subs.forEach((m) => {
-                    const arr = m.name.split(/\/|\\/g);
+                    const arr = m.name.split(/\/+/g);
                     const paths = arr.filter((n) => {
                         //maybe need ../
                         if (!n || n === '.' || n === '..') {
