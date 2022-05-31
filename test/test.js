@@ -52,7 +52,7 @@ assert.strictEqual(Util.isMatch('../../node_modules/xxx-loader/path-to', loaderP
 console.log('==================================================================');
 console.log('test webpack build');
 
-const testOutputPath = path.resolve(__dirname, '../.temp/stats-report-test.html');
+const testOutputPath = path.resolve(__dirname, '../docs/stats-report-test.html');
 
 const webpack = require('webpack');
 

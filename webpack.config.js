@@ -17,7 +17,7 @@ module.exports = {
 
     plugins: [new VueLoaderPlugin(), new StatsReportPlugin({
         title: 'Stats Report - webpack-stats-report',
-        output: '.temp/stats-report.html',
+        output: 'docs/stats-report-wsr.html',
         outputStatsJson: true,
         gzipSize: true
     })],
