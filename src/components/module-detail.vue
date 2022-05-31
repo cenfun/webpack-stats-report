@@ -13,7 +13,7 @@
           :key="i"
           class="vui-modal-item"
         >
-          ❁{{ item }}
+          ❁{{ item }} ▷
         </div>
       </div>
       <div class="vui-modal-item">
