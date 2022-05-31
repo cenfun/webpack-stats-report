@@ -131,6 +131,12 @@ const Util = {
                         return map[p];
                     });
                 }
+                if (item.bailout) {
+                    item.bailout = item.bailout.map((b) => {
+                        return map[b];
+                    });
+                }
+
                 setMap(item.subs);
             });
         };

@@ -38,6 +38,22 @@
         {{ item }}
       </div>
     </div>
+
+    <div
+      v-if="rowData.bailout"
+      class="vui-modal-block"
+    >
+      <div class="vui-modal-label">
+        Bailout:
+      </div>
+      <div
+        v-for="(item, index) in rowData.bailout"
+        :key="index"
+        class="vui-modal-item"
+      >
+        {{ item }}
+      </div>
+    </div>
   </div>
 </template>
 <script>
