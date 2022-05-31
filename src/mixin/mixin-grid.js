@@ -160,11 +160,14 @@ export default {
                     if (!v) {
                         return '';
                     }
+                    return `${v}%`;
+                },
+                percentBar: function(v) {
+                    if (!v) {
+                        return '';
+                    }
                     return `
-                    <div class="vui-percent vui-flex-row">
-                        <div class="vui-percent-label">${v}%</div>
-                        <div class="vui-percent-chart vui-flex-auto" style="background:linear-gradient(to right, #999 ${v}%, #fff ${v}%);"></div>
-                    </div>
+                    <div class="vui-percent" style="background:linear-gradient(to right, #999 ${v}%, #fff ${v}%);"></div>
                     `;
                 }
             });
@@ -212,12 +215,16 @@ export default {
                 maxWidth: 2048
             }, {
                 id: 'percent',
+                name: 'Percent',
+                dataType: 'percent',
+                sortable: false,
+                align: 'right'
+            }, {
+                id: 'percent',
                 name: '',
                 sortable: false,
-                dataType: 'percent',
-                align: 'right',
-                minWidth: 173,
-                width: 173
+                dataType: 'percentBar',
+                width: 112
             }, {
                 id: 'size',
                 name: 'Size',
