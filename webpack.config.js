@@ -1,5 +1,6 @@
 const StatsReportPlugin = require('./lib/index.js').StatsReportPlugin;
 const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin;
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -21,6 +22,20 @@ module.exports = {
         gzipSize: true
     })],
 
+    optimization: {
+        //minimize: true, auto enabled with production mode
+        minimizer: [
+            new TerserPlugin({
+                terserOptions: {
+                    output: {
+                        comments: false
+                    }
+                },
+                extractComments: false
+            })
+        ]
+    },
+
     module: {
         rules: [{
             test: /\.js$/,
@@ -28,7 +43,7 @@ module.exports = {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    cacheDirectory: true,
+                    cacheDirectory: false,
                     babelrc: false,
                     presets: [['@babel/preset-env', {
                         'targets': [

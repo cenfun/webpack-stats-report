@@ -55,7 +55,10 @@ export default {
                 }
             };
             initSize(modules, 'size');
-            initSize(modules, 'sizeGzip');
+
+            if (this.info.gzipSize) {
+                initSize(modules, 'sizeGzip');
+            }
 
             const initPercent = function(parent) {
                 if (parent.subs) {

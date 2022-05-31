@@ -23,6 +23,9 @@
         "url": "https://github.com/cenfun/webpack-stats-report/issues"
     },
     "homepage": "https://github.com/cenfun/webpack-stats-report#readme",
+    "workspaces": [
+        "test"
+    ],
     "dependencies": {
         "lz-utils": "^1.0.5",
         "micromatch": "^4.0.5"
@@ -31,7 +34,6 @@
         "@babel/core": "^7.18.2",
         "@babel/preset-env": "^7.18.2",
         "babel-loader": "^8.2.5",
-        "core-js": "^3.22.7",
         "css-loader": "^6.7.1",
         "eight-colors": "^1.0.1",
         "eslint": "^8.16.0",
@@ -39,11 +41,9 @@
         "eslint-plugin-chain": "^2.0.0",
         "eslint-plugin-html": "^6.2.0",
         "eslint-plugin-vue": "^9.0.1",
-        "moment": "^2.29.3",
         "postcss": "^8.4.14",
         "postcss-html": "^1.4.1",
         "postcss-scss": "^4.0.4",
-        "regenerator-runtime": "^0.13.9",
         "sass": "^1.52.1",
         "sass-loader": "^13.0.0",
         "style-loader": "^3.3.1",
@@ -52,11 +52,11 @@
         "stylelint-config-standard": "^25.0.0",
         "stylelint-scss": "^4.2.0",
         "turbogrid": "^2.0.7",
+        "underscore": "1.6.0",
         "vine-ui": "^3.0.0",
         "vue": "^3.2.36",
         "vue-loader": "^17.0.0",
         "webpack": "^5.72.1",
-        "webpack-cli": "^4.9.2",
-        "whatwg-fetch": "^3.6.2"
+        "webpack-cli": "^4.9.2"
     }
 }

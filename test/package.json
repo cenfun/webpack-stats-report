@@ -1,0 +1,13 @@
+{
+    "name": "webpack-stats-report-test",
+    "version": "",
+    "main": "",
+    "dependencies": {
+        "backbone": "^1.4.1",
+        "core-js": "^3.22.7",
+        "jquery": "^3.6.0",
+        "regenerator-runtime": "^0.13.9",
+        "whatwg-fetch": "^3.6.2",
+        "xlsx": "^0.18.5"
+    }
+}

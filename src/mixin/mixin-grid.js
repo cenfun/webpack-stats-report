@@ -229,28 +229,26 @@ export default {
                 name: 'Gzip',
                 align: 'right',
                 dataType: 'size',
+                invisible: !this.info.gzipSize,
                 width: 80
             }, {
                 id: 'chunk',
                 name: 'Chunk',
                 width: 65,
                 maxWidth: 1024
+            }, {
+                id: 'type',
+                name: 'Type',
+                align: 'center',
+                invisible: this.tabName !== 'modules',
+                width: 65
+            }, {
+                id: 'depth',
+                name: 'Depth',
+                align: 'center',
+                invisible: this.tabName !== 'modules',
+                width: 52
             }];
-
-            if (this.tabName === 'modules') {
-                columns.push({
-                    id: 'type',
-                    name: 'Type',
-                    align: 'center',
-                    width: 65
-                });
-                columns.push({
-                    id: 'depth',
-                    name: 'Depth',
-                    align: 'center',
-                    width: 52
-                });
-            }
 
             return columns;
         }
