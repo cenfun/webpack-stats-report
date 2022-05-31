@@ -32,7 +32,7 @@
         <div class="vui-pane">
           <div class="vui-filter">
             <VuiFlex spacing="10">
-              <div>Filter:</div>
+              <div><b>Filter:</b></div>
               <VuiInput
                 v-model="keywords.name"
                 name="name"
@@ -56,7 +56,7 @@
                 Found <b>{{ filterModules }}</b> modules ({{ filterSize }})
               </div>
               <div class="vui-flex-empty" />
-              <div>Group:</div>
+              <div><b>Group:</b></div>
               <VuiCheckbox
                 v-model="group.chunk"
                 label="Chunk"
@@ -116,7 +116,7 @@
               <div class="vui-icon vui-icon-arrow-right" />
             </div>
             <div class="vui-flyover-title vui-flex-auto">
-              Path Detail
+              Module Detail
             </div>
             <div
               class="vui-flyover-icon"

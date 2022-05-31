@@ -3,11 +3,12 @@
     "version": "",
     "main": "",
     "dependencies": {
-        "backbone": "^1.4.1",
         "core-js": "^3.22.7",
-        "jquery": "^3.6.0",
+        "flatdep": "1.1.9",
+        "fs": "0.0.2",
+        "path": "0.12.7",
         "regenerator-runtime": "^0.13.9",
-        "whatwg-fetch": "^3.6.2",
-        "xlsx": "^0.18.5"
+        "semver": "6.3.0",
+        "whatwg-fetch": "^3.6.2"
     }
 }

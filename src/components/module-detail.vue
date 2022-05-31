@@ -3,57 +3,39 @@
     v-if="rowData"
     class="vui-detail"
   >
-    <div class="vui-modal-label">
-      Name:
-    </div>
-    <div class="vui-modal-item">
-      <div
-        v-for="(loader, i) in rowData.loaders"
-        :key="i"
-        class="vui-loader"
-      >
-        <a
-          target="_blank"
-          :href="'https://www.npmjs.com/package/'+loader+'-loader'"
-        >{{ loader }}-loader</a>
+    <div class="vui-modal-block">
+      <div class="vui-modal-label">
+        Name:
       </div>
-      {{ rowData.name }}
+      <div v-if="rowData.loaders">
+        <div
+          v-for="(item, i) in rowData.loaders"
+          :key="i"
+          class="vui-modal-item"
+        >
+          {{ item }}
+          <div class="vui-modal-next" />
+        </div>
+      </div>
+      <div class="vui-modal-item">
+        {{ rowData.name }}
+      </div>
     </div>
 
     <div
-      v-if="rowData.fullName"
-      class="vui-modal-tip"
+      v-if="rowData.paths"
+      class="vui-modal-block"
     >
       <div class="vui-modal-label">
-        Full Name:
+        Paths:
       </div>
-      <div class="vui-modal-item">
-        {{ rowData.fullName }}
-      </div>
-    </div>
-
-    <div v-if="rowData.asset">
-      <div class="vui-modal-label">
-        Asset:
-      </div>
-      <div class="vui-modal-item">
-        {{ rowData.asset }}
-      </div>
-    </div>
-
-    <div v-if="rowData.issuerPath.length">
-      <div class="vui-modal-label">
-        Path:
-      </div>
-      <div class="vui-modal-list">
-        <div
-          v-for="(item, index) in rowData.issuerPath"
-          :key="index"
-          class="vui-modal-item"
-        >
-          <div class="vui-modal-arrow" />
-          {{ item }}
-        </div>
+      <div
+        v-for="(item, index) in rowData.paths"
+        :key="index"
+        class="vui-modal-item"
+      >
+        <div class="vui-modal-arrow" />
+        {{ item }}
       </div>
     </div>
   </div>
@@ -76,15 +58,4 @@ export default {
     height: 100%;
     overflow: auto;
 }
-
-.vui-modal-item .vui-loader {
-    display: inline-block;
-    white-space: nowrap;
-    padding-right: 20px;
-    background-repeat: no-repeat;
-    background-position: right 3px center;
-    background-image: url("../images/arrow-right.svg");
-}
-
-
 </style>

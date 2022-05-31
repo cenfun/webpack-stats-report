@@ -141,9 +141,9 @@ export default {
                         v = `<span style="color:${rd.name_color};">${v}</span>`;
                     }
 
-                    if (rd.issuerPath) {
+                    if (rd.paths) {
                         v += `
-                            <div class="tg-cell-hover-icon tg-flyover-icon" title="Click and Show Path Detail">
+                            <div class="tg-cell-hover-icon tg-flyover-icon" title="Click to show module detail">
                                 <div class="tg-issuer-icon" />
                             </div>
                         `;

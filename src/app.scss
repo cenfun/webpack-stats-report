@@ -264,41 +264,38 @@ detail
 modal slot
 */
 
+.vui-modal-block {
+    margin-bottom: 10px;
+}
+
 .vui-modal-label {
     font-size: 16px;
     font-weight: bold;
+    padding: 3px 0;
 }
 
 .vui-modal-item {
     padding: 5px;
     border-bottom: 1px solid #f5f5f5;
     position: relative;
-    margin-bottom: 10px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    display: flex;
 }
 
 .vui-modal-item:hover {
     background-color: #f5f5f5;
 }
 
-.vui-modal-list {
-    margin-bottom: 10px;
-}
-
-.vui-modal-list .vui-modal-item {
-    margin-bottom: 0;
-}
-
-.vui-modal-line {
-    word-break: break-word;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-}
-
-.vui-modal-tip {
-    color: #666;
-    word-break: break-all;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
+.vui-modal-next {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("./images/arrow-right.svg");
 }
 
 .vui-modal-arrow {

@@ -118,12 +118,11 @@ const Util = {
             }
             list.forEach((item) => {
                 item.name = map[item.name];
-                //fullName
                 if (item.chunk) {
                     item.chunk = map[item.chunk];
                 }
-                if (item.issuerPath) {
-                    item.issuerPath = item.issuerPath.map((p) => {
+                if (item.paths) {
+                    item.paths = item.paths.map((p) => {
                         return map[p];
                     });
                 }

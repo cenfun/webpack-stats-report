@@ -1,5 +1,5 @@
 <template>
-  <div class="vui-info vui-modal-list">
+  <div class="vui-info">
     <div
       v-for="(item, i) in list"
       :key="i"

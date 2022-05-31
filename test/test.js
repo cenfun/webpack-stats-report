@@ -80,10 +80,10 @@ const getWebpackConf = function() {
 
         new VueLoaderPlugin(),
 
-        new webpack.IgnorePlugin({
-            resourceRegExp: /^\.\/locale$/,
-            contextRegExp: /moment$/
-        }),
+        // new webpack.IgnorePlugin({
+        //     resourceRegExp: /^\.\/locale$/,
+        //     contextRegExp: /moment$/
+        // }),
 
         new StatsReportPlugin({
             title: 'Stats Report - test',

@@ -1,9 +1,12 @@
 
 import Component from './component.vue';
 
+//test nested
+import flatdep from 'flatdep';
+import semver from 'semver';
+
 //test ignore
-import moment from 'moment';
-//import 'moment/locale/zh-cn.js';
+//seems is for webpack4
 
 //test other
 import options from '../../../lib/options.js';
@@ -15,14 +18,15 @@ import EC from 'eight-colors';
 import json5 from 'json5';
 
 //error modules
-import errorModule from 'error-module';
+//import errorModule from 'error-module';
 
 const component = {
-    moment,
+    flatdep,
+    semver,
     options,
     EC,
     json5,
-    errorModule,
+    //errorModule,
     Component
 };
 
