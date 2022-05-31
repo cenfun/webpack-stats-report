@@ -106,7 +106,7 @@ export default {
 
             const getAllSubModules = (item) => {
                 let len = 0;
-                this.forEachModule(item.subs, () => {
+                this.forEachModule(grid, item.subs, () => {
                     len += 1;
                 });
                 return len;

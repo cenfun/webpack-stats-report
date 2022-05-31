@@ -29,9 +29,12 @@ a:hover {
 
 .vui-icon {
     display: block;
+    overflow: hidden;
     width: 20px;
     height: 20px;
-    overflow: hidden;
+    background-size: 20px 20px;
+    background-position: center center;
+    background-repeat: no-repeat;
     opacity: 0.6;
 }
 
@@ -53,6 +56,19 @@ a:hover {
 
 .vui-icon-github {
     background-image: url("./images/github.svg");
+}
+
+.vui-icon-modules {
+    background-image: url("./images/modules.svg");
+    margin-right: 5px;
+    opacity: 0.9;
+}
+
+.vui-icon-assets {
+    background-size: 18px 18px;
+    background-image: url("./images/assets.svg");
+    margin-right: 5px;
+    opacity: 0.9;
 }
 
 /*
@@ -103,9 +119,21 @@ filter
     padding: 5px 10px;
     border-bottom: 1px solid #ddd;
     overflow: hidden;
+
+    .vui-input {
+        input {
+            padding-right: 25px;
+            background-image: url("./images/search.svg");
+            background-repeat: no-repeat;
+            background-position: right 5px center;
+            background-size: 15px 15px;
+        }
+    }
 }
 
 .vui-filter-info {
+    height: 30px;
+    line-height: 30px;
     margin-left: 10px;
 }
 

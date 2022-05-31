@@ -20,71 +20,71 @@ export default {
         },
 
         filterHandler(rowData) {
-            for (const field in this.keywords) {
-                const matchedKey = `${field}_matched`;
-                rowData[matchedKey] = null;
-                const list = this.keywords[field].trim().toLowerCase().split(/\s+/g).filter((item) => item);
-                if (!list.length) {
-                    continue;
-                }
-                const v = rowData[field];
-                if (typeof v === 'undefined') {
-                    return false;
-                }
-                const value = `${v}`.toLowerCase();
-                if (this.isMatch(value, list, rowData, matchedKey)) {
-                    continue;
-                }
+            const matchedKey = 'name_matched';
+            rowData[matchedKey] = null;
+
+            const keywords = this.keywords[this.tabName];
+            if (!keywords) {
+                return true;
+            }
+
+            const list = keywords.trim().toLowerCase().split(/\s+/g).filter((item) => item);
+            if (!list.length) {
+                return true;
+            }
+            const v = rowData.name;
+            if (typeof v === 'undefined') {
                 return false;
             }
-            return true;
+            const value = `${v}`.toLowerCase();
+            if (this.isMatch(value, list, rowData, matchedKey)) {
+                return true;
+            }
+
+            return false;
+
         },
 
-        forEachModule(list, callback) {
-            if (!list) {
+        forEachModule(grid, list, callback) {
+            if (!grid || !list) {
                 return;
             }
             list.forEach((item) => {
-                if (!item.subs && !item.tg_hidden) {
+                if (grid.isRowInvisible(item)) {
+                    return;
+                }
+                if (item.subs) {
+                    this.forEachModule(grid, item.subs, callback);
+                } else {
                     callback(item);
                 }
-                this.forEachModule(item.subs, callback);
             });
         },
 
         updateFilterInfo() {
-            if (this.tabName !== 'modules') {
-                return;
-            }
 
             const grid = this.getTabGrid();
             if (!grid) {
                 return;
             }
 
-            let len = 0;
+            let num = 0;
             let size = 0;
 
-            //do not repeat visible subs, filter has parent rows
-            const rows = grid.getGridRowsData().filter((it) => !it.tg_parent);
-            //console.log(rows.length, rows);
-            this.forEachModule(rows, (row) => {
+            const rows = grid.getRowsData();
+            this.forEachModule(grid, rows, (row) => {
                 size += row.size;
-                len += 1;
+                num += 1;
             });
 
-            const totalModulesSize = this.statsData.modules.size;
-            const totalModulesLength = this.statsData.modules.subs.length;
-
-            let sizeStr = `${Util.BF(size)}`;
-            if (len !== totalModulesLength) {
-                const per = (size / totalModulesSize * 100).toFixed(2);
-                sizeStr += `, ${per}%`;
+            if (this.tabName === 'modules') {
+                this.summary.modulesNum = num;
+                this.summary.modulesSize = `${Util.BF(size)}`;
+            } else {
+                this.summary.assetsNum = num;
+                this.summary.assetsSize = `${Util.BF(size)}`;
             }
-            this.filterModules = len;
-            this.filterSize = sizeStr;
 
-            //console.log(this.filterSize);
         }
     }
 

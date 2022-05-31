@@ -25,8 +25,14 @@
       </template>
 
       <template #tabs>
-        <div><b>Modules</b></div>
-        <div><b>Assets</b></div>
+        <div class="vui-flex-row">
+          <div class="vui-icon vui-icon-modules" />
+          <b>Modules</b>
+        </div>
+        <div class="vui-flex-row">
+          <div class="vui-icon vui-icon-assets" />
+          <b>Assets</b>
+        </div>
       </template>
       <template #panes>
         <div class="vui-pane">
@@ -34,26 +40,13 @@
             <VuiFlex spacing="10">
               <div><b>Filter:</b></div>
               <VuiInput
-                v-model="keywords.name"
+                v-model="keywords.modules"
                 name="name"
                 placeholder="Name"
-                title="Chunk"
-                width="150px"
-              />
-              <VuiInput
-                v-model="keywords.chunk"
-                name="chunk"
-                placeholder="Chunk"
-                title="Chunk"
-              />
-              <VuiInput
-                v-model="keywords.type"
-                name="type"
-                placeholder="Type"
-                title="Type"
+                width="200px"
               />
               <div class="vui-filter-info">
-                Found <b>{{ filterModules }}</b> modules ({{ filterSize }})
+                {{ moduleInfo }}
               </div>
               <div class="vui-flex-empty" />
               <div><b>Group:</b></div>
@@ -74,6 +67,20 @@
           <div class="vui-grid vui-grid-modules vui-flex-auto" />
         </div>
         <div class="vui-pane">
+          <div class="vui-filter">
+            <VuiFlex spacing="10">
+              <div><b>Filter:</b></div>
+              <VuiInput
+                v-model="keywords.assets"
+                name="name"
+                placeholder="Name"
+                width="200px"
+              />
+              <div class="vui-filter-info">
+                {{ assetInfo }}
+              </div>
+            </VuiFlex>
+          </div>
           <div class="vui-grid vui-grid-assets vui-flex-auto" />
         </div>
       </template>
@@ -188,17 +195,30 @@ const App = {
             },
 
             keywords: {
-                chunk: '',
-                type: '',
-                name: ''
+                modules: '',
+                assets: ''
             },
-            filterModules: 0,
-            filterSize: '',
+
+            summary: {
+                modulesNum: 0,
+                modulesSize: 0,
+                assetsNum: 0,
+                assetsSize: 0
+            },
 
             flyoverVisible: false,
             //flyoverMaximize: false,
             flyoverData: null
         };
+    },
+
+    computed: {
+        moduleInfo() {
+            return `Found ${this.summary.modulesNum} modules (${this.summary.modulesSize})`;
+        },
+        assetInfo() {
+            return `Found ${this.summary.assetsNum} assets (${this.summary.assetsSize})`;
+        }
     },
 
     watch: {
