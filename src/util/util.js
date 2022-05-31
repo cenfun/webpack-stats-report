@@ -121,6 +121,11 @@ const Util = {
                 if (item.chunk) {
                     item.chunk = map[item.chunk];
                 }
+                if (item.loaders) {
+                    item.loaders = item.loaders.map((l) => {
+                        return map[l];
+                    });
+                }
                 if (item.paths) {
                     item.paths = item.paths.map((p) => {
                         return map[p];
