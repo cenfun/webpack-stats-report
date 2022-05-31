@@ -13,8 +13,7 @@
           :key="i"
           class="vui-modal-item"
         >
-          {{ item }}
-          <div class="vui-modal-next" />
+          ❁{{ item }}
         </div>
       </div>
       <div class="vui-modal-item">

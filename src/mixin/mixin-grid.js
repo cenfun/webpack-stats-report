@@ -132,6 +132,10 @@ export default {
                         v = `${left}<b class="color-match">${mid}</b>${right}`;
                     }
 
+                    if (rd.loaders) {
+                        v = `❁${v}`;
+                    }
+
                     const sl = getAllSubModules(rd);
                     if (sl > 1) {
                         v += ` (${sl.toLocaleString()})`;

@@ -47,7 +47,7 @@ a:hover {
 }
 
 .vui-icon-arrow-right {
-    background-image: url("./images/d-arrow-right.svg");
+    background-image: url("./images/arrow-right.svg");
 }
 
 .vui-icon-webpack {
@@ -308,16 +308,6 @@ modal slot
 
 .vui-modal-item:hover {
     background-color: #f5f5f5;
-}
-
-.vui-modal-next {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    pointer-events: none;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-image: url("./images/arrow-right.svg");
 }
 
 .vui-modal-arrow {
