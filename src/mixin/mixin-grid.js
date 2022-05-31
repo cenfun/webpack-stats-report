@@ -250,13 +250,12 @@ export default {
             }, {
                 id: 'type',
                 name: 'Type',
-                align: 'center',
                 invisible: this.tabName !== 'modules',
                 width: 65
             }, {
                 id: 'depth',
                 name: 'Depth',
-                align: 'center',
+                align: 'right',
                 invisible: this.tabName !== 'modules',
                 width: 52
             }];
