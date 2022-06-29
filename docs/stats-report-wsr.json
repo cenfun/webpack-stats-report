@@ -1,8 +1,8 @@
 {
-    "hash": "6fa84291c0e98229329b",
+    "hash": "c7ff0e4fb7bec24f5157",
     "version": "5.73.0",
-    "time": 4759,
-    "builtAt": 1656494861503,
+    "time": 4868,
+    "builtAt": 1656495310114,
     "publicPath": "auto",
     "outputPath": "G:\\workspace\\webpack-stats-report\\dist",
     "assetsByChunkName": {
@@ -14,14 +14,14 @@
         {
             "type": "asset",
             "name": "webpack-stats-report.js",
-            "size": 426456,
+            "size": 426467,
             "emitted": false,
             "comparedForEmit": true,
             "cached": false,
             "info": {
                 "javascriptModule": false,
                 "minimized": true,
-                "size": 426456
+                "size": 426467
             },
             "chunkNames": [
                 "main"
@@ -43,9 +43,9 @@
             "initial": true,
             "entry": true,
             "recorded": false,
-            "size": 974783.7,
+            "size": 974806.7,
             "sizes": {
-                "javascript": 973625.7,
+                "javascript": 973648.7,
                 "runtime": 1158
             },
             "names": [
@@ -59,7 +59,7 @@
                 "webpack-stats-report.js"
             ],
             "auxiliaryFiles": [],
-            "hash": "a4af3863c999bfff0a20",
+            "hash": "22110b14049f3d6e8cad",
             "childrenByOrder": {},
             "id": 179,
             "siblings": [],
@@ -4368,8 +4368,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\stylePostLoader.js!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
-            "issuerName": "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/components/module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\stylePostLoader.js!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
+            "issuerName": "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/components/modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\src\\index.js",
@@ -4392,31 +4392,31 @@
                     "id": null
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\module-detail.vue",
-                    "name": "./src/components/module-detail.vue",
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\modal-module-types.vue",
+                    "name": "./src/components/modal-module-types.vue",
                     "id": null
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\pitcher.js!G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
-                    "name": "./src/components/module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\pitcher.js!G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
+                    "name": "./src/components/modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
                     "id": null
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\stylePostLoader.js!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
-                    "name": "./node_modules/style-loader/dist/cjs.js??clonedRuleSet-2.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/components/module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\stylePostLoader.js!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
+                    "name": "./node_modules/style-loader/dist/cjs.js??clonedRuleSet-2.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/components/modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
                     "id": null
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\stylePostLoader.js!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
-                    "name": "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/components/module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
-                    "id": 875
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\stylePostLoader.js!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
+                    "name": "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/components/modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
+                    "id": 449
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 81,
-            "issuerId": 875,
+            "issuerId": 449,
             "chunks": [
                 179
             ],
@@ -4453,8 +4453,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\stylePostLoader.js!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
-            "issuerName": "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/components/module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\stylePostLoader.js!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
+            "issuerName": "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/components/modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\src\\index.js",
@@ -4477,31 +4477,31 @@
                     "id": null
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\module-detail.vue",
-                    "name": "./src/components/module-detail.vue",
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\modal-module-types.vue",
+                    "name": "./src/components/modal-module-types.vue",
                     "id": null
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\pitcher.js!G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
-                    "name": "./src/components/module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\pitcher.js!G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
+                    "name": "./src/components/modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
                     "id": null
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\stylePostLoader.js!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
-                    "name": "./node_modules/style-loader/dist/cjs.js??clonedRuleSet-2.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/components/module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\stylePostLoader.js!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
+                    "name": "./node_modules/style-loader/dist/cjs.js??clonedRuleSet-2.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/components/modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
                     "id": null
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\stylePostLoader.js!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
-                    "name": "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/components/module-detail.vue?vue&type=style&index=0&id=4053ce84&lang=scss",
-                    "id": 875
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\stylePostLoader.js!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\node_modules\\vue-loader\\dist\\index.js??ruleSet[1].rules[8].use[0]!G:\\workspace\\webpack-stats-report\\src\\components\\modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
+                    "name": "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/components/modal-module-types.vue?vue&type=style&index=0&id=39892c28&lang=scss",
+                    "id": 449
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 645,
-            "issuerId": 875,
+            "issuerId": 449,
             "chunks": [
                 179
             ],
@@ -5288,9 +5288,9 @@
             "type": "module",
             "moduleType": "javascript/auto",
             "layer": null,
-            "size": 6196,
+            "size": 6219,
             "sizes": {
-                "javascript": 6196
+                "javascript": 6219
             },
             "built": true,
             "codeGenerated": true,
@@ -5349,12 +5349,12 @@
                 "default"
             ],
             "optimizationBailout": [
-                "Statement (ExportDefaultDeclaration) with side effects in source code at 3:0-261:2",
+                "Statement (ExportDefaultDeclaration) with side effects in source code at 3:0-262:2",
                 "ModuleConcatenation bailout: Cannot concat with ./src/util/util.js because of ./src/index.js",
                 "ModuleConcatenation bailout: Cannot concat with ./node_modules/turbogrid/dist/turbogrid.js: Module is not an ECMAScript module"
             ],
             "depth": 5,
-            "source": "import { Grid } from 'turbogrid';\nimport Util from '../util/util.js';\nexport default {\n  methods: {\n    getTabGrid() {\n      return this.gridMap[this.tabName];\n    },\n\n    resizeGrid() {\n      const grid = this.getTabGrid();\n\n      if (grid) {\n        grid.resize();\n      }\n    },\n\n    switchGrid() {\n      const grid = this.getTabGrid();\n\n      if (grid) {\n        grid.resize();\n        return;\n      }\n\n      this.renderGrid();\n    },\n\n    //default grid is modules grid\n    updateGrid() {\n      const grid = this.getTabGrid();\n\n      if (grid) {\n        grid.update();\n      }\n    },\n\n    renderGrid() {\n      const key = this.getRowsKey();\n\n      if (this.previousKey === key) {\n        return;\n      }\n\n      this.previousKey = key;\n      let grid = this.getTabGrid();\n\n      if (!grid) {\n        grid = this.createGrid();\n      }\n\n      const gridData = {\n        columns: this.getGridColumns(),\n        rows: this.getGridRows(key)\n      };\n      console.log('gridData', key, gridData);\n      grid.setData(gridData);\n      grid.render();\n    },\n\n    createGrid() {\n      const grid = new Grid(\".vui-grid-\".concat(this.tabName));\n      this.gridMap[this.tabName] = grid;\n\n      if (this.tabName === 'modules') {\n        grid.bind('onClick', (e, d) => {\n          if (!d.rowNode) {\n            return;\n          }\n\n          const rowItem = d.rowItem;\n          let openFlyover = false;\n          const icon = d.e.target;\n\n          if (icon.classList.contains('tg-flyover-icon')) {\n            openFlyover = true;\n          }\n\n          this.showFlyover(rowItem, openFlyover);\n          grid.setRowSelected(false);\n          grid.setRowSelected(d.row, d.e);\n        });\n        grid.bind('onDblClick', (e, d) => {\n          if (!d.rowNode) {\n            return;\n          }\n\n          const rowItem = d.rowItem;\n          this.showFlyover(rowItem, true);\n        });\n      }\n\n      grid.bind('onUpdated', () => {\n        this.updateFilterInfo();\n      });\n      grid.setOption({\n        textSelectable: true,\n        //frozenRow: 0,\n        rowHeight: 27,\n        sortField: 'size',\n        sortAsc: false,\n        sortOnInit: true,\n        rowNumberVisible: true,\n        rowNotFound: '<div>No Results</div>',\n        rowFilter: this.filterHandler\n      });\n\n      const getAllSubModules = item => {\n        let len = 0;\n        this.forEachModule(grid, item.subs, () => {\n          len += 1;\n        });\n        return len;\n      };\n\n      grid.setFormatter({\n        string: function (v, rd, cd) {\n          const id = cd.id;\n          const color = rd[\"\".concat(id, \"_color\")];\n\n          if (color) {\n            v = \"<span style=\\\"color:\".concat(color, \";\\\">\").concat(v, \"</span>\");\n          }\n\n          return v;\n        },\n        tree: function (v, rd, cd, node) {\n          const df = this.getDefaultFormatter('tree');\n          const nm = rd.name_matched;\n\n          if (nm) {\n            const left = v.substring(0, nm.index);\n            const mid = v.substr(nm.index, nm.length);\n            const right = v.substr(nm.index + nm.length);\n            v = \"\".concat(left, \"<b class=\\\"color-match\\\">\").concat(mid, \"</b>\").concat(right);\n          }\n\n          if (rd.loaders) {\n            v = \"\\u2741\".concat(v);\n          }\n\n          const sl = getAllSubModules(rd);\n\n          if (sl > 1) {\n            v += \" (\".concat(sl.toLocaleString(), \")\");\n          }\n\n          if (rd.name_color) {\n            v = \"<span style=\\\"color:\".concat(rd.name_color, \";\\\">\").concat(v, \"</span>\");\n          }\n\n          if (rd.paths) {\n            v += \"\\n                            <div class=\\\"tg-cell-hover-icon tg-flyover-icon\\\" title=\\\"Click to show module detail\\\">\\n                                <div class=\\\"tg-issuer-icon\\\" />\\n                            </div>\\n                        \";\n          }\n\n          return df(v, rd, cd, node);\n        },\n        size: function (v, rd, cd) {\n          v = Util.BF(v);\n          return this.getFormatter('string')(v, rd, cd);\n        },\n        percent: function (v) {\n          if (!v) {\n            return '';\n          }\n\n          return \"\".concat(v, \"%\");\n        },\n        percentBar: function (v) {\n          if (!v) {\n            return '';\n          }\n\n          return \"\\n                    <div class=\\\"vui-percent\\\" style=\\\"background:linear-gradient(to right, #999 \".concat(v, \"%, #fff \").concat(v, \"%);\\\"></div>\\n                    \");\n        }\n      });\n      return grid;\n    },\n\n    getRowsKey() {\n      let gs = [];\n\n      if (this.tabName === 'modules') {\n        const g = { ...this.group\n        };\n        gs = Object.keys(g).map(k => \"\".concat(k, \"_\").concat(g[k]));\n      }\n\n      const ls = [this.tabName].concat(gs);\n      return ls.join('_');\n    },\n\n    getGridRows(key) {\n      if (!this.gridRowsCache) {\n        this.gridRowsCache = {};\n      }\n\n      const cacheRows = this.gridRowsCache[key];\n\n      if (cacheRows) {\n        return cacheRows;\n      }\n\n      const rows = this.generateGridRows();\n      this.gridRowsCache[key] = rows;\n      return rows;\n    },\n\n    getGridColumns() {\n      //update every time for invisible\n      const columns = [{\n        id: 'name',\n        name: 'Name',\n        width: 500,\n        maxWidth: 2048\n      }, {\n        id: 'percent',\n        name: 'Percent',\n        formatter: 'percent',\n        sortable: false,\n        align: 'right'\n      }, {\n        id: 'percent',\n        name: '',\n        sortable: false,\n        formatter: 'percentBar',\n        width: 112\n      }, {\n        id: 'size',\n        name: 'Size',\n        align: 'right',\n        formatter: 'size',\n        width: 80\n      }, {\n        id: 'sizeGzip',\n        name: 'Gzip',\n        align: 'right',\n        formatter: 'size',\n        invisible: !this.info.gzipSize,\n        width: 80\n      }, {\n        id: 'chunk',\n        name: 'Chunk',\n        width: 65,\n        maxWidth: 1024\n      }, {\n        id: 'type',\n        name: 'Type',\n        invisible: this.tabName !== 'modules',\n        width: 65\n      }, {\n        id: 'depth',\n        name: 'Depth',\n        align: 'right',\n        invisible: this.tabName !== 'modules',\n        width: 52\n      }];\n      return columns;\n    }\n\n  }\n};"
+            "source": "import { Grid } from 'turbogrid';\nimport Util from '../util/util.js';\nexport default {\n  methods: {\n    getTabGrid() {\n      return this.gridMap[this.tabName];\n    },\n\n    resizeGrid() {\n      const grid = this.getTabGrid();\n\n      if (grid) {\n        grid.resize();\n      }\n    },\n\n    switchGrid() {\n      const grid = this.getTabGrid();\n\n      if (grid) {\n        grid.resize();\n        return;\n      }\n\n      this.renderGrid();\n    },\n\n    //default grid is modules grid\n    updateGrid() {\n      const grid = this.getTabGrid();\n\n      if (grid) {\n        grid.update();\n      }\n    },\n\n    renderGrid() {\n      const key = this.getRowsKey();\n\n      if (this.previousKey === key) {\n        return;\n      }\n\n      this.previousKey = key;\n      let grid = this.getTabGrid();\n\n      if (!grid) {\n        grid = this.createGrid();\n      }\n\n      const gridData = {\n        columns: this.getGridColumns(),\n        rows: this.getGridRows(key)\n      };\n      console.log('gridData', key, gridData);\n      grid.setData(gridData);\n      grid.render();\n    },\n\n    createGrid() {\n      const grid = new Grid(\".vui-grid-\".concat(this.tabName));\n      this.gridMap[this.tabName] = grid;\n\n      if (this.tabName === 'modules') {\n        grid.bind('onClick', (e, d) => {\n          if (!d.rowNode) {\n            return;\n          }\n\n          const rowItem = d.rowItem;\n          let openFlyover = false;\n          const icon = d.e.target;\n\n          if (icon.classList.contains('tg-flyover-icon')) {\n            openFlyover = true;\n          }\n\n          this.showFlyover(rowItem, openFlyover);\n          grid.setRowSelected(rowItem, d.e);\n        });\n        grid.bind('onDblClick', (e, d) => {\n          if (!d.rowNode) {\n            return;\n          }\n\n          const rowItem = d.rowItem;\n          this.showFlyover(rowItem, true);\n        });\n      }\n\n      grid.bind('onUpdated', () => {\n        this.updateFilterInfo();\n      });\n      grid.setOption({\n        textSelectable: true,\n        //frozenRow: 0,\n        rowHeight: 27,\n        sortField: 'size',\n        sortAsc: false,\n        sortOnInit: true,\n        selectMultiple: false,\n        rowNumberVisible: true,\n        rowNumberWidth: 50,\n        rowNotFound: '<div>No Results</div>',\n        rowFilter: this.filterHandler\n      });\n\n      const getAllSubModules = item => {\n        let len = 0;\n        this.forEachModule(grid, item.subs, () => {\n          len += 1;\n        });\n        return len;\n      };\n\n      grid.setFormatter({\n        string: function (v, rd, cd) {\n          const id = cd.id;\n          const color = rd[\"\".concat(id, \"_color\")];\n\n          if (color) {\n            v = \"<span style=\\\"color:\".concat(color, \";\\\">\").concat(v, \"</span>\");\n          }\n\n          return v;\n        },\n        tree: function (v, rd, cd, node) {\n          const df = this.getDefaultFormatter('tree');\n          const nm = rd.name_matched;\n\n          if (nm) {\n            const left = v.substring(0, nm.index);\n            const mid = v.substr(nm.index, nm.length);\n            const right = v.substr(nm.index + nm.length);\n            v = \"\".concat(left, \"<b class=\\\"color-match\\\">\").concat(mid, \"</b>\").concat(right);\n          }\n\n          if (rd.loaders) {\n            v = \"\\u2741\".concat(v);\n          }\n\n          const sl = getAllSubModules(rd);\n\n          if (sl > 1) {\n            v += \" (\".concat(sl.toLocaleString(), \")\");\n          }\n\n          if (rd.name_color) {\n            v = \"<span style=\\\"color:\".concat(rd.name_color, \";\\\">\").concat(v, \"</span>\");\n          }\n\n          if (rd.paths) {\n            v += \"\\n                            <div class=\\\"tg-cell-hover-icon tg-flyover-icon\\\" title=\\\"Click to show module detail\\\">\\n                                <div class=\\\"tg-issuer-icon\\\" />\\n                            </div>\\n                        \";\n          }\n\n          return df(v, rd, cd, node);\n        },\n        size: function (v, rd, cd) {\n          v = Util.BF(v);\n          return this.getFormatter('string')(v, rd, cd);\n        },\n        percent: function (v) {\n          if (!v) {\n            return '';\n          }\n\n          return \"\".concat(v, \"%\");\n        },\n        percentBar: function (v) {\n          if (!v) {\n            return '';\n          }\n\n          return \"\\n                    <div class=\\\"vui-percent\\\" style=\\\"background:linear-gradient(to right, #999 \".concat(v, \"%, #fff \").concat(v, \"%);\\\"></div>\\n                    \");\n        }\n      });\n      return grid;\n    },\n\n    getRowsKey() {\n      let gs = [];\n\n      if (this.tabName === 'modules') {\n        const g = { ...this.group\n        };\n        gs = Object.keys(g).map(k => \"\".concat(k, \"_\").concat(g[k]));\n      }\n\n      const ls = [this.tabName].concat(gs);\n      return ls.join('_');\n    },\n\n    getGridRows(key) {\n      if (!this.gridRowsCache) {\n        this.gridRowsCache = {};\n      }\n\n      const cacheRows = this.gridRowsCache[key];\n\n      if (cacheRows) {\n        return cacheRows;\n      }\n\n      const rows = this.generateGridRows();\n      this.gridRowsCache[key] = rows;\n      return rows;\n    },\n\n    getGridColumns() {\n      //update every time for invisible\n      const columns = [{\n        id: 'name',\n        name: 'Name',\n        width: 500,\n        maxWidth: 2048\n      }, {\n        id: 'percent',\n        name: 'Percent',\n        formatter: 'percent',\n        sortable: false,\n        align: 'right'\n      }, {\n        id: 'percent',\n        name: '',\n        sortable: false,\n        formatter: 'percentBar',\n        width: 112\n      }, {\n        id: 'size',\n        name: 'Size',\n        align: 'right',\n        formatter: 'size',\n        width: 80\n      }, {\n        id: 'sizeGzip',\n        name: 'Gzip',\n        align: 'right',\n        formatter: 'size',\n        invisible: !this.info.gzipSize,\n        width: 80\n      }, {\n        id: 'chunk',\n        name: 'Chunk',\n        width: 65,\n        maxWidth: 1024\n      }, {\n        id: 'type',\n        name: 'Type',\n        invisible: this.tabName !== 'modules',\n        width: 65\n      }, {\n        id: 'depth',\n        name: 'Depth',\n        align: 'right',\n        invisible: this.tabName !== 'modules',\n        width: 52\n      }];\n      return columns;\n    }\n\n  }\n};"
         },
         {
             "type": "module",
@@ -12731,11 +12731,11 @@
             "assets": [
                 {
                     "name": "webpack-stats-report.js",
-                    "size": 426456
+                    "size": 426467
                 }
             ],
             "filteredAssets": 0,
-            "assetsSize": 426456,
+            "assetsSize": 426467,
             "auxiliaryAssets": [],
             "filteredAuxiliaryAssets": 0,
             "auxiliaryAssetsSize": 0,
@@ -12753,11 +12753,11 @@
             "assets": [
                 {
                     "name": "webpack-stats-report.js",
-                    "size": 426456
+                    "size": 426467
                 }
             ],
             "filteredAssets": 0,
-            "assetsSize": 426456,
+            "assetsSize": 426467,
             "auxiliaryAssets": [],
             "filteredAuxiliaryAssets": 0,
             "auxiliaryAssetsSize": 0,

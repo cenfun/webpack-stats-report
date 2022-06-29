@@ -78,8 +78,7 @@ export default {
                     }
                     this.showFlyover(rowItem, openFlyover);
 
-                    grid.setRowSelected(false);
-                    grid.setRowSelected(d.row, d.e);
+                    grid.setRowSelected(rowItem, d.e);
 
                 });
 
@@ -104,7 +103,9 @@ export default {
                 sortField: 'size',
                 sortAsc: false,
                 sortOnInit: true,
+                selectMultiple: false,
                 rowNumberVisible: true,
+                rowNumberWidth: 50,
                 rowNotFound: '<div>No Results</div>',
                 rowFilter: this.filterHandler
             });
