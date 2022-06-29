@@ -50,7 +50,7 @@ export default {
                 return;
             }
             list.forEach((item) => {
-                if (grid.isRowInvisible(item)) {
+                if (grid.isInvisible(item)) {
                     return;
                 }
                 if (item.subs) {
@@ -71,7 +71,7 @@ export default {
             let num = 0;
             let size = 0;
 
-            const rows = grid.getRowsData();
+            const rows = grid.rows;
             this.forEachModule(grid, rows, (row) => {
                 size += row.size;
                 num += 1;

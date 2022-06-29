@@ -66,28 +66,34 @@ export default {
 
             if (this.tabName === 'modules') {
                 grid.bind('onClick', (e, d) => {
-                    const rowData = grid.getRowItem(d.row);
+                    if (!d.rowNode) {
+                        return;
+                    }
+                    const rowItem = d.rowItem;
 
                     let openFlyover = false;
                     const icon = d.e.target;
                     if (icon.classList.contains('tg-flyover-icon')) {
                         openFlyover = true;
                     }
-                    this.showFlyover(rowData, openFlyover);
+                    this.showFlyover(rowItem, openFlyover);
 
-                    grid.unselectAll();
-                    grid.setSelectedRow(d.row, d.e);
+                    grid.setRowSelected(false);
+                    grid.setRowSelected(d.row, d.e);
 
                 });
 
                 grid.bind('onDblClick', (e, d) => {
-                    const rowData = grid.getRowItem(d.row);
-                    this.showFlyover(rowData, true);
+                    if (!d.rowNode) {
+                        return;
+                    }
+                    const rowItem = d.rowItem;
+                    this.showFlyover(rowItem, true);
                 });
 
             }
 
-            grid.bind('onRenderUpdate', () => {
+            grid.bind('onUpdated', () => {
                 this.updateFilterInfo();
             });
 
@@ -98,8 +104,7 @@ export default {
                 sortField: 'size',
                 sortAsc: false,
                 sortOnInit: true,
-                collapseAll: null,
-                rowNumberType: 'list',
+                rowNumberVisible: true,
                 rowNotFound: '<div>No Results</div>',
                 rowFilter: this.filterHandler
             });
@@ -112,7 +117,7 @@ export default {
                 return len;
             };
 
-            grid.setFilter({
+            grid.setFormatter({
 
                 string: function(v, rd, cd) {
                     const id = cd.id;
@@ -123,7 +128,9 @@ export default {
                     return v;
                 },
 
-                tree: function(v, rd, cd, ri, ci, node) {
+                tree: function(v, rd, cd, node) {
+                    const df = this.getDefaultFormatter('tree');
+
                     const nm = rd.name_matched;
                     if (nm) {
                         const left = v.substring(0, nm.index);
@@ -152,12 +159,12 @@ export default {
                             </div>
                         `;
                     }
-                    return v;
+                    return df(v, rd, cd, node);
                 },
 
                 size: function(v, rd, cd) {
                     v = Util.BF(v);
-                    return this.getFilter('string')(v, rd, cd);
+                    return this.getFormatter('string')(v, rd, cd);
                 },
 
                 percent: function(v) {
@@ -220,26 +227,26 @@ export default {
             }, {
                 id: 'percent',
                 name: 'Percent',
-                dataType: 'percent',
+                formatter: 'percent',
                 sortable: false,
                 align: 'right'
             }, {
                 id: 'percent',
                 name: '',
                 sortable: false,
-                dataType: 'percentBar',
+                formatter: 'percentBar',
                 width: 112
             }, {
                 id: 'size',
                 name: 'Size',
                 align: 'right',
-                dataType: 'size',
+                formatter: 'size',
                 width: 80
             }, {
                 id: 'sizeGzip',
                 name: 'Gzip',
                 align: 'right',
-                dataType: 'size',
+                formatter: 'size',
                 invisible: !this.info.gzipSize,
                 width: 80
             }, {
