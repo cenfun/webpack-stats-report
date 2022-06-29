@@ -1,8 +1,8 @@
 {
     "hash": "6f6c23afec27222e58b8",
-    "version": "5.72.1",
-    "time": 3161,
-    "builtAt": 1653994274521,
+    "version": "5.73.0",
+    "time": 3071,
+    "builtAt": 1656494866186,
     "publicPath": "auto",
     "outputPath": "G:\\workspace\\webpack-stats-report\\.temp",
     "assetsByChunkName": {
@@ -18,8 +18,8 @@
             "type": "asset",
             "name": "entry2.js",
             "size": 149114,
-            "emitted": true,
-            "comparedForEmit": false,
+            "emitted": false,
+            "comparedForEmit": true,
             "cached": false,
             "info": {
                 "javascriptModule": false,
@@ -43,8 +43,8 @@
             "type": "asset",
             "name": "entry1.js",
             "size": 147814,
-            "emitted": true,
-            "comparedForEmit": false,
+            "emitted": false,
+            "comparedForEmit": true,
             "cached": false,
             "info": {
                 "javascriptModule": false,
@@ -3802,8 +3802,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-            "issuerName": "./src/components/style.css",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+            "issuerName": "./src/components/style.scss",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -3816,16 +3816,16 @@
                     "id": 5436
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-                    "name": "./src/components/style.css",
-                    "id": 951
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+                    "name": "./src/components/style.scss",
+                    "id": 2631
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 1892,
-            "issuerId": 951,
+            "issuerId": 2631,
             "chunks": [
                 688,
                 887
@@ -3863,8 +3863,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-            "issuerName": "./src/components/style.css",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+            "issuerName": "./src/components/style.scss",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -3877,16 +3877,16 @@
                     "id": 5436
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-                    "name": "./src/components/style.css",
-                    "id": 951
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+                    "name": "./src/components/style.scss",
+                    "id": 2631
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 8357,
-            "issuerId": 951,
+            "issuerId": 2631,
             "chunks": [
                 688,
                 887
@@ -3924,8 +3924,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-            "issuerName": "./src/components/style.css",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+            "issuerName": "./src/components/style.scss",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -3938,16 +3938,16 @@
                     "id": 5436
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-                    "name": "./src/components/style.css",
-                    "id": 951
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+                    "name": "./src/components/style.scss",
+                    "id": 2631
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 8311,
-            "issuerId": 951,
+            "issuerId": 2631,
             "chunks": [
                 688,
                 887
@@ -3985,8 +3985,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-            "issuerName": "./src/components/style.css",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+            "issuerName": "./src/components/style.scss",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -3999,16 +3999,16 @@
                     "id": 5436
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-                    "name": "./src/components/style.css",
-                    "id": 951
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+                    "name": "./src/components/style.scss",
+                    "id": 2631
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 1615,
-            "issuerId": 951,
+            "issuerId": 2631,
             "chunks": [
                 688,
                 887
@@ -4046,8 +4046,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-            "issuerName": "./src/components/style.css",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+            "issuerName": "./src/components/style.scss",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -4060,16 +4060,16 @@
                     "id": 5436
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-                    "name": "./src/components/style.css",
-                    "id": 951
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+                    "name": "./src/components/style.scss",
+                    "id": 2631
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 8060,
-            "issuerId": 951,
+            "issuerId": 2631,
             "chunks": [
                 688,
                 887
@@ -11000,8 +11000,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\classes\\comparator.js",
-            "issuerName": "../node_modules/flatdep/node_modules/semver/classes/comparator.js",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\classes\\semver.js",
+            "issuerName": "../node_modules/flatdep/node_modules/semver/classes/semver.js",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -11024,16 +11024,16 @@
                     "id": 5087
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\classes\\comparator.js",
-                    "name": "../node_modules/flatdep/node_modules/semver/classes/comparator.js",
-                    "id": 3017
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\classes\\semver.js",
+                    "name": "../node_modules/flatdep/node_modules/semver/classes/semver.js",
+                    "id": 8561
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 948,
-            "issuerId": 3017,
+            "issuerId": 8561,
             "chunks": [
                 688,
                 887
@@ -11218,8 +11218,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
-            "issuerName": "../node_modules/core-js/internals/create-non-enumerable-property.js",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-get-own-property-descriptor.js",
+            "issuerName": "../node_modules/core-js/internals/object-get-own-property-descriptor.js",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -11247,16 +11247,16 @@
                     "id": 1695
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
-                    "name": "../node_modules/core-js/internals/create-non-enumerable-property.js",
-                    "id": 2585
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-get-own-property-descriptor.js",
+                    "name": "../node_modules/core-js/internals/object-get-own-property-descriptor.js",
+                    "id": 4399
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 5736,
-            "issuerId": 2585,
+            "issuerId": 4399,
             "chunks": [
                 688,
                 887
@@ -13496,8 +13496,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\an-object.js",
-            "issuerName": "../node_modules/core-js/internals/an-object.js",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-primitive.js",
+            "issuerName": "../node_modules/core-js/internals/to-primitive.js",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -13525,26 +13525,26 @@
                     "id": 1695
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
-                    "name": "../node_modules/core-js/internals/create-non-enumerable-property.js",
-                    "id": 2585
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-get-own-property-descriptor.js",
+                    "name": "../node_modules/core-js/internals/object-get-own-property-descriptor.js",
+                    "id": 4399
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-define-property.js",
-                    "name": "../node_modules/core-js/internals/object-define-property.js",
-                    "id": 7826
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-property-key.js",
+                    "name": "../node_modules/core-js/internals/to-property-key.js",
+                    "id": 2258
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\an-object.js",
-                    "name": "../node_modules/core-js/internals/an-object.js",
-                    "id": 6112
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-primitive.js",
+                    "name": "../node_modules/core-js/internals/to-primitive.js",
+                    "id": 1288
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 8759,
-            "issuerId": 6112,
+            "issuerId": 1288,
             "chunks": [
                 688,
                 887
