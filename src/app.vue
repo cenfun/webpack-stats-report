@@ -613,12 +613,12 @@ const createGrid = () => {
                 v = `<span style="color:${rd.name_color};">${v}</span>`;
             }
 
-            if (rd.paths) {
+            if (rd.paths || rd.bailout) {
                 v += `
-                            <div class="tg-cell-hover-icon tg-flyover-icon" title="Click to show module detail">
-                                <div class="tg-issuer-icon" />
-                            </div>
-                        `;
+                    <div class="tg-cell-hover-icon tg-flyover-icon" title="Click to show module detail">
+                        <div class="tg-issuer-icon" />
+                    </div>
+                `;
             }
             return df(v, rd, cd, node);
         },
