@@ -1,15 +1,15 @@
 <template>
   <div
-    v-if="rowData"
+    v-if="props.rowData"
     class="vui-detail"
   >
     <div class="vui-modal-block">
       <div class="vui-modal-label">
         Name:
       </div>
-      <div v-if="rowData.loaders">
+      <div v-if="props.rowData.loaders">
         <div
-          v-for="(item, i) in rowData.loaders"
+          v-for="(item, i) in props.rowData.loaders"
           :key="i"
           class="vui-modal-item"
         >
@@ -17,19 +17,19 @@
         </div>
       </div>
       <div class="vui-modal-item">
-        {{ rowData.name }}
+        {{ props.rowData.name }}
       </div>
     </div>
 
     <div
-      v-if="rowData.paths"
+      v-if="props.rowData.paths"
       class="vui-modal-block"
     >
       <div class="vui-modal-label">
         Paths:
       </div>
       <div
-        v-for="(item, index) in rowData.paths"
+        v-for="(item, index) in props.rowData.paths"
         :key="index"
         class="vui-modal-item"
       >
@@ -39,14 +39,14 @@
     </div>
 
     <div
-      v-if="rowData.bailout"
+      v-if="props.rowData.bailout"
       class="vui-modal-block"
     >
       <div class="vui-modal-label">
         Bailout:
       </div>
       <div
-        v-for="(item, index) in rowData.bailout"
+        v-for="(item, index) in props.rowData.bailout"
         :key="index"
         class="vui-modal-item"
       >
@@ -55,17 +55,15 @@
     </div>
   </div>
 </template>
-<script>
+<script setup>
 
-export default {
-    props: {
-        rowData: {
-            type: Object,
-            default: null
-        }
+const props = defineProps({
+    rowData: {
+        type: Object,
+        default: null
     }
+});
 
-};
 </script>
 <style lang="scss">
 .vui-detail {

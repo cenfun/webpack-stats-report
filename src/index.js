@@ -1,6 +1,5 @@
 import App from './app.vue';
-const app = App.createComponent();
+import { createComponent } from 'vine-ui';
 
-app.config.errorHandler = (err, instance, info) => {
-    console.log(err, instance, info);
-};
+App.createComponent = createComponent;
+App.createComponent();

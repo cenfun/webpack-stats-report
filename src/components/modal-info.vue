@@ -1,7 +1,7 @@
 <template>
   <div class="vui-info">
     <div
-      v-for="(item, i) in list"
+      v-for="(item, i) in props.list"
       :key="i"
       class="vui-modal-item"
     >
@@ -9,32 +9,24 @@
     </div>
   </div>
 </template>
-<script>
-export default {
-    props: {
-        list: {
-            type: Array,
-            default: () => ([])
-        }
-    },
+<script setup>
 
-    data() {
-        return {
-            items: []
-        };
-    },
-
-    methods: {
-        formatItem(item) {
-            //webpack5 is object
-            if (typeof item === 'object' && item.stack) {
-                return item.stack;
-            }
-            //webpack4 is string
-            return item;
-        }
+const props = defineProps({
+    list: {
+        type: Array,
+        default: () => ([])
     }
+});
+
+const formatItem = (item) => {
+    //webpack5 is object
+    if (typeof item === 'object' && item.stack) {
+        return item.stack;
+    }
+    //webpack4 is string
+    return item;
 };
+
 </script>
 <style lang="scss">
 .vui-info {

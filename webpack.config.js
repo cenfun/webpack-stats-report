@@ -1,6 +1,7 @@
 const StatsReportPlugin = require('./lib/index.js').StatsReportPlugin;
 const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
+const { DefinePlugin } = require('webpack');
 
 module.exports = {
     mode: 'production',
@@ -15,7 +16,10 @@ module.exports = {
         libraryTarget: 'umd'
     },
 
-    plugins: [new VueLoaderPlugin(), new StatsReportPlugin({
+    plugins: [new VueLoaderPlugin(), new DefinePlugin({
+        __VUE_OPTIONS_API__: false,
+        __VUE_PROD_DEVTOOLS__: false
+    }), new StatsReportPlugin({
         title: 'Stats Report - webpack-stats-report',
         output: 'docs/stats-report-wsr.html',
         outputStatsJson: true,

@@ -44,33 +44,23 @@
     </table>
   </div>
 </template>
-<script>
+<script setup>
 import Util from '../util/util.js';
 
-export default {
-    props: {
-        moduleTypes: {
-            type: Object,
-            default: () => ({})
-        }
-    },
-
-    data() {
-        return {
-            list: []
-        };
-    },
-
-    created() {
-        this.list = Object.keys(this.moduleTypes).map((type) => {
-            const item = this.moduleTypes[type];
-            item.patterns = Util.toList(item.patterns);
-            item.type = type;
-            return item;
-        });
+const props = defineProps({
+    moduleTypes: {
+        type: Object,
+        default: () => ({})
     }
+});
 
-};
+const list = Object.keys(props.moduleTypes).map((type) => {
+    const item = props.moduleTypes[type];
+    item.patterns = Util.toList(item.patterns);
+    item.type = type;
+    return item;
+});
+
 </script>
 <style lang="scss">
 .vui-module-types {
