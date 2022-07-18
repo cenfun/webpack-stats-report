@@ -45,7 +45,7 @@
   </div>
 </template>
 <script setup>
-import Util from '../util/util.js';
+import { toList } from '../util/util.js';
 
 const props = defineProps({
     moduleTypes: {
@@ -56,7 +56,7 @@ const props = defineProps({
 
 const list = Object.keys(props.moduleTypes).map((type) => {
     const item = props.moduleTypes[type];
-    item.patterns = Util.toList(item.patterns);
+    item.patterns = toList(item.patterns);
     item.type = type;
     return item;
 });
