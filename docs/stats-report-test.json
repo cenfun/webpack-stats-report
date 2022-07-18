@@ -1,8 +1,8 @@
 {
     "hash": "e57eecbbd4425e151975",
     "version": "5.73.0",
-    "time": 3438,
-    "builtAt": 1658063674599,
+    "time": 3347,
+    "builtAt": 1658131914346,
     "publicPath": "auto",
     "outputPath": "G:\\workspace\\webpack-stats-report\\.temp",
     "assetsByChunkName": {
@@ -4921,8 +4921,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-            "issuerName": "../node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!../node_modules/sass-loader/dist/cjs.js!./src/components/style.css",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+            "issuerName": "../node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!../node_modules/sass-loader/dist/cjs.js!./src/components/style.scss",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -4935,21 +4935,21 @@
                     "id": 5436
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-                    "name": "./src/components/style.css",
-                    "id": 951
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+                    "name": "./src/components/style.scss",
+                    "id": 2631
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-                    "name": "../node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!../node_modules/sass-loader/dist/cjs.js!./src/components/style.css",
-                    "id": 4317
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+                    "name": "../node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!../node_modules/sass-loader/dist/cjs.js!./src/components/style.scss",
+                    "id": 7652
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 4933,
-            "issuerId": 4317,
+            "issuerId": 7652,
             "chunks": [
                 688,
                 887
@@ -4987,8 +4987,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-            "issuerName": "../node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!../node_modules/sass-loader/dist/cjs.js!./src/components/style.css",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+            "issuerName": "../node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!../node_modules/sass-loader/dist/cjs.js!./src/components/style.scss",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -5001,21 +5001,21 @@
                     "id": 5436
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-                    "name": "./src/components/style.css",
-                    "id": 951
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+                    "name": "./src/components/style.scss",
+                    "id": 2631
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-                    "name": "../node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!../node_modules/sass-loader/dist/cjs.js!./src/components/style.css",
-                    "id": 4317
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+                    "name": "../node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!../node_modules/sass-loader/dist/cjs.js!./src/components/style.scss",
+                    "id": 7652
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 3476,
-            "issuerId": 4317,
+            "issuerId": 7652,
             "chunks": [
                 688,
                 887
@@ -5053,8 +5053,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-            "issuerName": "../node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!../node_modules/sass-loader/dist/cjs.js!./src/components/style.css",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+            "issuerName": "../node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!../node_modules/sass-loader/dist/cjs.js!./src/components/style.scss",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -5067,21 +5067,21 @@
                     "id": 5436
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-                    "name": "./src/components/style.css",
-                    "id": 951
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\style-loader\\dist\\cjs.js??clonedRuleSet-2.use[0]!G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+                    "name": "./src/components/style.scss",
+                    "id": 2631
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.css",
-                    "name": "../node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!../node_modules/sass-loader/dist/cjs.js!./src/components/style.css",
-                    "id": 4317
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\css-loader\\dist\\cjs.js??clonedRuleSet-2.use[1]!G:\\workspace\\webpack-stats-report\\node_modules\\sass-loader\\dist\\cjs.js!G:\\workspace\\webpack-stats-report\\test\\src\\components\\style.scss",
+                    "name": "../node_modules/css-loader/dist/cjs.js??clonedRuleSet-2.use[1]!../node_modules/sass-loader/dist/cjs.js!./src/components/style.scss",
+                    "id": 7652
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 1678,
-            "issuerId": 4317,
+            "issuerId": 7652,
             "chunks": [
                 688,
                 887
@@ -10929,8 +10929,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\classes\\semver.js",
-            "issuerName": "../node_modules/flatdep/node_modules/semver/classes/semver.js",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\internal\\re.js",
+            "issuerName": "../node_modules/flatdep/node_modules/semver/internal/re.js",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -10953,16 +10953,16 @@
                     "id": 5087
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\classes\\semver.js",
-                    "name": "../node_modules/flatdep/node_modules/semver/classes/semver.js",
-                    "id": 8561
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\internal\\re.js",
+                    "name": "../node_modules/flatdep/node_modules/semver/internal/re.js",
+                    "id": 3008
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 8776,
-            "issuerId": 8561,
+            "issuerId": 3008,
             "chunks": [
                 688,
                 887
@@ -11142,8 +11142,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\function-uncurry-this.js",
-            "issuerName": "../node_modules/core-js/internals/function-uncurry-this.js",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\function-call.js",
+            "issuerName": "../node_modules/core-js/internals/function-call.js",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -11171,16 +11171,16 @@
                     "id": 8675
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\function-uncurry-this.js",
-                    "name": "../node_modules/core-js/internals/function-uncurry-this.js",
-                    "id": 8240
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\function-call.js",
+                    "name": "../node_modules/core-js/internals/function-call.js",
+                    "id": 9413
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 6059,
-            "issuerId": 8240,
+            "issuerId": 9413,
             "chunks": [
                 688,
                 887
@@ -11674,8 +11674,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\copy-constructor-properties.js",
-            "issuerName": "../node_modules/core-js/internals/copy-constructor-properties.js",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-get-own-property-descriptor.js",
+            "issuerName": "../node_modules/core-js/internals/object-get-own-property-descriptor.js",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -11703,16 +11703,16 @@
                     "id": 1695
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\copy-constructor-properties.js",
-                    "name": "../node_modules/core-js/internals/copy-constructor-properties.js",
-                    "id": 8474
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-get-own-property-descriptor.js",
+                    "name": "../node_modules/core-js/internals/object-get-own-property-descriptor.js",
+                    "id": 4399
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 9606,
-            "issuerId": 8474,
+            "issuerId": 4399,
             "chunks": [
                 688,
                 887
@@ -11826,8 +11826,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\copy-constructor-properties.js",
-            "issuerName": "../node_modules/core-js/internals/copy-constructor-properties.js",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
+            "issuerName": "../node_modules/core-js/internals/create-non-enumerable-property.js",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -11855,16 +11855,16 @@
                     "id": 1695
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\copy-constructor-properties.js",
-                    "name": "../node_modules/core-js/internals/copy-constructor-properties.js",
-                    "id": 8474
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
+                    "name": "../node_modules/core-js/internals/create-non-enumerable-property.js",
+                    "id": 2585
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 7826,
-            "issuerId": 8474,
+            "issuerId": 2585,
             "chunks": [
                 688,
                 887
@@ -12713,9 +12713,9 @@
                     "id": 1695
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\copy-constructor-properties.js",
-                    "name": "../node_modules/core-js/internals/copy-constructor-properties.js",
-                    "id": 8474
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
+                    "name": "../node_modules/core-js/internals/create-non-enumerable-property.js",
+                    "id": 2585
                 },
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-define-property.js",
@@ -12765,8 +12765,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\own-keys.js",
-            "issuerName": "../node_modules/core-js/internals/own-keys.js",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-define-property.js",
+            "issuerName": "../node_modules/core-js/internals/object-define-property.js",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -12794,21 +12794,21 @@
                     "id": 1695
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\copy-constructor-properties.js",
-                    "name": "../node_modules/core-js/internals/copy-constructor-properties.js",
-                    "id": 8474
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
+                    "name": "../node_modules/core-js/internals/create-non-enumerable-property.js",
+                    "id": 2585
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\own-keys.js",
-                    "name": "../node_modules/core-js/internals/own-keys.js",
-                    "id": 6095
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-define-property.js",
+                    "name": "../node_modules/core-js/internals/object-define-property.js",
+                    "id": 7826
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 6112,
-            "issuerId": 6095,
+            "issuerId": 7826,
             "chunks": [
                 688,
                 887
@@ -13496,8 +13496,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\an-object.js",
-            "issuerName": "../node_modules/core-js/internals/an-object.js",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-primitive.js",
+            "issuerName": "../node_modules/core-js/internals/to-primitive.js",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -13525,26 +13525,26 @@
                     "id": 1695
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\copy-constructor-properties.js",
-                    "name": "../node_modules/core-js/internals/copy-constructor-properties.js",
-                    "id": 8474
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-get-own-property-descriptor.js",
+                    "name": "../node_modules/core-js/internals/object-get-own-property-descriptor.js",
+                    "id": 4399
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\own-keys.js",
-                    "name": "../node_modules/core-js/internals/own-keys.js",
-                    "id": 6095
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-property-key.js",
+                    "name": "../node_modules/core-js/internals/to-property-key.js",
+                    "id": 2258
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\an-object.js",
-                    "name": "../node_modules/core-js/internals/an-object.js",
-                    "id": 6112
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-primitive.js",
+                    "name": "../node_modules/core-js/internals/to-primitive.js",
+                    "id": 1288
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 8759,
-            "issuerId": 6112,
+            "issuerId": 1288,
             "chunks": [
                 688,
                 887
@@ -14012,8 +14012,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\inspect-source.js",
-            "issuerName": "../node_modules/core-js/internals/inspect-source.js",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\internal-state.js",
+            "issuerName": "../node_modules/core-js/internals/internal-state.js",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -14051,16 +14051,16 @@
                     "id": 3712
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\inspect-source.js",
-                    "name": "../node_modules/core-js/internals/inspect-source.js",
-                    "id": 9277
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\internal-state.js",
+                    "name": "../node_modules/core-js/internals/internal-state.js",
+                    "id": 3278
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 4489,
-            "issuerId": 9277,
+            "issuerId": 3278,
             "chunks": [
                 688,
                 887
@@ -14624,8 +14624,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\well-known-symbol.js",
-            "issuerName": "../node_modules/core-js/internals/well-known-symbol.js",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\shared-key.js",
+            "issuerName": "../node_modules/core-js/internals/shared-key.js",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -14653,31 +14653,31 @@
                     "id": 1695
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-get-own-property-descriptor.js",
-                    "name": "../node_modules/core-js/internals/object-get-own-property-descriptor.js",
-                    "id": 4399
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\define-built-in.js",
+                    "name": "../node_modules/core-js/internals/define-built-in.js",
+                    "id": 1343
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-property-key.js",
-                    "name": "../node_modules/core-js/internals/to-property-key.js",
-                    "id": 2258
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\make-built-in.js",
+                    "name": "../node_modules/core-js/internals/make-built-in.js",
+                    "id": 3712
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-primitive.js",
-                    "name": "../node_modules/core-js/internals/to-primitive.js",
-                    "id": 1288
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\internal-state.js",
+                    "name": "../node_modules/core-js/internals/internal-state.js",
+                    "id": 3278
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\well-known-symbol.js",
-                    "name": "../node_modules/core-js/internals/well-known-symbol.js",
-                    "id": 211
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\shared-key.js",
+                    "name": "../node_modules/core-js/internals/shared-key.js",
+                    "id": 8944
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 9197,
-            "issuerId": 211,
+            "issuerId": 8944,
             "chunks": [
                 688,
                 887
@@ -14715,8 +14715,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\well-known-symbol.js",
-            "issuerName": "../node_modules/core-js/internals/well-known-symbol.js",
+            "issuer": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\shared-key.js",
+            "issuerName": "../node_modules/core-js/internals/shared-key.js",
             "issuerPath": [
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!G:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -14744,31 +14744,31 @@
                     "id": 1695
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-get-own-property-descriptor.js",
-                    "name": "../node_modules/core-js/internals/object-get-own-property-descriptor.js",
-                    "id": 4399
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\define-built-in.js",
+                    "name": "../node_modules/core-js/internals/define-built-in.js",
+                    "id": 1343
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-property-key.js",
-                    "name": "../node_modules/core-js/internals/to-property-key.js",
-                    "id": 2258
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\make-built-in.js",
+                    "name": "../node_modules/core-js/internals/make-built-in.js",
+                    "id": 3712
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-primitive.js",
-                    "name": "../node_modules/core-js/internals/to-primitive.js",
-                    "id": 1288
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\internal-state.js",
+                    "name": "../node_modules/core-js/internals/internal-state.js",
+                    "id": 3278
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\well-known-symbol.js",
-                    "name": "../node_modules/core-js/internals/well-known-symbol.js",
-                    "id": 211
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\shared-key.js",
+                    "name": "../node_modules/core-js/internals/shared-key.js",
+                    "id": 8944
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 5422,
-            "issuerId": 211,
+            "issuerId": 8944,
             "chunks": [
                 688,
                 887
@@ -15209,24 +15209,24 @@
                     "id": 1695
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-get-own-property-descriptor.js",
-                    "name": "../node_modules/core-js/internals/object-get-own-property-descriptor.js",
-                    "id": 4399
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\define-built-in.js",
+                    "name": "../node_modules/core-js/internals/define-built-in.js",
+                    "id": 1343
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-property-key.js",
-                    "name": "../node_modules/core-js/internals/to-property-key.js",
-                    "id": 2258
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\make-built-in.js",
+                    "name": "../node_modules/core-js/internals/make-built-in.js",
+                    "id": 3712
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-primitive.js",
-                    "name": "../node_modules/core-js/internals/to-primitive.js",
-                    "id": 1288
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\internal-state.js",
+                    "name": "../node_modules/core-js/internals/internal-state.js",
+                    "id": 3278
                 },
                 {
-                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\well-known-symbol.js",
-                    "name": "../node_modules/core-js/internals/well-known-symbol.js",
-                    "id": 211
+                    "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\shared-key.js",
+                    "name": "../node_modules/core-js/internals/shared-key.js",
+                    "id": 8944
                 },
                 {
                     "identifier": "G:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\shared.js",
