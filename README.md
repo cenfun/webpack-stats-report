@@ -1,9 +1,8 @@
 # Webpack Stats Report
 > Generating [Webpack](https://github.com/webpack/webpack) [Stats](https://webpack.js.org/api/stats/) Report in HTML Grid. 
 
-![npm](https://img.shields.io/npm/v/webpack-stats-report.svg)
-![npm](https://img.shields.io/npm/dt/webpack-stats-report.svg)
-![David](https://img.shields.io/david/cenfun/webpack-stats-report.svg)
+![npm](https://img.shields.io/npm/v/webpack-stats-report)
+![npm](https://img.shields.io/npm/dt/webpack-stats-report)
 
 ## Preview Example Reports
 * [stats-report-wsr.html](https://cenfun.github.io/webpack-stats-report/stats-report-wsr.html)
