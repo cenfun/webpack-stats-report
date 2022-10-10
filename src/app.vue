@@ -4,7 +4,7 @@
       v-model="tabActive"
       position="left"
     >
-      <template #toolbar>
+      <template #right>
         <div class="vui-title vui-flex-auto">
           {{ info.title }}
         </div>
@@ -21,6 +21,7 @@
             href="https://github.com/cenfun/webpack-stats-report"
             target="_blank"
           />
+          <div />
         </VuiFlex>
       </template>
 

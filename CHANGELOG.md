@@ -1,5 +1,8 @@
 # Changelog
 
+* v2.0.3
+    * updated deps
+
 * v2.0.0
     * updated UI with vine-ui
 

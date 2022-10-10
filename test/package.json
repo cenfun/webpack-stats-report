@@ -2,10 +2,15 @@
     "name": "webpack-stats-report-test",
     "version": "",
     "main": "",
+    "browser": {
+        "fs": false,
+        "os": false
+    },
     "dependencies": {
-        "core-js": "^3.22.7",
-        "flatdep": "1.1.9",
+        "core-js": "^3.25.5",
+        "flatdep": "1.1.10",
         "fs": "0.0.2",
+        "os": "^0.1.2",
         "path": "0.12.7",
         "regenerator-runtime": "^0.13.9",
         "semver": "6.3.0",

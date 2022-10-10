@@ -1,12 +1,18 @@
-
 import Component from './component.vue';
 
 //test nested
+//depends 7.3.8
 import flatdep from 'flatdep';
+//hardcode 6.3.0
 import semver from 'semver';
 
 //test ignore
-//seems is for webpack4
+// "browser": {
+//     "fs": false,
+//     "os": false
+// },
+import 'fs';
+import 'os';
 
 //test other
 import options from '../../../lib/options.js';

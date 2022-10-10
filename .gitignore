@@ -2,3 +2,5 @@
 /package-lock.json
 /.temp/
 /dist/
+/test/node_modules/
+/test/package-lock.json
