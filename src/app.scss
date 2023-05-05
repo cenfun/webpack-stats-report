@@ -6,13 +6,13 @@
 
 html,
 body {
-    font-family: Helvetica, Arial, sans-serif;
-    height: 100%;
     width: 100%;
-    padding: 0;
+    height: 100%;
     margin: 0;
-    font-size: 14px;
+    padding: 0;
     color: #002b36;
+    font-size: 14px;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 a:link,
@@ -29,13 +29,13 @@ a:hover {
 
 .vui-icon {
     display: block;
-    overflow: hidden;
     width: 20px;
     height: 20px;
-    background-size: 20px 20px;
-    background-position: center center;
     background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 20px 20px;
     opacity: 0.6;
+    overflow: hidden;
 }
 
 .vui-icon:hover {
@@ -59,15 +59,15 @@ a:hover {
 }
 
 .vui-icon-modules {
-    background-image: url("./images/modules.svg");
     margin-right: 5px;
+    background-image: url("./images/modules.svg");
     opacity: 0.9;
 }
 
 .vui-icon-assets {
-    background-size: 18px 18px;
-    background-image: url("./images/assets.svg");
     margin-right: 5px;
+    background-image: url("./images/assets.svg");
+    background-size: 18px 18px;
     opacity: 0.9;
 }
 
@@ -77,9 +77,9 @@ main
 .vui-main {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 
     .vui-tab {
         display: flex;
@@ -101,16 +101,16 @@ main
 }
 
 .vui-title {
-    font-size: 16px;
     font-weight: bold;
+    font-size: 16px;
     text-align: center;
-    padding-right: 100px;
+    padding: 0 10px;
 }
 
 .vui-pane {
-    height: 100%;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 /*
@@ -134,8 +134,8 @@ filter
 
 .vui-filter-info {
     height: 30px;
-    line-height: 30px;
     margin-left: 10px;
+    line-height: 30px;
 }
 
 .vui-separator {
@@ -159,9 +159,9 @@ grid
         .vui-percent {
             width: 100%;
             height: 15px;
+            margin-top: 6px;
             border: 1px solid #888;
             border-radius: 3px;
-            margin-top: 6px;
         }
     }
 }
@@ -170,10 +170,10 @@ grid
 footer
 */
 .vui-footer {
-    background: #f5f5f5;
     position: relative;
     padding: 8px;
     border-top: 1px solid #eee;
+    background: #f5f5f5;
 }
 
 .vui-footer,
@@ -187,8 +187,8 @@ footer
 }
 
 .vui-link {
-    cursor: pointer;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .vui-link:hover {
@@ -238,19 +238,19 @@ detail
     width: 100%;
     height: 100%;
     background-color: #fff;
-    pointer-events: none;
+    background-image: url("./images/info-circle-outlined.svg");
     background-repeat: no-repeat;
     background-position: center center;
-    background-image: url("./images/info-circle-outlined.svg");
+    pointer-events: none;
 }
 
 .tg-flyover-icon {
     position: absolute;
     top: 0;
     right: 0;
+    display: inline-block;
     width: 20px;
     height: 100%;
-    display: inline-block;
     cursor: pointer;
 }
 
@@ -260,21 +260,21 @@ detail
 }
 
 .vui-flyover-header {
-    background-color: #666;
     padding: 0 10px;
+    background-color: #666;
 }
 
 .vui-flyover-icon {
-    cursor: pointer;
     padding: 9px 0;
+    cursor: pointer;
 }
 
 .vui-flyover-title {
     height: 41px;
-    line-height: 41px;
     color: #fff;
-    font-size: 16px;
     font-weight: bold;
+    font-size: 16px;
+    line-height: 41px;
 }
 
 .vui-flyover-content {
@@ -291,19 +291,19 @@ modal slot
 }
 
 .vui-modal-label {
-    font-size: 16px;
-    font-weight: bold;
     padding: 3px 0;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .vui-modal-item {
-    padding: 5px;
-    border-bottom: 1px solid #f5f5f5;
     position: relative;
+    display: flex;
+    padding: 5px;
+    word-wrap: break-word;
     word-break: break-word;
     overflow-wrap: break-word;
-    word-wrap: break-word;
-    display: flex;
+    border-bottom: 1px solid #f5f5f5;
 }
 
 .vui-modal-item:hover {
@@ -314,24 +314,24 @@ modal slot
     display: inline-block;
     width: 16px;
     height: 16px;
-    pointer-events: none;
+    background-image: url("./images/arrow-right-bottom.svg");
     background-repeat: no-repeat;
     background-position: center center;
-    background-image: url("./images/arrow-right-bottom.svg");
+    pointer-events: none;
 }
 
 .vui-modal-table {
-    margin-top: 5px;
     position: relative;
-    border-collapse: collapse;
     width: 100%;
+    margin-top: 5px;
+    border-collapse: collapse;
 }
 
 .vui-modal-table th,
 .vui-modal-table td {
+    padding: 5px;
     text-align: left;
     border: 1px solid #eee;
-    padding: 5px;
 }
 
 .vui-modal-nowrap {

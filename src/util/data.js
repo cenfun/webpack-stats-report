@@ -1,4 +1,4 @@
-import decompress from 'lz-utils/lib/decompress.js';
+import { decompress } from 'lz-utils';
 import { isList } from './util.js';
 
 const initData = function(statsData) {

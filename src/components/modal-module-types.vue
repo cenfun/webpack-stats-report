@@ -14,7 +14,7 @@
         <th>Description</th>
       </tr>
       <tr
-        v-for="(item, i) in list"
+        v-for="(item, i) in state.moduleTypes"
         :key="i"
       >
         <td>
@@ -45,21 +45,9 @@
   </div>
 </template>
 <script setup>
-import { toList } from '../util/util.js';
+import { inject } from 'vue';
 
-const props = defineProps({
-    moduleTypes: {
-        type: Object,
-        default: () => ({})
-    }
-});
-
-const list = Object.keys(props.moduleTypes).map((type) => {
-    const item = props.moduleTypes[type];
-    item.patterns = toList(item.patterns);
-    item.type = type;
-    return item;
-});
+const state = inject('state');
 
 </script>
 <style lang="scss">

@@ -5,9 +5,9 @@ const { DefinePlugin } = require('webpack');
 
 module.exports = {
     mode: 'production',
-    //mode: 'development',
-    //https://webpack.js.org/configuration/devtool/#devtool
-    //devtool: 'source-map',
+    // mode: 'development',
+    // https://webpack.js.org/configuration/devtool/#devtool
+    // devtool: 'source-map',
 
     output: {
         filename: 'webpack-stats-report.js',
@@ -27,7 +27,7 @@ module.exports = {
     })],
 
     optimization: {
-        //minimize: true, auto enabled with production mode
+        // minimize: true, auto enabled with production mode
         minimizer: [
             new TerserPlugin({
                 terserOptions: {
@@ -63,10 +63,10 @@ module.exports = {
             use: [{
                 loader: 'style-loader',
                 options: {
-                    //Reuses a single style element
+                    // Reuses a single style element
                     injectType: 'singletonStyleTag',
                     attributes: {
-                        //Add custom attrs to style for debug
+                        // Add custom attrs to style for debug
                         context: 'webpack-stats-report'
                     }
                 }

@@ -1,7 +1,7 @@
 <template>
   <div class="vui-info">
     <div
-      v-for="(item, i) in props.list"
+      v-for="(item, i) in state.infoList"
       :key="i"
       class="vui-modal-item"
     >
@@ -11,21 +11,19 @@
 </template>
 <script setup>
 
-const props = defineProps({
-    list: {
-        type: Array,
-        default: () => ([])
-    }
-});
+import { inject } from 'vue';
+
+const state = inject('state');
 
 const formatItem = (item) => {
-    //webpack5 is object
+    // webpack5 is object
     if (typeof item === 'object' && item.stack) {
         return item.stack;
     }
-    //webpack4 is string
+    // webpack4 is string
     return item;
 };
+
 
 </script>
 <style lang="scss">
