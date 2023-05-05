@@ -1,12 +1,12 @@
 import Component from './component.vue';
 
-//test nested
-//depends 7.3.8
+// test nested
+// depends 7.3.8
 import flatdep from 'flatdep';
-//hardcode 6.3.0
+// hardcode 6.3.0
 import semver from 'semver';
 
-//test ignore
+// test ignore
 // "browser": {
 //     "fs": false,
 //     "os": false
@@ -14,17 +14,17 @@ import semver from 'semver';
 import 'fs';
 import 'os';
 
-//test other
+// test other
 import options from '../../../lib/options.js';
 
-//test module
+// test module
 import EC from 'eight-colors';
 
 /* eslint-disable chain/dependencies */
 import json5 from 'json5';
 
-//error modules
-//import errorModule from 'error-module';
+// error modules
+// import errorModule from 'error-module';
 
 const component = {
     flatdep,
@@ -32,7 +32,7 @@ const component = {
     options,
     EC,
     json5,
-    //errorModule,
+    // errorModule,
     Component
 };
 

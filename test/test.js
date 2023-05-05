@@ -45,8 +45,8 @@ assert.strictEqual(Util.isMatch('../d-loader', loaderPatterns), false);
 assert.strictEqual(Util.isMatch('../node_modules/xxx-loader/path-to', loaderPatterns), true);
 assert.strictEqual(Util.isMatch('../../node_modules/xxx-loader/path-to', loaderPatterns), true);
 
-//console.log('==================================================================');
-//console.log('test StatsReportGenerator');
+// console.log('==================================================================');
+// console.log('test StatsReportGenerator');
 
 
 console.log('==================================================================');
@@ -59,7 +59,7 @@ const webpack = require('webpack');
 const getWebpackConf = function() {
     const webpackConf = require('../webpack.config.js');
 
-    //webpackConf.mode = 'development';
+    // webpackConf.mode = 'development';
 
     webpackConf.entry = {
         entry1: path.resolve(__dirname, 'src/entry1.js'),
