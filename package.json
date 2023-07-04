@@ -8,7 +8,8 @@
         "build": "npm run lint && npx webpack",
         "test": "cd test && node ./test.js",
         "dev": "npx webpack --mode development && npx webpack --mode development && npm run test",
-        "prod": "npm run lint && npx webpack && npx webpack && npm run test"
+        "prod": "npm run lint && npx webpack && npx webpack && npm run test",
+        "patch": "npm run prod && sf publish patch -r"
     },
     "workspaces": [
         "test"
@@ -23,34 +24,34 @@
         "url": "git+https://github.com/cenfun/webpack-stats-report.git"
     },
     "dependencies": {
-        "lz-utils": "^1.0.7",
+        "lz-utils": "^2.0.1",
         "micromatch": "^4.0.5"
     },
     "devDependencies": {
-        "@babel/core": "^7.21.8",
-        "@babel/preset-env": "^7.21.5",
+        "@babel/core": "^7.22.5",
+        "@babel/preset-env": "^7.22.5",
         "babel-loader": "^9.1.2",
-        "css-loader": "^6.7.3",
+        "css-loader": "^6.8.1",
         "eight-colors": "^1.0.3",
-        "eslint": "^8.39.0",
+        "eslint": "^8.44.0",
         "eslint-config-plus": "^1.0.6",
         "eslint-plugin-chain": "^2.0.0",
         "eslint-plugin-html": "^7.1.0",
-        "eslint-plugin-vue": "^9.11.0",
-        "postcss": "^8.4.23",
+        "eslint-plugin-vue": "^9.15.1",
+        "postcss": "^8.4.24",
         "postcss-html": "^1.5.0",
         "postcss-scss": "^4.0.6",
-        "sass": "^1.62.1",
-        "sass-loader": "^13.2.2",
-        "style-loader": "^3.3.2",
-        "stylelint": "^15.6.1",
+        "sass": "^1.63.6",
+        "sass-loader": "^13.3.2",
+        "style-loader": "^3.3.3",
+        "stylelint": "^15.9.0",
         "stylelint-config-plus": "^1.0.3",
-        "terser-webpack-plugin": "^5.3.7",
-        "turbogrid": "^3.0.7",
-        "vine-ui": "^3.1.11",
-        "vue": "^3.2.47",
-        "vue-loader": "^17.1.0",
-        "webpack": "^5.82.0",
-        "webpack-cli": "^5.0.2"
+        "terser-webpack-plugin": "^5.3.9",
+        "turbogrid": "^3.0.8",
+        "vine-ui": "^3.1.12",
+        "vue": "^3.3.4",
+        "vue-loader": "^17.2.2",
+        "webpack": "^5.88.1",
+        "webpack-cli": "^5.1.4"
     }
 }

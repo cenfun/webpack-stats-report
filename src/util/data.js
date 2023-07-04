@@ -1,4 +1,4 @@
-import { decompress } from 'lz-utils';
+import inflate from 'lz-utils/inflate';
 import { isList } from './util.js';
 
 const initData = function(statsData) {
@@ -42,9 +42,11 @@ const initData = function(statsData) {
 };
 
 
-export default (compressedStr) => {
+export default async (compressedStr) => {
 
-    const json = JSON.parse(decompress(compressedStr));
+    const reportStr = await inflate(compressedStr);
+
+    const json = JSON.parse(reportStr);
 
     return initData(json);
 

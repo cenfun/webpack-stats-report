@@ -314,9 +314,9 @@ watch(keywords, () => {
 });
 
 
-onMounted(() => {
+onMounted(async () => {
 
-    const statsData = dataHandler(window.statsData);
+    const statsData = await dataHandler(window.statsData);
     console.log('statsData', statsData);
 
     state.statsData = statsData;
