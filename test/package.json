@@ -6,14 +6,16 @@
         "fs": false,
         "os": false
     },
+    "license": "MIT",
     "dependencies": {
-        "core-js": "^3.25.5",
+        "core-js": "^3.33.2",
         "flatdep": "1.1.10",
-        "fs": "0.0.2",
+        "fs": "0.0.1-security",
         "os": "^0.1.2",
         "path": "0.12.7",
-        "regenerator-runtime": "^0.13.9",
-        "semver": "6.3.0",
-        "whatwg-fetch": "^3.6.2"
-    }
+        "regenerator-runtime": "^0.14.0",
+        "semver": "7.5.4",
+        "whatwg-fetch": "^3.6.19"
+    },
+    "devDependencies": {}
 }
