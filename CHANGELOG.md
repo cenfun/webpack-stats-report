@@ -1,5 +1,8 @@
 # Changelog
 
+* v2.0.6
+    * updated deps
+
 * v2.0.5
     * updated deps
 
