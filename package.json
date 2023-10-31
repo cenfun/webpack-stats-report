@@ -1,6 +1,6 @@
 {
     "name": "webpack-stats-report",
-    "version": "2.0.5",
+    "version": "2.0.6",
     "description": "webpack-stats-report",
     "main": "lib/index.js",
     "scripts": {
