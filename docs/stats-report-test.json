@@ -1,8 +1,8 @@
 {
     "hash": "dc1e943cbf550e06f8c8",
     "version": "5.89.0",
-    "time": 3667,
-    "builtAt": 1698725858957,
+    "time": 3500,
+    "builtAt": 1698725985649,
     "publicPath": "auto",
     "outputPath": "H:\\workspace\\webpack-stats-report\\.temp",
     "assetsByChunkName": {
@@ -12250,8 +12250,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "H:\\workspace\\webpack-stats-report\\test\\node_modules\\semver\\classes\\range.js",
-            "issuerName": "./node_modules/semver/classes/range.js",
+            "issuer": "H:\\workspace\\webpack-stats-report\\test\\node_modules\\semver\\classes\\semver.js",
+            "issuerName": "./node_modules/semver/classes/semver.js",
             "issuerPath": [
                 {
                     "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!H:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -12269,16 +12269,16 @@
                     "id": 1249
                 },
                 {
-                    "identifier": "H:\\workspace\\webpack-stats-report\\test\\node_modules\\semver\\classes\\range.js",
-                    "name": "./node_modules/semver/classes/range.js",
-                    "id": 6902
+                    "identifier": "H:\\workspace\\webpack-stats-report\\test\\node_modules\\semver\\classes\\semver.js",
+                    "name": "./node_modules/semver/classes/semver.js",
+                    "id": 6376
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 4225,
-            "issuerId": 6902,
+            "issuerId": 6376,
             "chunks": [
                 688,
                 887
@@ -12316,8 +12316,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "H:\\workspace\\webpack-stats-report\\test\\node_modules\\semver\\classes\\range.js",
-            "issuerName": "./node_modules/semver/classes/range.js",
+            "issuer": "H:\\workspace\\webpack-stats-report\\test\\node_modules\\semver\\classes\\semver.js",
+            "issuerName": "./node_modules/semver/classes/semver.js",
             "issuerPath": [
                 {
                     "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!H:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -12335,16 +12335,16 @@
                     "id": 1249
                 },
                 {
-                    "identifier": "H:\\workspace\\webpack-stats-report\\test\\node_modules\\semver\\classes\\range.js",
-                    "name": "./node_modules/semver/classes/range.js",
-                    "id": 6902
+                    "identifier": "H:\\workspace\\webpack-stats-report\\test\\node_modules\\semver\\classes\\semver.js",
+                    "name": "./node_modules/semver/classes/semver.js",
+                    "id": 6376
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 2893,
-            "issuerId": 6902,
+            "issuerId": 6376,
             "chunks": [
                 688,
                 887
@@ -13804,8 +13804,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "H:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\classes\\range.js",
-            "issuerName": "../node_modules/flatdep/node_modules/semver/classes/range.js",
+            "issuer": "H:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\internal\\re.js",
+            "issuerName": "../node_modules/flatdep/node_modules/semver/internal/re.js",
             "issuerPath": [
                 {
                     "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!H:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -13828,16 +13828,16 @@
                     "id": 5087
                 },
                 {
-                    "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\classes\\range.js",
-                    "name": "../node_modules/flatdep/node_modules/semver/classes/range.js",
-                    "id": 2874
+                    "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\internal\\re.js",
+                    "name": "../node_modules/flatdep/node_modules/semver/internal/re.js",
+                    "id": 3008
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 8776,
-            "issuerId": 2874,
+            "issuerId": 3008,
             "chunks": [
                 688,
                 887
@@ -13875,8 +13875,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "H:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\classes\\range.js",
-            "issuerName": "../node_modules/flatdep/node_modules/semver/classes/range.js",
+            "issuer": "H:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\classes\\comparator.js",
+            "issuerName": "../node_modules/flatdep/node_modules/semver/classes/comparator.js",
             "issuerPath": [
                 {
                     "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!H:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -13899,16 +13899,16 @@
                     "id": 5087
                 },
                 {
-                    "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\classes\\range.js",
-                    "name": "../node_modules/flatdep/node_modules/semver/classes/range.js",
-                    "id": 2874
+                    "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\flatdep\\node_modules\\semver\\classes\\comparator.js",
+                    "name": "../node_modules/flatdep/node_modules/semver/classes/comparator.js",
+                    "id": 3017
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 948,
-            "issuerId": 2874,
+            "issuerId": 3017,
             "chunks": [
                 688,
                 887
@@ -14088,8 +14088,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\function-uncurry-this.js",
-            "issuerName": "../node_modules/core-js/internals/function-uncurry-this.js",
+            "issuer": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\function-call.js",
+            "issuerName": "../node_modules/core-js/internals/function-call.js",
             "issuerPath": [
                 {
                     "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!H:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -14117,16 +14117,16 @@
                     "id": 3087
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\function-uncurry-this.js",
-                    "name": "../node_modules/core-js/internals/function-uncurry-this.js",
-                    "id": 6406
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\function-call.js",
+                    "name": "../node_modules/core-js/internals/function-call.js",
+                    "id": 1550
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 7219,
-            "issuerId": 6406,
+            "issuerId": 1550,
             "chunks": [
                 688,
                 887
@@ -14164,8 +14164,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-get-own-property-descriptor.js",
-            "issuerName": "../node_modules/core-js/internals/object-get-own-property-descriptor.js",
+            "issuer": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
+            "issuerName": "../node_modules/core-js/internals/create-non-enumerable-property.js",
             "issuerPath": [
                 {
                     "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!H:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -14193,16 +14193,16 @@
                     "id": 2390
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-get-own-property-descriptor.js",
-                    "name": "../node_modules/core-js/internals/object-get-own-property-descriptor.js",
-                    "id": 10
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
+                    "name": "../node_modules/core-js/internals/create-non-enumerable-property.js",
+                    "id": 9251
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 9637,
-            "issuerId": 10,
+            "issuerId": 9251,
             "chunks": [
                 688,
                 887
@@ -14772,8 +14772,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\define-built-in.js",
-            "issuerName": "../node_modules/core-js/internals/define-built-in.js",
+            "issuer": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
+            "issuerName": "../node_modules/core-js/internals/create-non-enumerable-property.js",
             "issuerPath": [
                 {
                     "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!H:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -14801,16 +14801,16 @@
                     "id": 2390
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\define-built-in.js",
-                    "name": "../node_modules/core-js/internals/define-built-in.js",
-                    "id": 7205
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
+                    "name": "../node_modules/core-js/internals/create-non-enumerable-property.js",
+                    "id": 9251
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 7144,
-            "issuerId": 7205,
+            "issuerId": 9251,
             "chunks": [
                 688,
                 887
@@ -15897,9 +15897,9 @@
                     "id": 2390
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\define-built-in.js",
-                    "name": "../node_modules/core-js/internals/define-built-in.js",
-                    "id": 7205
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
+                    "name": "../node_modules/core-js/internals/create-non-enumerable-property.js",
+                    "id": 9251
                 },
                 {
                     "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-define-property.js",
@@ -15978,9 +15978,9 @@
                     "id": 2390
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\define-built-in.js",
-                    "name": "../node_modules/core-js/internals/define-built-in.js",
-                    "id": 7205
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
+                    "name": "../node_modules/core-js/internals/create-non-enumerable-property.js",
+                    "id": 9251
                 },
                 {
                     "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-define-property.js",
@@ -16680,8 +16680,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\internal-state.js",
-            "issuerName": "../node_modules/core-js/internals/internal-state.js",
+            "issuer": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\an-object.js",
+            "issuerName": "../node_modules/core-js/internals/an-object.js",
             "issuerPath": [
                 {
                     "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!H:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -16709,26 +16709,26 @@
                     "id": 2390
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\define-built-in.js",
-                    "name": "../node_modules/core-js/internals/define-built-in.js",
-                    "id": 7205
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\create-non-enumerable-property.js",
+                    "name": "../node_modules/core-js/internals/create-non-enumerable-property.js",
+                    "id": 9251
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\make-built-in.js",
-                    "name": "../node_modules/core-js/internals/make-built-in.js",
-                    "id": 3911
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\object-define-property.js",
+                    "name": "../node_modules/core-js/internals/object-define-property.js",
+                    "id": 7144
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\internal-state.js",
-                    "name": "../node_modules/core-js/internals/internal-state.js",
-                    "id": 9930
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\an-object.js",
+                    "name": "../node_modules/core-js/internals/an-object.js",
+                    "id": 9972
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 5287,
-            "issuerId": 9930,
+            "issuerId": 9972,
             "chunks": [
                 688,
                 887
@@ -17196,8 +17196,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\internal-state.js",
-            "issuerName": "../node_modules/core-js/internals/internal-state.js",
+            "issuer": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\inspect-source.js",
+            "issuerName": "../node_modules/core-js/internals/inspect-source.js",
             "issuerPath": [
                 {
                     "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!H:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -17235,16 +17235,16 @@
                     "id": 3911
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\internal-state.js",
-                    "name": "../node_modules/core-js/internals/internal-state.js",
-                    "id": 9930
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\inspect-source.js",
+                    "name": "../node_modules/core-js/internals/inspect-source.js",
+                    "id": 5088
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 4830,
-            "issuerId": 9930,
+            "issuerId": 5088,
             "chunks": [
                 688,
                 887
@@ -17626,8 +17626,8 @@
             "cacheable": true,
             "optional": false,
             "orphan": false,
-            "issuer": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\well-known-symbol.js",
-            "issuerName": "../node_modules/core-js/internals/well-known-symbol.js",
+            "issuer": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\use-symbol-as-uid.js",
+            "issuerName": "../node_modules/core-js/internals/use-symbol-as-uid.js",
             "issuerPath": [
                 {
                     "identifier": "H:\\workspace\\webpack-stats-report\\node_modules\\babel-loader\\lib\\index.js??clonedRuleSet-1.use!H:\\workspace\\webpack-stats-report\\test\\src\\entry1.js",
@@ -17665,21 +17665,21 @@
                     "id": 3662
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-primitive.js",
-                    "name": "../node_modules/core-js/internals/to-primitive.js",
-                    "id": 6090
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\is-symbol.js",
+                    "name": "../node_modules/core-js/internals/is-symbol.js",
+                    "id": 103
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\well-known-symbol.js",
-                    "name": "../node_modules/core-js/internals/well-known-symbol.js",
-                    "id": 7936
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\use-symbol-as-uid.js",
+                    "name": "../node_modules/core-js/internals/use-symbol-as-uid.js",
+                    "id": 345
                 }
             ],
             "failed": false,
             "errors": 0,
             "warnings": 0,
             "id": 4053,
-            "issuerId": 7936,
+            "issuerId": 345,
             "chunks": [
                 688,
                 887
@@ -18211,14 +18211,14 @@
                     "id": 3662
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-primitive.js",
-                    "name": "../node_modules/core-js/internals/to-primitive.js",
-                    "id": 6090
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\is-symbol.js",
+                    "name": "../node_modules/core-js/internals/is-symbol.js",
+                    "id": 103
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\well-known-symbol.js",
-                    "name": "../node_modules/core-js/internals/well-known-symbol.js",
-                    "id": 7936
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\use-symbol-as-uid.js",
+                    "name": "../node_modules/core-js/internals/use-symbol-as-uid.js",
+                    "id": 345
                 },
                 {
                     "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\symbol-constructor-detection.js",
@@ -18595,14 +18595,14 @@
                     "id": 3662
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\to-primitive.js",
-                    "name": "../node_modules/core-js/internals/to-primitive.js",
-                    "id": 6090
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\is-symbol.js",
+                    "name": "../node_modules/core-js/internals/is-symbol.js",
+                    "id": 103
                 },
                 {
-                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\well-known-symbol.js",
-                    "name": "../node_modules/core-js/internals/well-known-symbol.js",
-                    "id": 7936
+                    "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\use-symbol-as-uid.js",
+                    "name": "../node_modules/core-js/internals/use-symbol-as-uid.js",
+                    "id": 345
                 },
                 {
                     "identifier": "javascript/dynamic|H:\\workspace\\webpack-stats-report\\node_modules\\core-js\\internals\\symbol-constructor-detection.js",
